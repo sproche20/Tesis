@@ -1,3 +1,5 @@
+import { jsPDF } from 'jspdf';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, MenuController, ModalController, NavController, PopoverController } from '@ionic/angular';
@@ -11,28 +13,13 @@ import { formulario9Service } from '../service/formulario9.service';
 import { SoftwareService } from '../service/software.service';
 import { ExampleService } from '../service/example.service';
 import { software } from '../models/software';
-
-
-
-
-
+import *as $ from "jquery";
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.scss'],
 })
-
-
-
-
-
-
-
-
-
-
-
 export class InicioComponent implements OnInit {
   actDetail:Actdetail[]=[];
   foro9:for9[]=[];
@@ -93,6 +80,11 @@ private exampleService:ExampleService,
     })
 
     
+  }
+  generarPDF(){
+    var doc =new jsPDF;
+    doc.text('hola mundo',10,10)
+  
   }
   
   openMenu(){
@@ -181,6 +173,7 @@ cargarAct():void{
     }
   )
 }
+
 
 
 
