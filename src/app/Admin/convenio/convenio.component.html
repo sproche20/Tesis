@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center;">Convenios</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-accordion-group>
+	<ion-accordion value="convenios">
+		<ion-item slot="header">
+			<h2 style="text-align:center">Registro Convenios</h2>
+		</ion-item>
+		<ion-list slot ="content">
+			<div class="row input-container">
+				<div class="col-xs-12">
+					<div class="styled-input wide">
+						<input
+			  type="text" required />
+						<label>tipo de convenio</label> 
+					</div>
+				</div>
+		  <div class="col-md-6 col-sm-12">
+					<div class="styled-input">
+						<input type="text" required />
+						<label>fecha firma</label> 
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<div class="styled-input" style="float:right;">
+						<input 
+			  type="text" required />
+						<label>fecha vencimiento</label> 
+					</div>
+			
+				</div>
+		  <div class="col-md-6 col-sm-12">
+					<div class="styled-input">
+						<input type="text" required />
+						<label>Id Carrera</label> 
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<div class="styled-input" style="float:right;">
+						<input 
+			  type="text" required />
+						<label>Id Compania</label> 
+					</div>
+			
+				</div>
+		  <div class="col-xs-12">
+					<div class="btn-lrg submit-btn">Nuevo</div>
+				</div>
+			<p></p>
+				<div class="col-xs-12">
+					<div class="btn-lrg submit-btn" >Guardar</div>
+				</div>
+		</div>
+		</ion-list>
+	</ion-accordion>
+	<ion-accordion value="Lista Convenios">
+		<ion-item slot="header">
+			<ion-label>Lista Convenios</ion-label>
+		  </ion-item>
+		  <ion-list slot="content">
+			<ion-item>
+				<table style="margin: 0 auto;">
+					<thead>
+					  <tr>
+						<th>ID</th>
+						<th>Nombre de convenio</th>
+						<th>fecha de la firma</th>
+						<th>fecha de vencimiento</th>
+						<th>Carrera</th>
+						<th>Compania</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr *ngFor="let convenio of convenios ">
+						<td>{{convenio.id}}</td>
+						<td>{{convenio.tipo}}</td>
+						<td>{{convenio.fechaFirma}}</td>
+						<td>{{convenio.fechaVencimiento}}</td>
+						<td>{{convenio.carreraId}}</td>
+						<td>{{convenio.companyId}}</td>
+					  </tr>
+					 
+					</tbody>
+				  </table>
+			</ion-item>
+		  </ion-list>
+	</ion-accordion>
+</ion-accordion-group>
+<div class="container">
+	<div class="row">
+			
+	</div>
+	
+</div>
+</ion-content>

@@ -1,0 +1,28 @@
+<body>
+  <div class="container"  >
+    <div class="row input-container">
+      <div class="col-xs-12">
+        <div class="styled-input wide">
+          <input
+       name="name"
+       [(ngModel)]="carrera.name"
+      type="text" required />
+          <label>Nombre de la carrera</label> 
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="styled-input wide">
+          <input
+       name="teacherId"
+       [(ngModel)]="carrera.teacherId"
+      type="number" required />
+          <label>Id del Docente</label> 
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="btn-lrg submit-btn" onClick="window.location.reload();" (click)="onUpdate()" >Actualizar</div>
+      </div>
+  </div>
+
+  </div>
+</body>

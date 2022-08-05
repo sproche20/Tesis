@@ -1,0 +1,127 @@
+<ion-header>
+  <ion-toolbar style="text-align: center;" class="new-background-color">
+    <font  face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold;" font color="#00C4B0"  >INSTITUTO SUDAMERICANO</font>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-label class="normal">
+      {{id}}
+      {{estudiante}}
+      {{studentId}}
+    </ion-label>
+    <div class="container">
+      <div
+       class="row input-container" style="text-align: center;"> 
+        <div
+         class="col-md-6 col-sm-12">
+      <div
+       class="styled-input">
+        <input name="startDate"
+        [(ngModel)]="actualDate"
+       type="date" required  />
+        <label>Fecha</label> 
+      </div
+      >
+    </div
+    >
+    <div
+     class="col-md-6 col-sm-12">
+      <div
+       class="styled-input" style="float:right;">
+        <input name="startTime"
+        [(ngModel)]="startTime" 
+        type="time" value="11:45:00" max="22:30:00" min="10:00:00" step="1"required />
+        <label>hora de inicio</label> 
+      </div
+      >
+    </div
+    >
+    <div
+     class="col-xs-12">
+      <div
+       class="styled-input wide">
+        <input
+         name="endTime"
+         [(ngModel)]="endTime"
+         type="time" value="11:45:00" max="22:30:00" min="10:00:00" step="1"required />
+        <label>Hora de salida.</label> 
+      </div
+      >
+    </div
+    >
+
+    <div
+     class="col-xs-12">
+      <div
+       class="styled-input wide">
+        <input
+         name="totalHours"
+         [(ngModel)]="totalHours"
+        type="number" required />
+        <label>horas totales realizadas.</label> 
+      </div
+      >
+    </div
+    >
+ <!--    <div
+     class="col-xs-12">
+      <div
+       class="styled-input wide">
+        <input
+         name="practiceId"
+         [(ngModel)]="practiceId"
+         value={{id}}
+        type="number"/>
+        <label></label> 
+      </div
+      >
+    </div
+    > -->
+      
+      <div
+       class="col-xs-12">
+        <div
+         class="styled-input wide">
+          <textarea name="observations"
+          [(ngModel)]="observations" required></textarea>
+          <label>Observaciones(Enumerar las Observaciones)</label>
+        </div
+        >
+      </div
+      >
+      
+      <div
+       class="col-xs-12">
+        <div
+         class="btn-lrg submit-btn" (click)="onCreate() ">Guardar</div
+          >
+      </div
+      >
+    </div>
+    </div>
+    
+</ion-content>
+<ion-item class="new-background-color">
+  <ion-tabs >
+    <ion-tab-bar slot="bottom" class="new-background-color">
+      <ion-tab-button tab="schedule" (click)="inicio()">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="speakers">
+        <ion-icon name="person-circle"></ion-icon>
+        <ion-label>Quienes Somos</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="map">
+        <ion-icon name="log-out"></ion-icon>
+        <ion-label>Cerrar Sesion</ion-label>
+      </ion-tab-button>
+  
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-item>
+
+
+ 

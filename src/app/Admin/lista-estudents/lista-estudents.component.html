@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center;">Lista estudiantes</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>N°.Cedula</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Email</th>
+          <th>Celular</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let estudiantes of estudiantes ">
+          <td>{{estudiantes.id}}</td>
+          <td>{{estudiantes.nui}}</td>
+          <td>{{estudiantes.name}}</td>
+          <td>{{estudiantes.lastname}}</td>
+          <td>{{estudiantes.email}}</td>
+          <td>{{estudiantes.phone}}</td>
+        </tr>
+       
+      </tbody>
+    </table>
+  </div>
+</ion-content>

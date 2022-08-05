@@ -1,0 +1,25 @@
+<ion-content>
+	<div  id="fullBg">
+	
+	
+		<div class="wrapper fadeInDown">
+		<div id="formContent">
+		  <!-- Tabs Titles -->
+		  <h2 class="active">Instituto Sudamericano</h2>
+	  
+		  <!-- Icon -->
+	
+	  
+		  <!-- Login Form -->
+		  <form>
+			<input [(ngModel)]="credenciales.correo" type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+			<input [(ngModel)]="credenciales.password" pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+			<input (click)="login()" type="submit" class="fadeIn fourth" value="Log In">
+		  </form>
+	  
+		  <!-- Remind Passowrd -->
+		</div>
+	  </div>
+	</div>
+</ion-content>
+

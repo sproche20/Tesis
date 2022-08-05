@@ -1,0 +1,166 @@
+
+<ion-header>
+	<ul><li>inicio</li>
+		<a href="/#/datos"><li>Estudiantes</li></a>
+		<li onClick="window.location.reload();">Docentes</li>
+		<a href="/#/tutorcompany"><li>Compañia</li></a>
+	</ul>
+	<ion-button (click)="logout()" fill="clear" style="float: right; width:59px; height:54px">
+		<ul><li><ion-icon slot="icon-only" name="log-out-outline"  style="float: right; width:65px; height:30px"></ion-icon></li></ul>
+	</ion-button>
+  </ion-header>
+  
+<ion-content>
+	<div class="container">
+        <div class="lbl-menu">
+            <label for="radio1">Registro Docentes</label>
+            <label for="radio2" >Lista Docentes</label>
+			<label for="radio3" >Registro Carrera</label>
+			<label for="radio4" >Lista Carrera</label>
+
+        </div>
+        
+        <div class="content">
+           
+            <input type="radio" name="radio" id="radio1" checked>
+            <div class="tab1">
+				<span class="row input-container">
+					<span class="col-xs-12">
+						<span class="styled-input wide">
+							<input
+				   name="name"
+				   [(ngModel)]="name"
+				   [(ngModel)]="datos.nombre"
+				  type="text" required />
+							<label>Nombre y apellido</label> 
+						</span>
+					</span>
+					<span class="col-xs-12">
+						<span class="styled-input wide">
+							<input type="text"
+							[(ngModel)]="datos.correo"  required />
+							<label>Email</label> 
+						</span>
+					</span>
+					<span class="col-md-6 col-sm-12">
+						<span class="styled-input">
+						  <input
+						  [(ngModel)]="datos.password"
+						  type="password" required />
+						  <label>Contraseña</label> 
+						</span>
+					  </span>
+					<span class="col-md-6 col-sm-12">
+						<span class="styled-input" style="float:right;">
+							<input
+				  name="phone"
+				  [(ngModel)]="phone" 
+				  type="text" required />
+							<label>Numero de telefono</label> 
+						</span>
+					</span>
+					
+					<span class="col-xs-12">
+						<span class="btn-lrg submit-btn" (click)="registrar()" (click)="onCreate()">Guardar</span>
+						<span class="btn-lrg submit-btn"  onClick="window.location.reload();">Nuevo</span>
+					</span>
+			    </span>
+            </div>
+            
+            <input type="radio" name="radio" id="radio2">
+            <div class="tab2">
+				<table style="margin: 0 auto;">
+					<thead>
+					  <tr>
+						<th>ID</th>
+						<th>Nombre del Docente</th>
+						<th>Celular</th>
+						<th>Editar</th>
+						<th>Eliminar</th>
+					  </tr>
+					</thead>
+					
+					<tbody>
+					  <tr *ngFor="let teacher of teacher">
+						<td>{{teacher.id}}</td>
+						<td>{{teacher.name}}</td>
+						<td>{{teacher.phone}}</td>
+						<td><ion-button  color="danger"  routerLink="/editarTeacher/{{teacher.id}}">Editar</ion-button></td>
+						<td><ion-button (click)="borrarProfesor(teacher. id)" color="danger"><ion-icon name="trash-outline"></ion-icon>eliminar</ion-button></td>
+					  </tr>
+					 
+					</tbody>
+				  </table>
+            </div>
+			<input type="radio" name="radio" id="radio3">
+			<div class="tab3">
+				<span class="row input-container">
+					<span class="col-xs-12">
+						<span class="styled-input wide">
+							<input
+				   name="name"
+				   [(ngModel)]="name"
+				  type="text" required />
+							<label>Nombre de la carrera</label> 
+						</span>
+					</span>
+					<span class="col-xs-12">
+						<span class="styled-input wide">
+							<input
+				   name="coordinator"
+				   [(ngModel)]="coordinator"
+				  type="text" required />
+							<label>Coordinador</label> 
+						</span>
+					</span>
+					<span class="col-xs-12">
+						<span class="styled-input wide">
+					   <ion-list class="foreground">
+						 <ion-item class="color">
+						   <label>Docente</label>
+						   <ion-select  [(ngModel)]="teacherId"  name="activityId" type="number">
+							 <ion-select-option *ngFor="let teacher of teacher" value={{teacher.id}}>{{teacher.name}}</ion-select-option>
+						   </ion-select>
+						 </ion-item>
+					   </ion-list>
+					 </span>
+				   </span>
+					<span class="col-xs-12">
+						<span class="btn-lrg submit-btn" (click)="onCreateC()" >Guardar</span>
+					</span>
+			</span>
+
+			</div>
+			<input type="radio" name="radio" id="radio4">
+			<div class="tab4">
+				<table style="margin: 0 auto;">
+					<thead>
+					  <tr>
+						<th>ID</th>
+						<th>Nombre de la carrera</th>
+						<th>Coordinador</th>
+						<th>Profesor</th>
+						<th>Editar</th>
+						<th>Eliminar</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr *ngFor="let carreras of carreras">
+						<td>{{carreras.id}}</td>
+						<td>{{carreras.name}}</td>
+						<td>{{carreras.coordinator}}</td>
+						<td>{{carreras.profesor}}</td>
+						<td><ion-button  color="danger"  routerLink="/editarcarrera/{{carreras.id}}">Editar</ion-button></td>
+						<td><ion-button (click)="borrarCarrera(carreras.id)" color="danger"><ion-icon name="trash-outline"></ion-icon>eliminar</ion-button></td>
+					  
+					  </tr>
+					</tbody>
+				  </table>
+
+			</div>
+        </div>
+    </div>
+
+	
+		
+</ion-content>

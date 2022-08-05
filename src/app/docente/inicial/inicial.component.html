@@ -1,0 +1,18 @@
+<ion-header>
+  <ul><li>inicio</li>
+    <a href="/#/actsoftware" *ngIf="login && rol=='visitante'"><li *ngIf="login && rol=='visitante'" >actividades</li></a>
+    <a href="/#/listaUser" *ngIf="login && rol=='visitante'"><li *ngIf="login && rol=='visitante'">Registro Estudiante.</li></a>
+    <a href="/#/datos" *ngIf="login && rol=='admin'"><li *ngIf="login && rol=='admin'" >Estudiantes</li></a>
+    <a href="/#/profesor" *ngIf="login && rol=='admin'"><li *ngIf="login && rol=='admin'">Docentes</li></a>
+	  <a href="/#/tutorcompany" *ngIf="login && rol=='admin'"><li *ngIf="login && rol=='admin'">Compañia</li></a>
+    <a href="/#/actsoftware" *ngIf="login && rol=='admin'"><li *ngIf="login && rol=='admin'">Registro Actividades</li></a>
+    
+  </ul>
+	<ion-button (click)="logout()" fill="clear" style="float: right; width:59px; height:48px">
+		<ul><li><ion-icon slot="icon-only" name="log-out-outline"  style="float: right; width:65px; height:30px"></ion-icon></li></ul>
+	</ion-button>
+</ion-header>
+<h1>Bienvenido</h1>
+<ion-content>
+
+</ion-content>

@@ -1,0 +1,64 @@
+
+<ion-header>
+	<ul><li>inicio</li>
+    <a href="/#/actsoftware"><li>Registro Actividades</li></a>
+  <li onClick="window.location.reload();">Asignacion de empresa.</li>
+	</ul>
+	<ion-button (click)="logout()" fill="clear" style="float: right; width:59px; height:54px">
+		<ul><li><ion-icon slot="icon-only" name="log-out-outline"  style="float: right; width:65px; height:30px"></ion-icon></li></ul>
+	</ion-button>
+  </ion-header>
+<ion-content>
+	<div class="container">
+    <div class="lbl-menu">
+        <label for="radio1">Lista Usuarios.</label>
+
+    </div>
+    
+    <div class="content">
+       
+        <input type="radio" name="radio" id="radio1" checked>
+        <div class="tab1">
+          <ion-searchbar color ="tertiary"
+  placeholder="buscar usuario"
+  (ionChange)="busqueda($event)"></ion-searchbar>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>N°.Cedula</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Email</th>
+        <th>Celular</th>
+        <th>Asignar empresa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let estudiantes of estudiantes ">
+        <td>{{estudiantes.id}}</td>
+        <td>{{estudiantes.nui}}</td>
+        <td>{{estudiantes.name}}</td>
+        <td>{{estudiantes.lastname}}</td>
+        <td>{{estudiantes.email}}</td>
+        <td>{{estudiantes.phone}}</td>
+        <td><ion-button  color="danger"  routerLink="/for9/{{estudiantes.id}}">Asignar Empresa </ion-button></td>
+      </tr>
+     
+    </tbody>
+  </table>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+</ion-content>

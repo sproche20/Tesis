@@ -1,0 +1,126 @@
+<ion-header>
+  <ul><li>inicio</li>
+    <li onClick="window.location.reload();">Estudiantes</li>
+    <a href="/#/profesor"><li>Docentes</li></a>
+		<a href="/#/tutorcompany"><li>Compañia</li></a>
+  </ul>
+	<ion-button (click)="logout()" fill="clear" style="float: right; width:59px; height:54px">
+		<ul><li><ion-icon slot="icon-only" name="log-out-outline"  style="float: right; width:65px; height:30px"></ion-icon></li></ul>
+	</ion-button>
+</ion-header>
+<ion-content>
+  <div class="container">
+    <div class="lbl-menu">
+        <label for="radio1">Registro Estudiantes</label>
+        <label for="radio2" >Lista Estudiantes</label>
+    </div>
+    
+    <div class="content">
+       
+        <input type="radio" name="radio" id="radio1" checked>
+        <div class="tab1">
+          <span class="row input-container">
+  <span class="col-xs-12">
+    <span class="styled-input wide">
+      <input
+       name="nui"
+       [(ngModel)]="nui"
+
+      type="text" required />
+      <label>numero de cedula</label> 
+    </span>
+  </span>
+  <span class="col-md-6 col-sm-12">
+    <span class="styled-input">
+      <input 
+      name="name"
+      [(ngModel)]="name"
+      [(ngModel)]="datos.nombre"
+      type="text" required />
+      <label>Nombres Completos</label> 
+    </span>
+  </span>
+  <span class="col-md-6 col-sm-12">
+    <span class="styled-input" style="float:right;">
+      <input
+      name="lastname"
+      [(ngModel)]="lastname"
+      [(ngModel)]="datos.apellido"
+      type="text" required />
+      <label>Apellidos Completos</label> 
+    </span>
+  </span>
+  <span class="col-xs-12">
+    <span class="styled-input wide">
+      <input
+      name="email"
+      [(ngModel)]="email"
+      [(ngModel)]="datos.correo" 
+      type="text" required />
+      <label>Correo Elecrtronico</label>  
+    </span>
+  </span>
+  <span class="col-md-6 col-sm-12">
+    <span class="styled-input">
+      <input
+      [(ngModel)]="datos.password"
+      type="password" required />
+      <label>Contraseña</label> 
+    </span>
+  </span>
+  
+  <span class="col-md-6 col-sm-12">
+    <span class="styled-input" style="float:right;">
+      <input
+      name="phone"
+      [(ngModel)]="phone" 
+      type="text" required />
+      <label>Numero de telefono</label> 
+    </span>
+  </span>
+  <span class="col-xs-12">
+    <span class="btn-lrg submit-btn" (click)="registrar()" (click)="onCreate();">Guardar</span>
+    <span class="btn-lrg submit-btn"  onClick="window.location.reload();">Nuevo</span>
+
+  </span>
+          </span>
+
+        </div>
+        
+        <input type="radio" name="radio" id="radio2">
+        <div class="tab2">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>N°.Cedula</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Email</th>
+                <th>Celular</th>
+                <th>Editar</th>
+						    <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let estudiantes of estudiantes ">
+                <td>{{estudiantes.id}}</td>
+                <td>{{estudiantes.nui}}</td>
+                <td>{{estudiantes.name}}</td>
+                <td>{{estudiantes.lastname}}</td>
+                <td>{{estudiantes.email}}</td>
+                <td>{{estudiantes.phone}}</td>
+                <td><ion-button  color="danger"  routerLink="/editarEstudiante/{{estudiantes.id}}">Editar</ion-button></td>
+                <td><ion-button (click)="borrarEstudiante(estudiantes.id)" color="danger"><ion-icon name="trash-outline"></ion-icon>eliminar</ion-button></td>
+    
+              </tr>
+             
+            </tbody>
+          </table>
+        </div>
+    </div>
+</div>
+
+</ion-content>
+
+

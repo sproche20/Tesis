@@ -1,0 +1,55 @@
+<body>
+  <div class="container"  >
+
+  </div>
+  <div class="row input-container">
+    <div class="col-xs-12">
+      <div class="styled-input wide">
+        <input
+         name="name"
+         [(ngModel)]="tutorcompany.name"
+        type="text" required />
+        <label>Nombre y apellido</label> 
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <div class="styled-input">
+        <input 
+        name="email"
+        [(ngModel)]="tutorcompany.email"
+        type="text" required />
+        <label>Email</label> 
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <div class="styled-input" style="float:right;">
+        <input
+        name="phone"
+        [(ngModel)]="tutorcompany.phone" 
+        type="text" required />
+        <label>Numero de telefono</label> 
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <div class="styled-input">
+        <input
+        name="alternative"
+        [(ngModel)]="tutorcompany.alternative" 
+        type="text" required />
+        <label>telefono alternativo</label> 
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <div class="styled-input" style="float:right;">
+        <input
+        name="companyId"
+        [(ngModel)]="tutorcompany.companyId" 
+        type="number" required />
+        <label>Id Compania</label> 
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="btn-lrg submit-btn" onClick="window.location.reload();" (click)="onUpdate()" >Actualizar</div>
+    </div>
+</div>
+</body>

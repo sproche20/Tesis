@@ -1,0 +1,39 @@
+<body>
+  <div class="container"  >
+    <div class="row input-container">
+      <div class="col-xs-12">
+        <div class="styled-input wide">
+          <input
+       name="activities"
+       [(ngModel)]="software.description"
+      type="text" required />
+          <label>actividades</label> 
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="styled-input wide">
+          <input
+       name="observacion"
+       [(ngModel)]="software.observation"
+      type="text" required />
+          <label>Observacion</label> 
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="styled-input wide">
+          <input
+       name="observacion"
+       [(ngModel)]="software.careerId"
+      type="number" required />
+          <label>carrera</label> 
+        </div>
+      </div>
+      
+
+      <div class="col-xs-12">
+        <div class="btn-lrg submit-btn" onClick="window.location.reload();" (click)="onUpdate()" >Actualizar</div>
+      </div>
+  </div>
+
+  </div>
+</body>

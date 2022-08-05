@@ -1,0 +1,51 @@
+
+<body>
+  <div class="container"  >
+    <div class="row input-container">
+      <div class="col-xs-12">
+        <div class="styled-input wide">
+          <input
+          id="name"
+           name="name"
+           [(ngModel)]="company.name"          
+           type="text" required />
+          <label>Nombre de la empresa</label> 
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="styled-input">
+          <input type="text" required />
+          <label>Email</label> 
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="styled-input" style="float:right;">
+          <input
+          id="phone"
+          name="phone"
+          [(ngModel)]="company.phone" 
+          type="text" required />
+          <label>Numero de telefono</label> 
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="styled-input wide">
+          <textarea 
+          id="contact"
+          name="contact"
+          [(ngModel)]="company.contact"
+          required></textarea>
+          <label>Contactos</label>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="btn-lrg submit-btn" onClick="window.location.reload();" (click)="onUpdate()" >Actualizar</div>
+      </div>
+  </div>
+  </div>
+</body>
+
+
+
+
+

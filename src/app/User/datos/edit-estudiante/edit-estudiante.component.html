@@ -1,0 +1,54 @@
+<body>
+  <div class="container"  >
+    <div class="row input-container">
+      <div class="col-xs-12">
+        <div class="styled-input wide">
+          <input
+           name="nui"
+           [(ngModel)]="estudiante.nui"
+          type="text" required />
+          <label>numero de cedula</label> 
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="styled-input">
+          <input 
+          name="name"
+          [(ngModel)]="estudiante.name"
+          type="text" required />
+          <label>Nombres Completos</label> 
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="styled-input" style="float:right;">
+          <input
+          name="lastname"
+          [(ngModel)]="estudiante.lastname" 
+          type="text" required />
+          <label>Apellidos Completos</label> 
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="styled-input">
+          <input
+          name="email"
+          [(ngModel)]="estudiante.email" 
+          type="text" required />
+          <label>Correo Elecrtronico</label> 
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="styled-input" style="float:right;">
+          <input
+          name="phone"
+          [(ngModel)]="estudiante.phone" 
+          type="text" required />
+          <label>Numero de telefono</label> 
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="btn-lrg submit-btn" onClick="window.location.reload();" (click)="onUpdate()" >Actualizar</div>
+      </div>
+              </div>
+  </div>
+</body>

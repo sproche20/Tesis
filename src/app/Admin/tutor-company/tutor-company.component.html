@@ -1,0 +1,196 @@
+<ion-header>
+  <ul><li>inicio</li>
+    <a href="/#/actsoftware" *ngIf="login && rol=='visitante'"><li>actividades</li></a>
+    <a href="/#/datos"><li>Estudiantes</li></a>
+    <a href="/#/profesor"><li>Docentes</li></a>
+	  <li onClick="window.location.reload();">Compañia</li>
+  </ul>
+	<ion-button (click)="logout()" fill="clear" style="float: right; width:59px; height:54px">
+		<ul><li><ion-icon slot="icon-only" name="log-out-outline"  style="float: right; width:65px; height:30px"></ion-icon></li></ul>
+	</ion-button>
+</ion-header>
+<ion-content>
+  <div class="container">
+    <div class="lbl-menu">
+        <label for="radio1">Registro tutor</label>
+        <label for="radio2">Lista Tutor</label>
+  <label for="radio3">Registro Compania</label>
+  <label for="radio4">Lista Compania</label>
+
+    </div>
+    
+    <div class="content">
+       
+        <input type="radio" name="radio" id="radio1" checked>
+        <div class="tab1">
+          <span class="row input-container">
+            <span class="col-xs-12">
+              <span class="styled-input wide">
+                <input
+                 name="name"
+                 [(ngModel)]="name"
+                type="text" required />
+                <label>Nombre y apellido</label> 
+              </span>
+            </span>
+            <span class="col-md-6 col-sm-12">
+              <span class="styled-input">
+                <input 
+                name="email"
+                [(ngModel)]="email"
+                type="text" required />
+                <label>Email</label> 
+              </span>
+            </span>
+            <span class="col-md-6 col-sm-12">
+              <span class="styled-input" style="float:right;">
+                <input
+                name="phone"
+                [(ngModel)]="phone" 
+                type="text" required />
+                <label>Numero de telefono</label> 
+              </span>
+            </span>
+            <span class="col-md-6 col-sm-12">
+              <span class="styled-input">
+                <input
+                name="alternative"
+                [(ngModel)]="alternative" 
+                type="text" required />
+                <label>telefono alternativo</label> 
+              </span>
+            </span>
+            <span
+            class="col-md-6 col-sm-12">
+             <span
+             class="styled-input" style="float:right;">
+               <ion-list class="foreground">
+                 <ion-item class="color">
+                   <label>Compañia</label>
+                   <ion-select  [(ngModel)]="companyId"  name="activityId" type="number">
+                     <ion-select-option *ngFor="let company of company" value={{company.id}}>{{company.name}}</ion-select-option>
+                   </ion-select>
+                 </ion-item>
+               </ion-list>
+             </span>
+           </span>
+            <span class="col-xs-12">
+              <span class="btn-lrg submit-btn" (click)="onCreate()" onClick="window.location.reload();">Guardar</span>
+            </span>
+        </span>
+    
+        </div>
+        
+        <input type="radio" name="radio" id="radio2">
+        <div class="tab2">
+          <form class="search" action="">
+            <input type="search" placeholder="Search here..." required>
+            <button type="submit">Search</button>
+          </form>  
+          <table style="margin: 0 auto;">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Tutor empresa</th>
+                <th>E-mail</th>
+                <th>Celular</th>
+                <th>telefono alternativo</th>
+                <th>Compañia</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let tutorcompany of tutorcompany">
+                <td>{{tutorcompany.id}}</td>
+                <td>{{tutorcompany.name}}</td>
+                <td>{{tutorcompany.email}}</td>
+                <td>{{tutorcompany.phone}}</td>
+                <td>{{tutorcompany.alternative}}</td>
+                <td>{{tutorcompany.empresa}} </td>
+                <td><ion-button  color="danger"  routerLink="/editartutor/{{tutorcompany.id}}">Editar</ion-button></td>
+                <td ><ion-button (click)="borrarTutor(tutorcompany.id)" color="danger"><ion-icon name="trash-outline" ></ion-icon>eliminar</ion-button></td>
+
+              </tr>
+             
+            </tbody>
+          </table>
+    
+        </div>
+  <input type="radio" name="radio" id="radio3">
+  <div class="tab3">
+    
+      <span class="row input-container">
+          <span class="col-xs-12">
+            <span class="styled-input wide">
+              <input
+               name="name"
+               [(ngModel)]="names"
+              type="text" required />
+              <label>Nombre de la empresa</label> 
+            </span>
+          </span>
+          <span class="col-md-6 col-sm-12">
+            <span class="styled-input">
+              <input type="text" required />
+              <label>Email</label> 
+            </span>
+          </span>
+          <span class="col-md-6 col-sm-12">
+            <span class="styled-input" style="float:right;">
+              <input
+              name="phone"
+              [(ngModel)]="phones" 
+              type="text" required />
+              <label>Numero de telefono</label> 
+            </span>
+          </span>
+          <span class="col-xs-12">
+            <span class="styled-input wide">
+              <textarea 
+              name="contact"
+              [(ngModel)]="contact"
+              required></textarea>
+              <label>Contactos</label>
+            </span>
+          </span>
+          <span class="col-xs-12">
+            <span class="btn-lrg submit-btn" (click)="onCreates()" onClick="window.location.reload();">Guardar</span>
+          </span>
+      </span>
+
+  </div>
+  <input type="radio" name="radio" id="radio4">
+  <div class="tab4">
+    <ion-searchbar color ="tertiary"
+    placeholder="buscar usuario"
+    (ionChange)="busqueda($event)"></ion-searchbar>
+  
+    <table style="margin: 0 auto;" id="datos">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre de la empresa</th>
+          <th>Celular</th>
+          <th>Contactos</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let company of company| filtro:textoBuscar" >
+          <td>{{company.id}}</td>
+          <td>{{company.name}}</td>
+          <td>{{company.phone}}</td>
+          <td>{{company.contact}}</td>
+          <td><ion-button  color="danger"  routerLink="/editar/{{company.id}}">Editar</ion-button></td>
+          <td><ion-button (click)="borrar(company.id)" color="danger"><ion-icon name="trash-outline"></ion-icon>eliminar</ion-button></td>
+        </tr>
+       
+      </tbody>
+    </table>
+
+  </div>
+    </div>
+</div>
+</ion-content>

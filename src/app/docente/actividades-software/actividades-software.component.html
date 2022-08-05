@@ -1,0 +1,78 @@
+
+<ion-header>
+	<ul><li>inicio</li>
+    <li onClick="window.location.reload();">Registro Actividades</li>
+  <a href="/#/listaUser"><li>Asignacion de empresa..</li></a>
+	</ul>
+	<ion-button (click)="logout()" fill="clear" style="float: right; width:59px; height:54px">
+		<ul><li><ion-icon slot="icon-only" name="log-out-outline"  style="float: right; width:65px; height:30px"></ion-icon></li></ul>
+	</ion-button>
+  </ion-header>
+  <ion-content>
+    <ion-item>
+      <div class="row input-container">
+        <div class="col-xs-12">
+          <div class="styled-input wide">
+            <input
+         name="name"
+         [(ngModel)]="activities"
+        type="text" required />
+            <label>actividad</label> 
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class="styled-input wide">
+            <input
+         name="name"
+         [(ngModel)]="observacion"
+        type="text" required />
+            <label>Observaciones</label> 
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class="styled-input wide">
+           <ion-list class="foreground">
+           <ion-item class="color">
+             <label>Carrera</label>
+             <ion-select  [(ngModel)]="career" name="activityId" type="number">
+             <ion-select-option *ngFor="let carreras of carreras" value={{carreras.id}}>{{carreras.coordinator}}</ion-select-option>
+             </ion-select>
+           </ion-item>
+           </ion-list>
+         </div>
+         </div>
+        <div class="col-xs-12">
+          <div class="btn-lrg submit-btn" (click)="onCreate()" onClick="window.location.reload();">Guardar</div>
+        </div>
+    </div>
+    </ion-item>
+<div>
+  <table style="margin: 0 auto; ">
+    <thead>
+      <tr>
+      <th>ID</th>
+      <th>Actividades</th>
+      <th>Observaciones</th>
+      <th>carrera</th>
+      <th>Editar</th>
+			<th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let software of Software">
+      <td>{{software.id}}</td>
+      <td>{{software.description}}</td>
+      <td>{{software.observation}}</td>
+      
+      <td>{{software.careerId}}</td>
+      <td><ion-button  color="danger"  routerLink="/editarsoftware/{{software.id}}">Editar</ion-button></td>
+      <td><ion-button (click)="borrarActividad(software.id)" color="danger"><ion-icon name="trash-outline"></ion-icon>eliminar</ion-button></td>
+      
+      </tr>
+    </tbody>
+    </table>
+</div>
+ 
+
+
+  </ion-content>

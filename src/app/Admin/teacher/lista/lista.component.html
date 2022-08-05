@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center;">Lista Docentes</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-item>
+
+</ion-item>
+
+  <ion-accordion-group>
+    <ion-accordion value="Profesor">
+      <ion-item slot="header">
+        <ion-label>Lista docentes</ion-label>
+      </ion-item>
+      <ion-list slot="content">
+        <ion-item>
+          <table style="margin: 0 auto;">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre del Docente</th>
+                <th>Celular</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let teacher of teacher">
+                <td>{{teacher.id}}</td>
+                <td>{{teacher.names}}</td>
+                <td>{{teacher.phone}}</td>
+              </tr>
+             
+            </tbody>
+          </table>
+        </ion-item>
+
+      </ion-list>
+
+    </ion-accordion>
+    <ion-accordion value="carrera">
+      <ion-item slot="header">
+        <ion-label>Lista carreras</ion-label>
+      </ion-item>
+      <ion-list slot="content">
+        <ion-item>
+          <table style="margin: 0 auto;">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre de la carrera</th>
+                <th>Profesor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let carreras of carreras">
+                <td>{{carreras.id}}</td>
+                <td>{{carreras.name}}</td>
+                <td>{{carreras.teacherId}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </ion-item>
+      </ion-list>
+    </ion-accordion>
+
+  </ion-accordion-group>  
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar style="text-align: center;" class="new-background-color">
+    <font  face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold;" font color="#737373" >INSTITUTO SUDAMERICANO</font>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item class="color" *ngFor="let foro9 of foro9">
+    <ion-label class="normal" >Fecha:{{foro9.actualDate}} </ion-label>
+    <ion-buttons>
+      <ion-tab-button slot="end" [routerLink]="['/seleccionActividad',foro9.id]" routerLinkActive="router-link-active" >
+        <ion-icon name="add-circle-sharp"></ion-icon>
+        <ion-label>Añadir actividad</ion-label>
+      </ion-tab-button> 
+    </ion-buttons>
+    </ion-item>
+</ion-content>
+<ion-item class="new-background-color">
+  <div>
+    
+  </div>
+  <ion-tabs *ngFor="let foro9 of foro9">
+    <ion-tab-bar class="new-background-color"[routerLink]="['/inicioEstudiante',foro9.student]" routerLinkActive="router-link-active"  slot="bottom">
+      <ion-tab-button tab="schedule">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="speakers">
+        <ion-icon name="person-circle"></ion-icon>
+        <ion-label>Quienes Somos</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="map">
+        <ion-icon name="log-out"></ion-icon>
+        <ion-label>Cerrar Sesion</ion-label>
+      </ion-tab-button>
+  
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-item>
