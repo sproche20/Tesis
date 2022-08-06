@@ -1,0 +1,48 @@
+<ion-header>
+	<ul><li>inicio</li>
+    <a href="/#/actsoftware"><li>Registro Actividades</li></a>
+    <a href="/#/listaUser"><li>Asignacion de empresa..</li></a>
+	</ul>
+	<ion-button (click)="logout()" fill="clear" style="float: right; width:59px; height:54px">
+		<ul><li><ion-icon slot="icon-only" name="log-out-outline"  style="float: right; width:65px; height:30px"></ion-icon></li></ul>
+	</ion-button>
+  </ion-header>
+<ion-content>
+
+
+
+
+  <ion-item class="color" *ngFor="let foro9 of foro9">
+    <ion-label class="normal" >Fecha:{{foro9.actualDate}} </ion-label>
+    <ion-buttons>
+      <ion-tab-button expand="block" (click)="setOpen(true)" slot="end">
+        <ion-icon name="add-circle-sharp"></ion-icon>
+        <ion-label>Mostrar actividades.</ion-label>
+      </ion-tab-button> 
+      <ion-button expand="block" (click)="setOpen(true)">Open</ion-button>
+      <ion-modal [isOpen]="isModalOpen">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-title>Modal</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="setOpen(false)">Close</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illum quidem recusandae ducimus quos
+              reprehenderit. Veniam, molestias quos, dolorum consequuntur nisi deserunt omnis id illo sit cum qui. Eaque,
+              dicta.
+            </p>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+
+
+
+
+    </ion-buttons>
+    </ion-item>
+</ion-content>

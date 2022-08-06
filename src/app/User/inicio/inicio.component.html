@@ -1,85 +1,211 @@
 <ion-header>
-    <ion-toolbar style="text-align: center;" class="new-background-color">
-      <font  face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold;" font color="#00C4B0" >INSTITUTO SUDAMERICANO</font>
-      <script src="./app.js"></script>
-<script src="./jspdf.min.js"></script>
-    </ion-toolbar>
+  <ion-toolbar style="text-align: center" class="new-background-color">
+    <font
+      face="Comic Sans MS,arial,verdana"
+      font
+      size="4"
+      style="font-weight: bold"
+      font
+      color="#00C4B0"
+      >INSTITUTO SUDAMERICANO</font
+    >
+    <script src="./apk.component.js"></script>
+    <script src="./jspdf.min.js"></script>
+  </ion-toolbar>
+</ion-header>
 
-    
-  </ion-header>
-  
 <ion-content>
+  <ion-accordion-group
+    *ngFor="let formulary of formulary"
+    class="fondo"
+    id="form"
+  >
+    <ion-accordion value="{{ formulary.id }}">
+      <ion-item slot="header" class="color">
+        <font
+          face="Comic Sans MS,arial,verdana"
+          font
+          size="4"
+          style="font-weight: bold"
+          font
+          color="#E1E1E1"
+          id="empresa"
+          >Empresa:{{ formulary.empresa }}</font
+        >
+      </ion-item>
 
-    <ion-accordion-group *ngFor="let formulary of formulary" class="fondo"  id="form">
-      <ion-accordion value={{formulary.id}} >
-        <ion-item slot="header" class="color">
-          <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold;" font color="#E1E1E1" id="empresa" >Empresa:{{formulary.empresa}}</font>
-        </ion-item>
-
-        <ion-item class="ion-padding" slot="content" class="fondo">
-          <div class="foreground">
-            <hr width=100%  align="left"  size=10   noshade="noshade">
-            <p style="margin:-0.5% 0;">
-             <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold;" font color="#000000" >Estudiante:</font>
-            </p> 
-             <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454" >{{formulary.estudiante}}</font>
-             <hr width=100%  align="left"  size=10   noshade="noshade">
-             <p style="margin:-0.5% 0;">
-              <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold;" font color="#000000" >Docente Carrera:</font>
-             </p>
-             <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{formulary.profesor}}</font>
-             <hr width=100%  align="left"  size=10   noshade="noshade">
-             <p style="margin:-0.5% 0;">
-              <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold;" font color="#000000" >Tutor Academico:</font>
-             </p>
-             <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{formulary.tutor}}</font>
-             <hr width=100%  align="left"  size=10   noshade="noshade">
-             <p style="margin:-0.5% 0;">
-              <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold;" font color="#000000" >Fecha de inicio:</font>
-             </p>
-             <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{formulary.startDate}}</font>
-             <hr width=100%  align="left"  size=10   noshade="noshade">
-             <p style="margin:-0.5% 0;">
-              <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold;" font color="#000000" > Fecha Final:</font>
-             </p>
-             <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{formulary.endDate}}</font>
-             <hr width=100%  align="left"  size=10   noshade="noshade">
-             <p style="margin:-0.5% 0;">
-              <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold;" font color="#000000" >Horas totales:</font>
-            </p>
-            <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{formulary.hours}}</font>
-            <hr width=100%  align="left"  size=10   noshade="noshade">
-            <p style="margin:-0.5% 0;" style="text-align: center;" >
-              <button style="text-align: center;" class="botonDos" style="margin-top: 30px; margin-bottom: 10px;margin-left: 10px" [routerLink]="['/formulario9',formulary.id]">Crear actividad</button>
-            <button style="text-align: center;" class="botonDos" style="margin-top: 30px; margin-bottom: 10px;margin-left: 10px" [routerLink]="['/listformulario',formulary.id]">Lista actividad</button>
-            <button style="text-align: center;" class="botonDos" style="margin-top: 30px; margin-bottom: 10px;margin-left: 10px" >Generar PDF</button>
-  
+      <ion-item id="form" class="ion-padding" slot="content" class="fondo">
+        <div class="foreground">
+          <hr width="100%" align="left" size="10" noshade="noshade" />
+          <p style="margin: -0.5% 0">
+            <font
+              face="Comic Sans MS,arial,verdana"
+              font
+              size="4"
+              style="font-weight: bold"
+              font
+              color="#000000"
+              >Estudiante:</font
+            >
           </p>
-           </div>
-            
-        </ion-item> 
-      </ion-accordion>
-   
-    </ion-accordion-group>
+          <font
+            face="Comic Sans MS,arial,verdana"
+            font
+            size="4"
+            font
+            color="#545454"
+            >{{ formulary.estudiante }}</font
+          >
+          <hr width="100%" align="left" size="10" noshade="noshade" />
+          <p style="margin: -0.5% 0">
+            <font
+              face="Comic Sans MS,arial,verdana"
+              font
+              size="4"
+              style="font-weight: bold"
+              font
+              color="#000000"
+              >Docente Carrera:</font
+            >
+          </p>
+          <font
+            face="Comic Sans MS,arial,verdana"
+            font
+            size="4"
+            font
+            color="#545454"
+            >{{ formulary.profesor }}</font
+          >
+          <hr width="100%" align="left" size="10" noshade="noshade" />
+          <p style="margin: -0.5% 0">
+            <font
+              face="Comic Sans MS,arial,verdana"
+              font
+              size="4"
+              style="font-weight: bold"
+              font
+              color="#000000"
+              >Tutor Academico:</font
+            >
+          </p>
+          <font
+            face="Comic Sans MS,arial,verdana"
+            font
+            size="4"
+            font
+            color="#545454"
+            >{{ formulary.tutor }}</font
+          >
+          <hr width="100%" align="left" size="10" noshade="noshade" />
+          <p style="margin: -0.5% 0">
+            <font
+              face="Comic Sans MS,arial,verdana"
+              font
+              size="4"
+              style="font-weight: bold"
+              font
+              color="#000000"
+              >Fecha de inicio:</font
+            >
+          </p>
+          <font
+            face="Comic Sans MS,arial,verdana"
+            font
+            size="4"
+            font
+            color="#545454"
+            >{{ formulary.startDate }}</font
+          >
+          <hr width="100%" align="left" size="10" noshade="noshade" />
+          <p style="margin: -0.5% 0">
+            <font
+              face="Comic Sans MS,arial,verdana"
+              font
+              size="4"
+              style="font-weight: bold"
+              font
+              color="#000000"
+            >
+              Fecha Final:</font
+            >
+          </p>
+          <font
+            face="Comic Sans MS,arial,verdana"
+            font
+            size="4"
+            font
+            color="#545454"
+            >{{ formulary.endDate }}</font
+          >
+          <hr width="100%" align="left" size="10" noshade="noshade" />
+          <p style="margin: -0.5% 0">
+            <font
+              face="Comic Sans MS,arial,verdana"
+              font
+              size="4"
+              style="font-weight: bold"
+              font
+              color="#000000"
+              >Horas totales:</font
+            >
+          </p>
+          <font
+            face="Comic Sans MS,arial,verdana"
+            font
+            size="4"
+            font
+            color="#545454"
+            >{{ formulary.hours }}</font
+          >
+          <hr width="100%" align="left" size="10" noshade="noshade" />
+          <p style="margin: -0.5% 0" style="text-align: center">
+            <button
+              style="text-align: center"
+              class="botonDos"
+              style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px"
+              [routerLink]="['/formulario9', formulary.id]"
+            >
+              Crear actividad
+            </button>
+            <button
+              style="text-align: center"
+              class="botonDos"
+              style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px"
+              [routerLink]="['/listformulario', formulary.id]"
+            >
+              Lista actividad
+            </button>
+            <button
+              style="text-align: center"
+              class="botonDos"
+              style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px"
+              (click)="generatePDF()"
+            >
+              Generar PDF
+            </button>
+          </p>
+        </div>
+      </ion-item>
+    </ion-accordion>
+  </ion-accordion-group>
 </ion-content>
 <ion-item class="new-background-color">
-  <ion-tabs >
+  <ion-tabs>
     <ion-tab-bar slot="bottom" class="new-background-color">
       <ion-tab-button tab="schedule">
         <ion-icon name="home" font color="#00C4B0"></ion-icon>
         <ion-label color="jade dome">Inicio</ion-label>
       </ion-tab-button>
-  
+
       <ion-tab-button tab="speakers">
         <ion-icon name="person-circle"></ion-icon>
         <ion-label>Quienes Somos</ion-label>
       </ion-tab-button>
-  
+
       <ion-tab-button tab="map">
         <ion-icon name="log-out"></ion-icon>
         <ion-label>Cerrar Sesion</ion-label>
       </ion-tab-button>
-  
     </ion-tab-bar>
   </ion-tabs>
 </ion-item>

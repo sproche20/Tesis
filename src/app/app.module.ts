@@ -1,3 +1,5 @@
+import { ActivityComponent } from './docente/act-dia/activity/activity.component';
+import { ActDiaComponent } from './docente/act-dia/act-dia.component';
 import { ListaUsersComponent } from './docente/lista-users/lista-users.component';
 import { InicialComponent } from './docente/inicial/inicial.component';
 import { ListFormularioComponent } from './User/formulario9/list-formulario/list-formulario.component';
@@ -75,7 +77,9 @@ import { PipesModule } from './pipes/pipes.module';
     ListFormularioComponent,
     InicialComponent,
     ListFormularioComponent,
-    ListaUsersComponent
+    ListaUsersComponent,
+    ActDiaComponent,
+    ActivityComponent
   ],
   
   entryComponents: [],

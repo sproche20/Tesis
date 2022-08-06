@@ -50,6 +50,7 @@ export class Formato9Component implements OnInit {
     }
 
   ngOnInit() {
+    this.cargarDatos();
     this.Id=this.route.snapshot.paramMap.get("id");
     this.finalId=this.Id-1;
     this.studentId=this.Id;
@@ -89,6 +90,21 @@ cargarTutor():void{
     }
   )
 }
+
+/**Datos estudiante--------------------------------------------------- */
+cargarDatos():void{
+  const id = this.route.snapshot.params.id;
+  this.for9Service.listPracticasEstudiante(id).subscribe(
+    data=>{
+      this.formulary=data;
+    },
+    err=>{
+      console.log(err);
+    }
+  )
+
+}
+
 }
 
 

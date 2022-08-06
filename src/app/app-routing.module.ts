@@ -1,3 +1,5 @@
+import { ActivityComponent } from './docente/act-dia/activity/activity.component';
+import { ActDiaComponent } from './docente/act-dia/act-dia.component';
 import { PdfComponent } from './pdf/pdf.component';
 import { ListaUsersComponent } from './docente/lista-users/lista-users.component';
 import { InicialComponent } from './docente/inicial/inicial.component';
@@ -122,6 +124,12 @@ const routes: Routes = [
   },
   {
     path: 'listaUser',component:ListaUsersComponent
+  },
+  {
+    path: 'actividadDia/:id',component:ActDiaComponent
+  },
+  {
+    path: 'activity/:id',component:ActivityComponent
   },
   
 

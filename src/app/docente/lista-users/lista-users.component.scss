@@ -319,8 +319,8 @@ body {
   
   .container {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 35%;
+      left: 40%;
       transform: translate(-50%, -50%);
   }
   
@@ -1074,3 +1074,26 @@ body {
     }  
   }
   // SEARCH ENDS
+  /*------botones---------------------------*/
+  
+  .botonUno{
+    font-size:10px;
+    font-family:Verdana,Helvetica;
+    font-weight:bold;
+    color:white;
+    background:#638cb5;
+    border-radius: 20px;
+    width:20px;
+    height:40px;
+   }
+   .botonDos{
+    font-size:15px;
+    font-family:Verdana,Helvetica;
+    font-weight:bold;
+    color:white;
+    background:#05a1a7;
+    border-radius: 10px;
+    width:115px;
+    height:40px;
+   }
+

@@ -239,7 +239,7 @@ body {
       width: 100%;
       max-width: 700px;
       margin: auto;
-      margin-top: -190px;
+      margin-top: -250px;
   }
   .lbl-menu{
       background: #234;
@@ -264,7 +264,7 @@ body {
       opacity: 0;
       visibility: hidden;
       transform: scale(0.90);
-      padding: 30px;
+      padding: 50px;
       background: #fff;
       padding-bottom: 40px;
   }
@@ -291,7 +291,7 @@ body {
       left: 28px;
   }
   .content .tab2:after{
-      left: 202px;
+      left: 240px;
   }
   .content .tab3:after{
       left: 340px;
@@ -313,13 +313,13 @@ body {
       margin: 0;
       background: linear-gradient(45deg, #49a09d, #5f2c82);
       font-family: sans-serif;
-      font-weight: 100;
+      font-weight: 70;
   }
   
   .container {
       position: absolute;
       top: 50%;
-      left: 50%;
+      left: 25%;
       transform: translate(-50%, -50%);
   }
   
@@ -332,7 +332,7 @@ body {
   
   th,
   td {
-      padding: 15px;
+      padding: 5px;
       background-color: rgba(255,255,255,0.2);
       color: rgb(73, 69, 69);
   }
@@ -1021,3 +1021,51 @@ body {
     &:nth-child(3) {top: 20px;}
   }
   }
+
+
+
+
+  .new-background-color{
+    --background: #d6d3d3;
+}
+.color{
+  --background: #918e8e;
+}
+.fondo{
+  --background: url('../inicio/blue.jpg') 0 0/100% 100% no-repeat;
+
+}
+
+ /*-----------fondo contenido-----------------*/
+ ion-content{
+  --background: url('../inicio/azil3.jpg') 0 0/100% 100% no-repeat;
+}
+ion-accordion-group{
+  --background: url('../inicio/años.png') 0 0/100% 100% no-repeat;
+}
+
+  .foreground {
+    background-color: transparent;
+  }
+
+
+  .botonUno{
+    font-size:15px;
+    font-family:Verdana,Helvetica;
+    font-weight:bold;
+    color:white;
+    background:#05a1a7;
+    border-radius: 5px;
+    width:120px;
+    height:40px;
+   }
+   .botonDos{
+    font-size:15px;
+    font-family:Verdana,Helvetica;
+    font-weight:bold;
+    color:white;
+    background:#850303;
+    border-radius: 5px;
+    width:120px;
+    height:40px;
+   }
