@@ -5,16 +5,16 @@ export class Estudiante {
     lastname:string;
     email:string;
     phone:string;
-    careerId:number;
-    carrera:string
+    careerId:Number;
+    carrera:string;
 
-    constructor(nui:string,name:string,lastname:string,email:string,phone:string,careerId:number){
+    constructor(nui:string,name:string,lastname:string,email:string,phone:string,careerId:Number){
         this.nui=nui
         this.name=name;
         this.lastname=lastname;
         this.email=email;
         this.phone=phone;
-        this.careerId=careerId
+        this.careerId=careerId;
 
     }
 }

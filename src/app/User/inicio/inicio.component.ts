@@ -22,6 +22,7 @@ import { software } from '../models/software';
 import { imagenBase64 } from './ImagenBase64';
 import { EstudianteService } from '../service/estudiante.service';
 import { DatosReporteDto } from '../models/Dtos/DatosReportesDtos';
+import { Estudiante } from '../models/estudiante';
 
 window.addEventListener('load', async () => {
   const canvas = document.querySelector('canvas');
@@ -50,6 +51,7 @@ export class InicioComponent implements OnInit {
   detailId: number = null;
   Software: software[] = [];
   formulario9: for9[] = [];
+  estudiantes:Estudiante[]=[];
   activitieDetailId = 1;
   Id: any;
   Ids:any;
@@ -57,6 +59,7 @@ export class InicioComponent implements OnInit {
   actualDate: Date;
   finalId: number;
   image: any;
+  carrera:any;
 
   //**---------------------------actividad seleccionar------------------------------- */
 
@@ -89,6 +92,16 @@ export class InicioComponent implements OnInit {
     this.cargarAct();
     this.Id=this.activatedRoute.snapshot.paramMap.get("id");
     this.finalId=this.Id-1;
+      this.studentService.lista().subscribe(
+        data=>{
+          this.estudiantes=data;
+          this.carrera.this.estudiante[this.finalId]
+        },
+        err=>{
+          console.log(err);
+        }
+      )
+  
 
     const id = this.activatedRoute.snapshot.params.id;
     this.for9Service.listPracticasEstudiante(id).subscribe(
@@ -102,6 +115,7 @@ export class InicioComponent implements OnInit {
       }
     );
     this.Ids=id
+    
    
   }
   generarPDF() {
