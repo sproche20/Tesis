@@ -8,6 +8,9 @@ import { MenuController } from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import {user} from '../models/user'
+import { CarreraService } from './../../User/service/carrera.service';
+import { carrera } from '../models/carrera';
+
 
 @Component({
   selector: 'app-datos',
@@ -29,8 +32,10 @@ export class DatosComponent implements OnInit {
   name='';
   lastname= '';
   email= '';
-  phone= ''
+  phone= '';
+  careerId:number=null;
   estudiantes:Estudiante[]=[];
+  carreras:carrera[]=[];
   
 
   constructor(private menu: MenuController,
@@ -39,12 +44,16 @@ export class DatosComponent implements OnInit {
     private firestore:FirestoreService,
     private interaction:InteractionService ,
     private auth:AuthService,
-    private router:Router
+    private router:Router,
+    private CarreraService:CarreraService,
+
     ) { this.menu.enable(false);}
     
 
   ngOnInit() {
     this.cargarEstudiante();
+    this.cargarCarrera();
+
     
   }
 
@@ -73,7 +82,7 @@ export class DatosComponent implements OnInit {
   /**crear estudiante Spring BOOT Y KOTLIN  */
 
   onCreate(): void{
-    const estudiante=new Estudiante(this.nui,this.name,this.lastname,this.email,this.phone);
+    const estudiante=new Estudiante(this.nui,this.name,this.lastname,this.email,this.phone,this.careerId);
     this.studentService.save(estudiante).subscribe(
     );
     this.router.navigate(['/datos']);
@@ -105,6 +114,18 @@ export class DatosComponent implements OnInit {
     this.interaction.presentToast("sesion finalizada");
     this.router.navigate(['/loginteacher'])
 
+  }
+
+
+  cargarCarrera():void{
+    this.CarreraService.lista().subscribe(
+      data=>{
+        this.carreras=data;
+      },
+      err=>{
+        console.log(err);
+      }
+    )
   }
 
 }

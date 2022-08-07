@@ -67,7 +67,7 @@
                <ion-list class="foreground">
                  <ion-item class="color">
                    <label>Compañia</label>
-                   <ion-select  [(ngModel)]="companyId"  name="activityId" type="number">
+                   <ion-select  [(ngModel)]="companyId"  name="companyId" type="number">
                      <ion-select-option *ngFor="let company of company" value={{company.id}}>{{company.name}}</ion-select-option>
                    </ion-select>
                  </ion-item>
@@ -75,7 +75,7 @@
              </span>
            </span>
             <span class="col-xs-12">
-              <span class="btn-lrg submit-btn" (click)="onCreate()" onClick="window.location.reload();">Guardar</span>
+              <span class="btn-lrg submit-btn" (click)="onCreate()">Guardar</span>
             </span>
         </span>
     
@@ -155,7 +155,9 @@
             </span>
           </span>
           <span class="col-xs-12">
-            <span class="btn-lrg submit-btn" (click)="onCreates()" onClick="window.location.reload();">Guardar</span>
+            <span class="btn-lrg submit-btn" (click)="onCreates()" >Guardar</span>
+            <span class="btn-lrg submit-btn"  onClick="window.location.reload();">Nuevo</span>
+
           </span>
       </span>
 

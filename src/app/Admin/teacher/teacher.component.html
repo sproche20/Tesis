@@ -118,7 +118,7 @@
 					   <ion-list class="foreground">
 						 <ion-item class="color">
 						   <label>Docente</label>
-						   <ion-select  [(ngModel)]="teacherId"  name="activityId" type="number">
+						   <ion-select  [(ngModel)]="teacherId"  name="teacherId" type="number">
 							 <ion-select-option *ngFor="let teacher of teacher" value={{teacher.id}}>{{teacher.name}}</ion-select-option>
 						   </ion-select>
 						 </ion-item>
@@ -147,8 +147,8 @@
 					<tbody>
 					  <tr *ngFor="let carreras of carreras">
 						<td>{{carreras.id}}</td>
-						<td>{{carreras.name}}</td>
 						<td>{{carreras.coordinator}}</td>
+						<td>{{carreras.name}}</td>
 						<td>{{carreras.profesor}}</td>
 						<td><ion-button  color="danger"  routerLink="/editarcarrera/{{carreras.id}}">Editar</ion-button></td>
 						<td><ion-button (click)="borrarCarrera(carreras.id)" color="danger"><ion-icon name="trash-outline"></ion-icon>eliminar</ion-button></td>

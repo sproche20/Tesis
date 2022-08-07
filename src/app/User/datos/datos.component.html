@@ -79,6 +79,18 @@
     </span>
   </span>
   <span class="col-xs-12">
+    <span class="styled-input wide">
+     <ion-list class="foreground">
+     <ion-item class="color">
+       <label>Carrera</label>
+       <ion-select  [(ngModel)]="careerId" name="careerId" type="number">
+       <ion-select-option *ngFor="let carreras of carreras" value={{carreras.id}}>{{carreras.coordinator}}</ion-select-option>
+       </ion-select>
+     </ion-item>
+     </ion-list>
+    </span>
+  </span>
+  <span class="col-xs-12">
     <span class="btn-lrg submit-btn" (click)="registrar()" (click)="onCreate();">Guardar</span>
     <span class="btn-lrg submit-btn"  onClick="window.location.reload();">Nuevo</span>
 
