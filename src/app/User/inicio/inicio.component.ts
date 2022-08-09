@@ -259,8 +259,10 @@ export class InicioComponent implements OnInit {
     pdf.setFontSize(10);
     pdf.text('2022-08-07', 60, 550, null, 90);
     pdf.addPage('a4');
+    this.image=imagen.pagina2
     pdf.addImage(this.image, 'PNG', 5, 5, 435, 620);
     pdf.addPage('a4');
+    this.image=imagen.pagina3
     pdf.addImage(this.image, 'PNG', 5, 5, 435, 620);
     pdf.save('example.pdf');
   }
