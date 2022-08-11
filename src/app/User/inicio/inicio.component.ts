@@ -24,16 +24,6 @@ import { EstudianteService } from '../service/estudiante.service';
 import { DatosReporteDto } from '../models/Dtos/DatosReportesDtos';
 import { Estudiante } from '../models/estudiante';
 
-window.addEventListener('load', async () => {
-  const canvas = document.querySelector('canvas');
-  canvas.height = canvas.offsetHeight;
-  canvas.width = canvas.offsetWidth;
-  const form = document.querySelector('#form');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-  });
-});
-
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
@@ -44,6 +34,8 @@ export class InicioComponent implements OnInit {
   foro9: for9[] = [];
   formulary: formato9[] = [];
   isModalOpen = false;
+
+  formularioSeleccionado: formato9;
   //**---------------------------actividad seleccionar------------------------------- */
   //**---------------------------actividad seleccionar------------------------------- */
   practiceDetailId: any;
@@ -51,15 +43,15 @@ export class InicioComponent implements OnInit {
   detailId: number = null;
   Software: software[] = [];
   formulario9: for9[] = [];
-  estudiantes:Estudiante[]=[];
+  estudiantes: Estudiante[] = [];
   activitieDetailId = 1;
   Id: any;
-  Ids:any;
-  tutor:any
+  Ids: any;
+  tutor: any
   actualDate: Date;
   finalId: number;
   image: any;
-  carrera:any;
+  carrera: any;
 
   //**---------------------------actividad seleccionar------------------------------- */
 
@@ -90,22 +82,15 @@ export class InicioComponent implements OnInit {
     this.cargarDatos();
     this.cargarActividad();
     this.cargarAct();
-    this.Id=this.activatedRoute.snapshot.paramMap.get("id");
-    this.finalId=this.Id-1;
-    console.log("id estudiante",this.Id);
-
-
-    
-   
-  }
-  generarPDF() {
-    var doc = new jsPDF();
-    doc.text('hola mundo', 10, 10);
+    this.Id = this.activatedRoute.snapshot.paramMap.get("id");
+    this.finalId = this.Id - 1;
+    console.log("id estudiante", this.Id);
   }
 
   openMenu() {
     this.menu.open();
   }
+
   cargarDatos(): void {
     const id = this.activatedRoute.snapshot.params.id;
     this.for9Service.listPracticasEstudiante(id).subscribe(
@@ -116,7 +101,7 @@ export class InicioComponent implements OnInit {
         console.log(err);
       }
     );
-    this.Ids=id;
+    this.Ids = id;
   }
   cargarRegistro(): void {
     const id = this.activatedRoute.snapshot.params.id;
@@ -129,9 +114,11 @@ export class InicioComponent implements OnInit {
       }
     );
   }
+
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
   }
+
   cargarActivities(): void {
     this.formato9.lista().subscribe(
       (data) => {
@@ -162,6 +149,7 @@ export class InicioComponent implements OnInit {
       this.interaction.presentToast('registro exitoso');
     }
   }
+
   cargarActividad(): void {
     this.softwareService.lista().subscribe(
       (data) => {
@@ -184,15 +172,20 @@ export class InicioComponent implements OnInit {
     );
   }
 
-  generatePDF() {
-    this.studentService.cargarReporte(1,3).subscribe((resp) => {
-      console.log("resultado",resp)
+  generatePDF(index) {
+    console.log(index)
+    this.formularioSeleccionado = this.formulary[index];
+    this.studentService.cargarReporte(this.formularioSeleccionado.studentId, this.formularioSeleccionado.tutorId).subscribe((resp) => {
+      console.log("resultado", resp)
       let datosReporte: DatosReporteDto = resp;
       this.cargarInformacionPdf(datosReporte);
     });
   }
 
   async cargarInformacionPdf(datosReporte: DatosReporteDto) {
+
+    console.log(datosReporte)
+
     let imagen = new imagenBase64();
 
     this.image = imagen.pagina1;
@@ -241,10 +234,10 @@ export class InicioComponent implements OnInit {
     pdf.setFontSize(10);
     pdf.text('2022-08-07', 60, 550, null, 90);
     pdf.addPage('a4');
-    this.image=imagen.pagina2
+    this.image = imagen.pagina2
     pdf.addImage(this.image, 'PNG', 5, 5, 435, 620);
     pdf.addPage('a4');
-    this.image=imagen.pagina3
+    this.image = imagen.pagina3
     pdf.addImage(this.image, 'PNG', 5, 5, 435, 620);
     pdf.save('example.pdf');
   }
