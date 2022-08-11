@@ -1,0 +1,23 @@
+export class formato9{
+    id?:Number;
+    startDate:Date;
+    endDate:Date;
+    hours:Number;
+    studentId:Number;
+    tutorId:Number;
+    teacherId:Number;
+    estudiante:string;
+    tutor:string;
+    profesor:String;
+    empresa:String
+    constructor(starDate:Date,
+        endDate:Date,
+        hours:Number,studentId:Number,teacherId:Number,tutorId:Number){
+        this.startDate=starDate;
+        this.endDate=endDate;
+        this.hours=hours;
+        this.studentId=studentId;
+        this.teacherId=teacherId;
+        this.tutorId=tutorId;
+    }
+}

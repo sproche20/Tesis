@@ -1,0 +1,194 @@
+<ion-header>
+  <ion-toolbar style="text-align: center" class="new-background-color">
+    <font
+      face="Comic Sans MS,arial,verdana"
+      font
+      size="4"
+      style="font-weight: bold"
+      font
+      color="#00C4B0"
+      >INSTITUTO SUDAMERICANO</font
+    >
+    <script src="./apk.component.js"></script>
+    <script src="./jspdf.min.js"></script>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="foreground">
+      <hr width="100%" align="left" size="10" noshade="noshade" />
+      <p style="margin: -0.5% 0">
+        <font
+          face="Comic Sans MS,arial,verdana"
+          font
+          size="4"
+          style="font-weight: bold"
+          font
+          color="#000000"
+          >Estudiante:</font
+        >
+      </p>
+      <font
+        face="Comic Sans MS,arial,verdana"
+        font
+        size="4"
+        font
+        color="#545454"
+        >{{ estudiante }}</font
+      >
+      <hr width="100%" align="left" size="10" noshade="noshade" />
+      <p style="margin: -0.5% 0">
+        <font
+          face="Comic Sans MS,arial,verdana"
+          font
+          size="4"
+          style="font-weight: bold"
+          font
+          color="#000000"
+          >Docente Carrera:</font
+        >
+      </p>
+      <font
+        face="Comic Sans MS,arial,verdana"
+        font
+        size="4"
+        font
+        color="#545454"
+        >{{profesor }}</font
+      >
+      <hr width="100%" align="left" size="10" noshade="noshade" />
+      <p style="margin: -0.5% 0">
+        <font
+          face="Comic Sans MS,arial,verdana"
+          font
+          size="4"
+          style="font-weight: bold"
+          font
+          color="#000000"
+          >Tutor Academico:</font
+        >
+        {{tutor}}
+      </p>
+      <font
+        face="Comic Sans MS,arial,verdana"
+        font
+        size="4"
+        font
+        color="#545454"
+        >{{ tutor }}</font
+      >
+      <hr width="100%" align="left" size="10" noshade="noshade" />
+      <p style="margin: -0.5% 0">
+        <font
+          face="Comic Sans MS,arial,verdana"
+          font
+          size="4"
+          style="font-weight: bold"
+          font
+          color="#000000"
+          >Empresa:</font
+        >
+      </p>
+      <font
+        face="Comic Sans MS,arial,verdana"
+        font
+        size="4"
+        font
+        color="#545454"
+        >{{ empresa }}</font
+      >
+      <hr width="100%" align="left" size="10" noshade="noshade" />
+      <p style="margin: -0.5% 0">
+        <font
+          face="Comic Sans MS,arial,verdana"
+          font
+          size="4"
+          style="font-weight: bold"
+          font
+          color="#000000"
+          >Fecha de inicio:</font
+        >
+      </p>
+      <font
+        face="Comic Sans MS,arial,verdana"
+        font
+        size="4"
+        font
+        color="#545454"
+        >{{ startDate }}</font
+      >
+      <hr width="100%" align="left" size="10" noshade="noshade" />
+      <p style="margin: -0.5% 0">
+        <font
+          face="Comic Sans MS,arial,verdana"
+          font
+          size="4"
+          style="font-weight: bold"
+          font
+          color="#000000"
+        >
+          Fecha Final:</font
+        >
+      </p>
+      <font
+        face="Comic Sans MS,arial,verdana"
+        font
+        size="4"
+        font
+        color="#545454"
+        >{{ endDate }}</font
+      >
+      <hr width="100%" align="left" size="10" noshade="noshade" />
+      <p style="margin: -0.5% 0">
+        <font
+          face="Comic Sans MS,arial,verdana"
+          font
+          size="4"
+          style="font-weight: bold"
+          font
+          color="#000000"
+          >Horas totales:</font
+        >
+      </p>
+      <font
+        face="Comic Sans MS,arial,verdana"
+        font
+        size="4"
+        font
+        color="#545454"
+        >{{hours }}</font
+      >
+      <hr width="100%" align="left" size="10" noshade="noshade" />
+      <p style="margin: -0.5% 0" style="text-align: center">
+   
+        <button
+          style="text-align: center"
+          class="botonDos"
+          style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px"
+          (click)="generatePDF()"
+        >
+          Generar PDF
+        </button>
+      </p>
+    </div>
+</ion-content>
+
+<ion-item class="new-background-color">
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" class="new-background-color">
+      <ion-tab-button tab="schedule">
+        <ion-icon name="home" font color="#00C4B0"></ion-icon>
+        <ion-label color="jade dome">Inicio</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="speakers">
+        <ion-icon name="person-circle"></ion-icon>
+        <ion-label>Quienes Somos</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="map">
+        <ion-icon name="log-out"></ion-icon>
+        <ion-label>Cerrar Sesion</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-item>

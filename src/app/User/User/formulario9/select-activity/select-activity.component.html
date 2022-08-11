@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar style="text-align: center;" class="new-background-color">
+    <font  face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold;" font color="#00C4B0"  >INSTITUTO SUDAMERICANO</font>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="container" class="foreground">
+      <div
+       class="col-xs-12">
+        <div
+         class="styled-input wide">
+          <ion-list class="foreground">
+            <ion-item class="light">
+              <label>Actividades(Enumerar las actividades realizadas)</label>
+              <ion-select  [(ngModel)]="activitiesId"  name="activityId" type="number">
+                <ion-select-option *ngFor="let software of Software" value={{software.id}}>{{software.description}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+          <div
+           id="log" class="ion-padding"></div
+            >
+        </div
+        >
+      </div
+      >
+      <div
+       class="col-xs-12">
+        <div
+         class="btn-lrg submit-btn" (click)="crearActividad()" onClick="window.location.reload();">Guardar Actividad</div
+          >
+      </div
+      >
+      
+  </div>
+  <ion-item *ngFor="let actDetalle of actDetail" class="color">
+    <ion-label class="normal"> {{actDetalle.actividad}} </ion-label>
+    <ion-buttons slot="end">
+      <ion-button  >
+        <ion-icon name="create"></ion-icon>
+       </ion-button>
+      <ion-button >
+        <ion-icon slot="icon-only" color="danger" name="trash"></ion-icon>
+       </ion-button>
+    </ion-buttons>
+  
+  </ion-item>
+
+</ion-content>
+<ion-item class="new-background-color">
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" (click)="inicio()" class="new-background-color" >
+      <ion-tab-button tab="schedule">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="speakers">
+        <ion-icon name="person-circle"></ion-icon>
+        <ion-label>Quienes Somos</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="map">
+        <ion-icon name="log-out"></ion-icon>
+        <ion-label>Cerrar Sesion</ion-label>
+      </ion-tab-button>
+  
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-item>
+
+

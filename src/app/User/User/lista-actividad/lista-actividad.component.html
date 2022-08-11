@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon (click)="openMenu()" style="font-size: 30px;" name="reorder-three"></ion-icon>
+    <ion-title style="text-align: center;">inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <table style="margin: 0 auto;">
+    <thead>
+      <tr>
+      <th>ID</th>
+      <th>Actividades</th>
+      <th>detalles</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detalle of actdetail ">
+      <td>{{detalle.id}}</td>
+      <td>{{detalle.activitiesId}}</td>
+      <td>{{detalle.detailId}}</td>
+      <td><ion-button  color="danger"  routerLink="/editarTeacher/{{detalle.id}}">Editar</ion-button></td>
+      <td><ion-button (click)="borrarActividad(detalle.id)" color="danger"><ion-icon name="trash-outline"></ion-icon>eliminar</ion-button></td>
+      </tr>
+     
+    </tbody>
+    </table>
+</ion-content>

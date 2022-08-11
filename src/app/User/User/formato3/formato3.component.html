@@ -1,0 +1,71 @@
+<ion-header>
+  <ul><li>inicio</li>
+    <li>Estudiantes</li>
+    <li>
+      Portfolio
+      <ul>
+        <li>inicio</li>
+        <li>Estudiantes</li>
+        <li>Docentes</li>
+        <li>Tutores</li>
+        <li>Compañia</li>
+      </ul>
+    </li>
+    <li>Docentes</li>
+    
+    <li>Compañia</li>
+  </ul>
+  <ion-button fill="clear" style="float: right; width:75px; height:50px">
+    <label for="nested-button" >
+      <ion-icon slot="icon-only" name="person-circle-outline" id="nested-button"  style="float: right; width:75px; height:50px"></ion-icon>
+    </label>
+  </ion-button>
+<ion-popover trigger="nested-button" [dismissOnSelect]="true">
+  <ng-template>
+    <ion-content>
+      <ion-list>
+        <ion-item [button]="true" [detail]="false">
+          <ion-label>Option 1</ion-label>
+        </ion-item>
+        <ion-item [button]="true" [detail]="false">
+          <ion-label>Option 2</ion-label>
+        </ion-item>
+        <ion-item [button]="true" [detail]="true" id="nested-trigger">
+          <ion-label>Option 3</ion-label>
+        </ion-item>
+        
+        <ion-popover trigger="nested-trigger" [dismissOnSelect]="true" side="end">
+          <ng-template>
+            <ion-content>
+              <ion-item [button]="true">
+                <ion-label>Nested Option</ion-label>
+              </ion-item>
+            </ion-content>
+          </ng-template>
+        </ion-popover>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-popover>
+</ion-header>
+<ion-content>
+  <div id="container">
+    <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
+    <label for="tab-1" class="tab-label-1">Pestaña1</label>
+    
+    <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
+    <label for="tab-2" class="tab-label-2">Pestaña2</label>
+    
+                            
+    <div class="content">
+        <div class="content-1">
+            Contenido1
+        </div>
+        <div class="content-2">
+            Contenido2
+        </div>
+    </div>
+</div>
+
+<h1>hola</h1>
+</ion-content>

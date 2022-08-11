@@ -1,0 +1,30 @@
+<ion-header>
+
+</ion-header>
+<ion-content>
+  <div class="col-xs-12">
+    <div class="styled-input wide">
+      <ion-list>
+        <ion-item>
+          <label>Actividades(Enumerar las actividades realizadas)</label>
+          <ion-select  [(ngModel)]="actdetail.activitiesId"  name="activityId" type="number">
+            <ion-select-option *ngFor="let software of Software" value={{software.id}}>{{software.description}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <div id="log" class="ion-padding"></div>
+    </div>
+  </div>
+  <div class="col-xs-12">
+    <div class="styled-input wide">
+      <input
+       name="detailId"
+       [(ngModel)]="actdetail.detailId"
+      type="number" required />
+      <label>Id detalle</label> 
+    </div>
+  </div>
+  <div class="col-xs-12">
+    <div class="btn-lrg submit-btn" onClick="window.location.reload();" (click)="onUpdate()" >Actualizar</div>
+  </div>
+</ion-content>
