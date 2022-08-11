@@ -1,188 +1,74 @@
 <ion-header>
   <ion-toolbar style="text-align: center" class="new-background-color">
-    <font
-      face="Comic Sans MS,arial,verdana"
-      font
-      size="4"
-      style="font-weight: bold"
-      font
-      color="#00C4B0"
-      >INSTITUTO SUDAMERICANO</font
-    >
+    <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#00C4B0">INSTITUTO
+      SUDAMERICANO</font>
     <script src="./apk.component.js"></script>
     <script src="./jspdf.min.js"></script>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  
-  <ion-accordion-group
-    *ngFor="let formulary of formulary"
-    class="fondo"
-    id="form"
-  >
+
+  <ion-accordion-group *ngFor="let formulary of formulary; index as i" class="fondo" id="form">
     <ion-accordion value="{{ formulary.id }}">
       <ion-item slot="header" class="color">
-        <font
-          face="Comic Sans MS,arial,verdana"
-          font
-          size="4"
-          style="font-weight: bold"
-          font
-          color="#E1E1E1"
-          id="empresa"
-          >Empresa:{{ formulary.empresa }}</font
-        >
+        <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#E1E1E1"
+          id="empresa">Empresa:{{ formulary.empresa }}</font>
       </ion-item>
 
       <ion-item id="form" class="ion-padding" slot="content" class="fondo">
         <div class="foreground">
           <hr width="100%" align="left" size="10" noshade="noshade" />
           <p style="margin: -0.5% 0">
-            <font
-              face="Comic Sans MS,arial,verdana"
-              font
-              size="4"
-              style="font-weight: bold"
-              font
-              color="#000000"
-              >Estudiante:</font
-            >
+            <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+              Estudiante:</font>
           </p>
-          <font
-            face="Comic Sans MS,arial,verdana"
-            font
-            size="4"
-            font
-            color="#545454"
-            >{{ formulary.estudiante }}</font
-          >
+          <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{ formulary.estudiante }}</font>
           <hr width="100%" align="left" size="10" noshade="noshade" />
           <p style="margin: -0.5% 0">
-            <font
-              face="Comic Sans MS,arial,verdana"
-              font
-              size="4"
-              style="font-weight: bold"
-              font
-              color="#000000"
-              >Docente Carrera:</font
-            >
+            <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+              Docente Carrera:</font>
           </p>
-          <font
-            face="Comic Sans MS,arial,verdana"
-            font
-            size="4"
-            font
-            color="#545454"
-            >{{ formulary.profesor }}</font
-          >
+          <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{ formulary.profesor }}</font>
           <hr width="100%" align="left" size="10" noshade="noshade" />
           <p style="margin: -0.5% 0">
-            <font
-              face="Comic Sans MS,arial,verdana"
-              font
-              size="4"
-              style="font-weight: bold"
-              font
-              color="#000000"
-              >Tutor Academico:</font
-            >
+            <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">Tutor
+              Academico:</font>
             {{tutor}}
           </p>
-          <font
-            face="Comic Sans MS,arial,verdana"
-            font
-            size="4"
-            font
-            color="#545454"
-            >{{ formulary.tutor }}</font
-          >
+          <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{ formulary.tutor }}</font>
           <hr width="100%" align="left" size="10" noshade="noshade" />
           <p style="margin: -0.5% 0">
-            <font
-              face="Comic Sans MS,arial,verdana"
-              font
-              size="4"
-              style="font-weight: bold"
-              font
-              color="#000000"
-              >Fecha de inicio:</font
-            >
+            <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">Fecha
+              de inicio:</font>
           </p>
-          <font
-            face="Comic Sans MS,arial,verdana"
-            font
-            size="4"
-            font
-            color="#545454"
-            >{{ formulary.startDate }}</font
-          >
+          <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{ formulary.startDate }}</font>
           <hr width="100%" align="left" size="10" noshade="noshade" />
           <p style="margin: -0.5% 0">
-            <font
-              face="Comic Sans MS,arial,verdana"
-              font
-              size="4"
-              style="font-weight: bold"
-              font
-              color="#000000"
-            >
-              Fecha Final:</font
-            >
+            <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+              Fecha Final:</font>
           </p>
-          <font
-            face="Comic Sans MS,arial,verdana"
-            font
-            size="4"
-            font
-            color="#545454"
-            >{{ formulary.endDate }}</font
-          >
+          <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{ formulary.endDate }}</font>
           <hr width="100%" align="left" size="10" noshade="noshade" />
           <p style="margin: -0.5% 0">
-            <font
-              face="Comic Sans MS,arial,verdana"
-              font
-              size="4"
-              style="font-weight: bold"
-              font
-              color="#000000"
-              >Horas totales:</font
-            >
+            <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">Horas
+              totales:</font>
           </p>
-          <font
-            face="Comic Sans MS,arial,verdana"
-            font
-            size="4"
-            font
-            color="#545454"
-            >{{ formulary.hours }}</font
-          >
+          <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{ formulary.hours }}</font>
           {{tutor}}
           <hr width="100%" align="left" size="10" noshade="noshade" />
           <p style="margin: -0.5% 0" style="text-align: center">
-            <button
-              style="text-align: center"
-              class="botonDos"
+            <button style="text-align: center" class="botonDos"
               style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px"
-              [routerLink]="['/formulario9', formulary.id]"
-            >
+              [routerLink]="['/formulario9', formulary.id]">
               Crear actividad
             </button>
-            <button
-              style="text-align: center"
-              class="botonDos"
+            <button style="text-align: center" class="botonDos"
               style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px"
-              [routerLink]="['/listformulario', formulary.id]"
-            >
+              [routerLink]="['/listformulario', formulary.id]">
               Lista actividad
             </button>
-            <button
-              style="text-align: center"
-              class="botonDos"
-              style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px"
-              [routerLink]="['/pdf', formulary.id]"
-            >
+            <button style="text-align: center" class="botonDos"
+              style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px" (click)="generatePDF(i)">
               Generar PDF
             </button>
           </p>

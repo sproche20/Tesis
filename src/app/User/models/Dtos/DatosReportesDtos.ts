@@ -11,4 +11,10 @@ export class DatosReporteDto {
 
     //var detalleReporte: DetalleReporteDto = DetalleReporteDto()
 
+    horaEntrada: String = ""
+    horaSalida: String = ""
+    totalHoras: String = ""
+    observacion: String = ""
+
+
 }
