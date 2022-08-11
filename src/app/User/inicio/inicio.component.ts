@@ -23,6 +23,7 @@ import { imagenBase64 } from './ImagenBase64';
 import { EstudianteService } from '../service/estudiante.service';
 import { DatosReporteDto } from '../models/Dtos/DatosReportesDtos';
 import { Estudiante } from '../models/estudiante';
+import { DetalleReporteDto } from '../models/Dtos/DetalleReporteDto';
 
 @Component({
   selector: 'app-inicio',
@@ -197,9 +198,9 @@ export class InicioComponent implements OnInit {
 
     //semana del
     pdf.text(datosReporte.inicioSemana.toString(), 135, 122);
-    pdf.text('30', 170, 122);
+    pdf.text(datosReporte.finSemana.toString(), 170, 122);
     //mes
-    pdf.text('AGOSTO', 235, 122);
+    pdf.text(datosReporte.nombreMesTexto.toString(), 235, 122);
 
     //AÑO
     pdf.text('22', 330, 122);
@@ -222,17 +223,32 @@ export class InicioComponent implements OnInit {
     pdf.text('50', 382, 242);
 
     //tabla de actividades
-    pdf.setFontSize(10);
-    pdf.text(datosReporte.horaEntrada.toString(), 60, 370, null, 90);
 
-    pdf.setFontSize(10);
-    pdf.text('2022-08-07', 60, 430, null, 90);
+    if (datosReporte.detalleReporte) {
+      var columna = 60
+      var columna1 = 90
+      var columna2 = 120
+      var columna3 = 145
+      var columna4 = 180
+      var columna5 = 285
+      var fila = 365
+      var filaHora = 355
+      var filaTexto = 330
 
-    pdf.setFontSize(10);
-    pdf.text('2022-08-07', 60, 490, null, 90);
+      var i = 0
+      datosReporte.detalleReporte.forEach(detail => {
+        pdf.setFontSize(10);
+        pdf.text(detail.fechaDeActividad.toString(), columna, (fila + (60 * i)), null, 90);
+        pdf.text(detail.horaEntrada.toString(), columna1, (fila + (60 * i)), null, 90);
+        pdf.text(detail.horaSalida.toString(), columna2, (fila + (60 * i)), null, 90);
+        pdf.text(detail.totalHoras.toString(), columna3, (filaHora + (60 * i)));
 
-    pdf.setFontSize(10);
-    pdf.text('2022-08-07', 60, 550, null, 90);
+        pdf.setFontSize(8);
+        pdf.text(detail.observacion.toString(), columna5, (filaTexto + (60 * i)));
+        i++
+      })
+    }
+
     pdf.addPage('a4');
     this.image = imagen.pagina2
     pdf.addImage(this.image, 'PNG', 5, 5, 435, 620);

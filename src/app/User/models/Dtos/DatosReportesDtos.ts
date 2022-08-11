@@ -1,15 +1,17 @@
-export class DatosReporteDto {
-     nombreCompleto: String = ""
-     identificaciob: String = ""
-     nombreCarrera: String = ""
-     nombreInstirucionBeneficiaria: String = ""
-     numeroHoras: String = ""
-     inicioSemana: String = ""
-     finSemana: String = ""
-     nombreMesTexto: String = ""
-     anio: String = ""
+import { DetalleReporteDto } from "./DetalleReporteDto"
 
-    //var detalleReporte: DetalleReporteDto = DetalleReporteDto()
+export class DatosReporteDto {
+    nombreCompleto: String = ""
+    identificaciob: String = ""
+    nombreCarrera: String = ""
+    nombreInstirucionBeneficiaria: String = ""
+    numeroHoras: String = ""
+    inicioSemana: String = ""
+    finSemana: String = ""
+    nombreMesTexto: String = ""
+    anio: String = ""
+
+    detalleReporte: DetalleReporteDto[] = []
 
     horaEntrada: String = ""
     horaSalida: String = ""
