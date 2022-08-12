@@ -1,3 +1,4 @@
+import { actividadesDto } from './../models/Dtos/actividadesDto';
 import { jsPDF } from 'jspdf';
 
 import { Component, OnInit } from '@angular/core';
@@ -176,11 +177,31 @@ export class InicioComponent implements OnInit {
   generatePDF(index) {
     console.log(index)
     this.formularioSeleccionado = this.formulary[index];
-    this.studentService.cargarReporte(this.formularioSeleccionado.studentId, this.formularioSeleccionado.tutorId).subscribe((resp) => {
+    this.studentService.cargarReporte(this.formularioSeleccionado.studentId, this.formularioSeleccionado.tutorId).subscribe(
+      (resp) => {
       console.log("resultado", resp)
-      let datosReporte: DatosReporteDto = resp;
+      var datosReporte: DatosReporteDto = resp;
       this.cargarInformacionPdf(datosReporte);
-    });
+    },
+    (res) => {
+      console.log("resultadoactividad", res)
+      let detailReport:DetalleReporteDto=res;
+      this.cargarActividadPdf(detailReport);
+    }
+    );
+  }
+  async cargarActividadPdf(detailReport:DetalleReporteDto){
+    if (detailReport.actividadesDto) {
+      const pdf = new jsPDF({ unit: 'px', format: 'a4' });
+        var columna4 = 180
+        var filaTexto = 330
+      var i = 0
+        detailReport.actividadesDto.forEach(detaili=>{
+          pdf.text(detaili.nombreActividad.toString(),columna4,(filaTexto+ (60 * i)))
+        })
+    }
+
+      
   }
 
   async cargarInformacionPdf(datosReporte: DatosReporteDto) {
@@ -229,7 +250,7 @@ export class InicioComponent implements OnInit {
       var columna1 = 90
       var columna2 = 120
       var columna3 = 145
-      var columna4 = 180
+        var columna4 = 180
       var columna5 = 285
       var fila = 365
       var filaHora = 355
@@ -242,7 +263,7 @@ export class InicioComponent implements OnInit {
         pdf.text(detail.horaEntrada.toString(), columna1, (fila + (60 * i)), null, 90);
         pdf.text(detail.horaSalida.toString(), columna2, (fila + (60 * i)), null, 90);
         pdf.text(detail.totalHoras.toString(), columna3, (filaHora + (60 * i)));
-
+        
         pdf.setFontSize(8);
         pdf.text(detail.observacion.toString(), columna5, (filaTexto + (60 * i)));
         i++

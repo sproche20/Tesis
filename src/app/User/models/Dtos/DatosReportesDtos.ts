@@ -1,3 +1,5 @@
+
+import { actividadesDto } from "./actividadesDto"
 import { DetalleReporteDto } from "./DetalleReporteDto"
 
 export class DatosReporteDto {
@@ -12,6 +14,7 @@ export class DatosReporteDto {
     anio: String = ""
 
     detalleReporte: DetalleReporteDto[] = []
+    actividadesDto:actividadesDto[]=[]
 
     horaEntrada: String = ""
     horaSalida: String = ""

@@ -1,3 +1,6 @@
+import { actividadesDto } from "./actividadesDto"
+
+
 export class DetalleReporteDto {
 
     fechaDeActividad: String = ""
@@ -5,6 +8,11 @@ export class DetalleReporteDto {
     horaSalida: String = ""
     totalHoras: String = ""
     observacion: String = ""
+
+    actividadesDto:actividadesDto[]=[]
+
+    nombreActividad: String = ""
+
 
 
 
