@@ -9,7 +9,7 @@
 	</ion-button>
 </ion-header>
 <ion-content>
-  <div class="container">
+  <div class="containers">
     <div class="lbl-menu">
         <label for="radio1">Registro Estudiantes</label>
         <label for="radio2" >Lista Estudiantes</label>
@@ -91,44 +91,48 @@
     </span>
   </span>
   <span class="col-xs-12">
-    <span class="btn-lrg submit-btn" (click)="registrar()" (click)="onCreate();">Guardar</span>
+    <span class="btn-lrg submit-btn" (click)="onCreate();">Guardar</span>
     <span class="btn-lrg submit-btn"  onClick="window.location.reload();">Nuevo</span>
 
   </span>
           </span>
-
         </div>
         
         <input type="radio" name="radio" id="radio2">
         <div class="tab2">
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>N°.Cedula</th>
-                <th>Nombres</th>
-                <th>Apellidos</th>
-                <th>Email</th>
-                <th>Celular</th>
-                <th>Editar</th>
-						    <th>Eliminar</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let estudiantes of estudiantes ">
-                <td>{{estudiantes.id}}</td>
-                <td>{{estudiantes.nui}}</td>
-                <td>{{estudiantes.name}}</td>
-                <td>{{estudiantes.lastname}}</td>
-                <td>{{estudiantes.email}}</td>
-                <td>{{estudiantes.phone}}</td>
-                <td><ion-button  color="danger"  routerLink="/editarEstudiante/{{estudiantes.id}}">Editar</ion-button></td>
-                <td><ion-button (click)="borrarEstudiante(estudiantes.id)" color="danger"><ion-icon name="trash-outline"></ion-icon>eliminar</ion-button></td>
-    
-              </tr>
-             
-            </tbody>
-          </table>
+          <span class="container">
+            <ion-searchbar color ="light"
+            placeholder="buscar usuario"
+            (ionChange)="busqueda($event)"></ion-searchbar>
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>N°.Cedula</th>
+                  <th>Nombres</th>
+                  <th>Apellidos</th>
+                  <th>Email</th>
+                  <th>Celular</th>
+                  <th>Editar/Eliminar</th>
+                  <th>Eliminar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let estudiantes of estudiantes | filtro1:textoBuscar ">
+                  <td>{{estudiantes.id}}</td>
+                  <td>{{estudiantes.nui}}</td>
+                  <td>{{estudiantes.name}}</td>
+                  <td>{{estudiantes.lastname}}</td>
+                  <td>{{estudiantes.email}}</td>
+                  <td>{{estudiantes.phone}}</td>
+                  <td><button style="text-align: center;" class="botonDos"  routerLink="/editarEstudiante/{{estudiantes.id}}">Editar</button></td>
+                  <td><button style="text-align: center;"  class="botonUno" (click)="borrarEstudiante(estudiantes.id)"><ion-icon name="trash-outline"></ion-icon>Eliminar</button></td>      
+                </tr>
+               
+              </tbody>
+            </table>
+          </span>
+        
         </div>
     </div>
 </div>

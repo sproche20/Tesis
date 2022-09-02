@@ -1,0 +1,53 @@
+
+<ion-header>
+	<ul><li>inicio</li>
+    <a href="/#/actsoftware">  <li>Registro Actividades</li></a>
+    <a href="/#/listaUser"><li>Asignacion de empresa..</li></a>
+	</ul>
+<ion-button (click)="logout()" fill="clear" style="float: right; width:59px; height:54px">
+  <ul><li><ion-icon slot="icon-only" name="log-out-outline"  style="float: right; width:65px; height:30px"></ion-icon></li></ul>
+</ion-button>
+</ion-header>
+<ion-content>
+	<div class="containers">
+    <div class="lbl-menu">
+        <label for="radio1">Lista Actividades Creadas.</label>
+    </div>
+    
+    <div class="content">
+       
+        <input type="radio" name="radio" id="radio1" checked>
+        <div class="tab1">
+          <span class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>fecha actual</th>
+        <th>Hora Entrada</th>
+        <th>Hora Salida</th>
+        <th>horas totales</th>
+        <th>Observaciones</th>
+        <th>Lista Actividades</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let foro9 of foro9">
+        <td>{{foro9.id}}</td>
+        <td>{{foro9.actualDate.toString().substr(0,10)}}</td>
+        <td>{{foro9.startTime}}</td>
+        <td>{{foro9.endTime}}</td>
+        <td>{{foro9.totalHours}}</td>
+        <td>{{foro9.observations}}</td>
+        <td><button style="text-align: center;" class="botonDos" routerLink="/actividades/{{foro9.id}}">Actividades</button></td>
+
+      </tr>
+     
+    </tbody>
+  </table>
+
+</span>
+        </div>
+    </div>
+</div>
+</ion-content>

@@ -19,8 +19,10 @@ import { SoftwareService } from '../../service/software.service';
 export class SelectActivityComponent implements OnInit {
   foro9:for9[]=[];
   practiceDetailId:any;
+  act:'';
   activitiesId:number=null;
   detailId:number=null;
+  acti:any;
   Software:software[]=[];
   actDetail:Actdetail[]=[];
   formulario9:for9[]=[];
@@ -60,17 +62,19 @@ export class SelectActivityComponent implements OnInit {
     })
     this.cargarActividad();
     this.cargarDatos();
+    console.log(this.cargarDatos)
   }
   openMenu(){
     this.menu.open();
   }
 
   crearActividad():void{
-    const actdetail=new Actdetail (this.activitiesId,this.detailId);
+    const actdetail=new Actdetail (this.act,this.detailId,this.activitiesId);
     this.actividaddetailService.save(actdetail).subscribe();
     console.log(actdetail);
     if(actdetail){
       this.interaction.presentToast('registro exitoso');
+      this.cargarActividad();
     }
   }
   cargarActividad():void{
@@ -92,11 +96,13 @@ export class SelectActivityComponent implements OnInit {
     this.actividaddetailService.listActividad(id).subscribe(
       data=>{
         this.actDetail=data;
+        console.log("numero de actividades:",this.actDetail)
       },
       err=>{
         console.log(err);
       }
     )
+  
   }
 
   borrarActividad(id: number) {
@@ -108,6 +114,11 @@ export class SelectActivityComponent implements OnInit {
       },
     );
   } 
+  actividades(){
+    this.acti=this.actDetail
+    console.log("lista unida",this.acti)
+    
+  }
 
 
 

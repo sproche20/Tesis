@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { PracticeReportDto } from '../models/Dtos/PracticeReportDto';
 import { for9 } from '../models/for9';
 
 @Injectable({
@@ -31,4 +32,14 @@ import { for9 } from '../models/for9';
   public delete(id: number ): Observable<any> {
       return this.httpClient.delete<any>(this.productoURL+ `delete/${id}`);
     }
+    public cargarDatos(practiceId):Observable<PracticeReportDto>{
+      return this.httpClient.get<PracticeReportDto>(
+        this.productoURL+practiceId+'/fulldata'
+      );
+    }
+    public listPracticasFechas(id,startDate:string,endDate:string):Observable<PracticeReportDto>{
+      return this.httpClient.get<PracticeReportDto>(this.productoURL+id+`/week/${startDate}/${endDate}`);
+      //http://localhost:8081/practices/1/week/20220731/20220801
+  
   }
+}

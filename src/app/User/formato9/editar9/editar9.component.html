@@ -1,0 +1,70 @@
+<body>
+  <div class="container"  >
+    <div class="row input-container"> 
+      <div class="col-md-6 col-sm-12">
+        <div class="styled-input">
+          <input name="estudianteId"
+          [(ngModel)]="formulario9.studentId"
+         type="number" required  />
+          <label>Nombre del estudiante</label> 
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-sm-12">
+        <div class="styled-input" style="float:right;">
+         <ion-list class="foreground">
+         <ion-item class="color">
+           <label>Nombre del Docente</label>
+           <ion-select  [(ngModel)]="formulario9.teacherId"  name="activityId" type="number">
+           <ion-select-option *ngFor="let teacher of teacher" value={{teacher.id}}>{{teacher.name}}</ion-select-option>
+           </ion-select>
+         </ion-item>
+         </ion-list>
+       </div>
+       </div>
+       <div class="col-md-6 col-sm-12">
+        <div class="styled-input" style="float:right;">
+         <ion-list class="foreground">
+         <ion-item class="color">
+           <label>Nombre del Tutor</label>
+           <ion-select  [(ngModel)]="formulario9.tutorId" name="activityId" type="number">
+           <ion-select-option *ngFor="let tutorcompany of tutorcompany" value={{tutorcompany.id}}>{{tutorcompany.name}}</ion-select-option>
+           </ion-select>
+         </ion-item>
+         </ion-list>
+       </div>
+       </div>
+        <div class="col-md-6 col-sm-12">
+          
+          <div class="styled-input">
+             
+            <input name="startDate"
+            [(ngModel)]="formulario9.startDate"
+           type="date" required  />
+           <label>Fecha de inicio</label>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="styled-input" style="float:right;">
+            <input name="hours"
+            [(ngModel)]="formulario9.hours" 
+            type="number" value="11:45:00" max="22:30:00" min="10:00:00" step="1"  required/>
+            <label>hora</label> 
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class="styled-input wide">
+            <input
+             name="endDate"
+             [(ngModel)]="formulario9.endDate"
+            type="date" required />
+            <label>fecha final</label> 
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class="btn-lrg submit-btn" (click)="onUpdate()" >Actualizar</div>
+        </div>
+    </div>
+  </div>
+</body>
+

@@ -48,8 +48,8 @@ export class ListaUsersComponent implements OnInit {
 
   }
   busqueda(event){
-    const texto=event.target.value;
-    this.textoBuscar=texto;
+    const textos=event.target.value;
+    this.textoBuscar=textos;
   }
   logout(){
     this.auth.logout();

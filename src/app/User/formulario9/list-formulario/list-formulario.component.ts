@@ -15,9 +15,8 @@ import { InteractionService } from '../../service/interaction.service';
 export class ListFormularioComponent implements OnInit {
   foro9:for9[]=[];
   practiceDetailId:any;
-  activitiesId:number=null;
-  detailId:number=null;
-  activitieDetailId=1;
+  fecha:any
+
   Id:any;
   Ids:any;
   actualDate:Date;
@@ -41,15 +40,36 @@ export class ListFormularioComponent implements OnInit {
   ngOnInit() {
 
     this.cargarRegistro();
+    this.Id=this.route.snapshot.paramMap.get("id");
+    this.finalId=this.Id-1;
+    const id = this.activatedRoute.snapshot.params.id;
+    this.formato9.listPracticas(id).subscribe(
+      data=>{
+        this.foro9=data;
+        this.actualDate=this.foro9[this.finalId].actualDate;
+        this.fecha=this.actualDate
+        console.log("fechas:",this.fecha)
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+    
   }
   openMenu(){
     this.menu.open();
   }
   cargarRegistro():void{
+    this.Id=this.route.snapshot.paramMap.get("id");
+    this.finalId=this.Id-1;
     const id = this.activatedRoute.snapshot.params.id;
     this.formato9.listPracticas(id).subscribe(
       data=>{
         this.foro9=data;
+        this.actualDate=this.foro9[this.finalId].actualDate;
+        console.log("fechas2:",this.actualDate)
+
+
       },
       err=>{
         console.log(err);
@@ -61,6 +81,12 @@ export class ListFormularioComponent implements OnInit {
 
 
 
+  }
+
+  pdf(){
+
+    let fechaCompleta=this.actualDate.toString().substr(0,4) +this.actualDate.toString().substr(5,2)+this.actualDate.toString().substr(8,2)
+    console.log(fechaCompleta)
   }
 
 }

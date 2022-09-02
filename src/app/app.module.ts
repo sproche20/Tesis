@@ -1,15 +1,18 @@
-import { ActivityComponent } from './docente/act-dia/activity/activity.component';
-import { ActDiaComponent } from './docente/act-dia/act-dia.component';
+import { ActividaddComponent } from './User/formato9/actividadd/actividadd.component';
+import { FechasComponent } from './User/fechas/fechas.component';
+import { ListasComponent } from './User/formato9/listas/listas.component';
+import { Editar9Component } from './User/formato9/editar9/editar9.component';
+import { PdfComponent } from './User/pdf/pdf.component';
+
 import { ListaUsersComponent } from './docente/lista-users/lista-users.component';
 import { InicialComponent } from './docente/inicial/inicial.component';
 import { ListFormularioComponent } from './User/formulario9/list-formulario/list-formulario.component';
-import { ModalComponent } from './User/inicio/modal/modal.component';
+
 import { LoginTeacherComponent } from './login/login-teacher/login-teacher.component';
 import { SelectActivityComponent } from './User/formulario9/select-activity/select-activity.component';
 import { EditarActComponent } from './User/lista-actividad/editar-act/editar-act.component';
 import { ListaActividadComponent } from './User/lista-actividad/lista-actividad.component';
 import { InicioComponent } from './User/inicio/inicio.component';
-import { Tablafor9Component } from './User/formulario9/tablafor9/tablafor9.component';
 import { EditarsoftwareComponent } from './docente/actividades-software/editarsoftware/editarsoftware.component';
 import { ActividadesSoftwareComponent } from './docente/actividades-software/actividades-software.component';
 import { Formulario9Component } from './User/formulario9/formulario9.component';
@@ -20,12 +23,9 @@ import { EditCarreraComponent } from './Admin/teacher/edit-carrera/edit-carrera.
 import { EditTeacherComponent } from './Admin/teacher/edit-teacher/edit-teacher.component';
 import { EditarComponent } from './Admin/tutor-company/editar/editar.component';
 import { Formato3Component } from './User/formato3/formato3.component';
-import { ConvenioComponent } from './Admin/convenio/convenio.component';
 import { TutorCompanyComponent } from './Admin/tutor-company/tutor-company.component';
 import { ListaCompComponent } from './Admin/tutor-company/lista-comp/lista-comp.component';
-import { ListaComponent } from './Admin/teacher/lista/lista.component';
 import { TeacherComponent } from './Admin/teacher/teacher.component';
-import { ListaEstudentsComponent } from './Admin/lista-estudents/lista-estudents.component';
 import { DatosComponent } from './User/datos/datos.component';
 import { Formato9Component } from './User/formato9/formato9.component';
 import { NgModule } from '@angular/core';
@@ -53,12 +53,9 @@ import { PipesModule } from './pipes/pipes.module';
     Formato9Component,
     Formato3Component,
     DatosComponent,
-    ListaEstudentsComponent,
     TeacherComponent,
-    ListaComponent,
     ListaCompComponent,
     TutorCompanyComponent,
-    ConvenioComponent,
     EditarComponent,
     EditTeacherComponent,
     EditCarreraComponent,
@@ -67,19 +64,20 @@ import { PipesModule } from './pipes/pipes.module';
     Formulario9Component,
     ActividadesSoftwareComponent,
     EditarsoftwareComponent,
-    Tablafor9Component,
     InicioComponent,
     ListaActividadComponent,
     EditarActComponent,
     SelectActivityComponent,
     LoginTeacherComponent,
-    ModalComponent,
     ListFormularioComponent,
     InicialComponent,
     ListFormularioComponent,
     ListaUsersComponent,
-    ActDiaComponent,
-    ActivityComponent
+    Editar9Component,
+    PdfComponent,
+    ListasComponent,
+    FechasComponent,
+    ActividaddComponent
   ],
   
   entryComponents: [],

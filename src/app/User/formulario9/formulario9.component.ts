@@ -12,7 +12,7 @@ import { InteractionService } from '../service/interaction.service';
 import { SoftwareService } from '../service/software.service';
 import { for9Service } from '../service/for9.service';
 import { ExampleService } from '../service/example.service';
-
+import {fechas} from'../formulario9/fecha.Component.js'
 @Component({
   selector: 'app-formulario9',
   templateUrl: './formulario9.component.html',
@@ -34,6 +34,9 @@ export class Formulario9Component implements OnInit {
   totalHours:number=null;
 observations:'';
   practiceId:number=null;
+  actualDates:any
+  fechaaa:Date;
+  finalfech:string;
   
   
   Software:software[]=[];
@@ -84,10 +87,25 @@ observations:'';
     })
     
   }
+  fechas(){
+    let fechaCompleta=this.actualDate.toString()
+    var dias=2;
+    fechaCompleta
+
+  }
   inicio(){
     this.router.navigate(['/inicioEstudiante',this.student])
   }
   onCreate():void{
+    this.actualDate=this.fechaaa;
+    var day=this.actualDate.getDate()+1;
+    var month=this.actualDate.getMonth();
+    var year=this.actualDate.getFullYear();
+    this.finalfech=day+"/"+month+"/"+year;
+    console.log("fecha modificada",this.finalfech)
+
+    
+
     
     const formulario9=new for9 (this.actualDate,this.startTime,this.endTime,this.totalHours,this.observations,this.practiceId,this.student);
     this.for9Service.save(formulario9).subscribe(data=>this.practiceDetailId=data.ide);
@@ -107,4 +125,5 @@ observations:'';
       }
     )
   }
+
 }

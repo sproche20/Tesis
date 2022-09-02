@@ -9,7 +9,9 @@ export class DetalleReporteDto {
     totalHoras: String = ""
     observacion: String = ""
 
+
     actividadesDto:actividadesDto[]=[]
+
 
     nombreActividad: String = ""
 

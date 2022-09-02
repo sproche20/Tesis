@@ -22,7 +22,7 @@
             <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
               Estudiante:</font>
           </p>
-          <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{ formulary.estudiante }}</font>
+          <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{ formulary.estudiante }}{{formulary.apellido}}</font>
           <hr width="100%" align="left" size="10" noshade="noshade" />
           <p style="margin: -0.5% 0">
             <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
@@ -41,13 +41,13 @@
             <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">Fecha
               de inicio:</font>
           </p>
-          <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{ formulary.startDate }}</font>
+          <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{ formulary.startDate.toString().substr(0,10) }}</font>
           <hr width="100%" align="left" size="10" noshade="noshade" />
           <p style="margin: -0.5% 0">
             <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
               Fecha Final:</font>
           </p>
-          <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{ formulary.endDate }}</font>
+          <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{ formulary.endDate.toString().substr(0,10)  }}</font>
           <hr width="100%" align="left" size="10" noshade="noshade" />
           <p style="margin: -0.5% 0">
             <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">Horas
@@ -56,23 +56,59 @@
           <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{ formulary.hours }}</font>
           {{tutor}}
           <hr width="100%" align="left" size="10" noshade="noshade" />
-          <p style="margin: -0.5% 0" style="text-align: center">
-            <button style="text-align: center" class="botonDos"
-              style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px"
-              [routerLink]="['/formulario9', formulary.id]">
-              Crear actividad
-            </button>
-            <button style="text-align: center" class="botonDos"
-              style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px"
-              [routerLink]="['/listformulario', formulary.id]">
-              Lista actividad
-            </button>
-            <button style="text-align: center" class="botonDos"
-              style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px" (click)="generatePDF(i)">
-              Generar PDF
-            </button>
-          </p>
-        </div>
+          
+
+
+          <span class="container">
+            <span
+             class="row input-container" style="text-align: center;"> 
+              <span
+               class="col-md-6 col-sm-12">
+            <span
+             class="styled-input">
+              <input name="startDate"
+              [(ngModel)]="actualDate"
+             type="date" required  />
+              <label>Fecha de inicio</label> 
+            </span
+            >
+          </span
+          >
+          <span
+           class="col-md-6 col-sm-12">
+            <span
+            class="styled-input">
+              <input name="startDate"
+              [(ngModel)]="endDate"
+             type="date" required  />
+              <label>fecha final</label> 
+            </span
+            >
+          </span
+          >
+            </span>
+          </span>
+            <p style="margin: -0.5% 0" style="text-align: center">
+              <button style="text-align: center" class="botonDos"
+                style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px" (click)="fechas()">
+                crear fechas
+              </button>
+              <button style="text-align: center" class="botonDos"
+                style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px"
+                [routerLink]="['/formulario9', formulary.id]">
+                Crear actividad
+              </button>
+              <button style="text-align: center" class="botonDos"
+                style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px"
+                [routerLink]="['/listformulario', formulary.id]">
+                Lista actividad
+              </button>
+              <button style="text-align: center" class="botonDos"
+                style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px" (click)="generatePDF(i)">
+                Generar PDF
+              </button>
+            </p> 
+          </div>
       </ion-item>
     </ion-accordion>
   </ion-accordion-group>
@@ -82,7 +118,7 @@
   <ion-tabs>
     <ion-tab-bar slot="bottom" class="new-background-color">
       <ion-tab-button tab="schedule">
-        <ion-icon name="home" font color="#00C4B0"></ion-icon>
+        <ion-icon name="home" font color="#F2F2F2"></ion-icon>
         <ion-label color="jade dome">Inicio</ion-label>
       </ion-tab-button>
 
@@ -91,7 +127,7 @@
         <ion-label>Quienes Somos</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="map">
+      <ion-tab-button tab="map" (click)="logout()" >
         <ion-icon name="log-out"></ion-icon>
         <ion-label>Cerrar Sesion</ion-label>
       </ion-tab-button>

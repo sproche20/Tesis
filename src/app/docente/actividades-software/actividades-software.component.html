@@ -9,69 +9,94 @@
 	</ion-button>
   </ion-header>
   <ion-content>
-    <ion-item>
-      <div class="row input-container">
-        <div class="col-xs-12">
-          <div class="styled-input wide">
-            <input
-         name="name"
-         [(ngModel)]="activities"
-        type="text" required />
-            <label>actividad</label> 
+    <div class="containers">
+      <div class="lbl-menu">
+          <label for="radio1" >Crear Actividad</label>
+          <label for="radio2" >Lista actividades.</label>
+      </div>
+      
+      <div class="content">
+         
+          <input type="radio" name="radio" id="radio1" checked>
+          <div class="tab1" >
+            <span class="row input-container">
+              <span class="col-xs-12">
+                <span class="styled-input wide">
+                  <input
+               name="name"
+               [(ngModel)]="activities"
+              type="text" required />
+                  <label>actividad</label> 
+                </span>
+              </span>
+              <span class="col-xs-12">
+                <span class="styled-input wide">
+                  <input
+               name="name"
+               [(ngModel)]="observacion"
+              type="text" required />
+                  <label>Observaciones</label> 
+                </span>
+              </span>
+              <span class="col-xs-12">
+                <span class="styled-input wide">
+                 <ion-list class="foreground">
+                 <ion-item class="color">
+                   <label>Carrera</label>
+                   <ion-select  [(ngModel)]="career" name="activityId" type="number">
+                   <ion-select-option *ngFor="let carreras of carreras" value={{carreras.id}}>{{carreras.name}}</ion-select-option>
+                   </ion-select>
+                 </ion-item>
+                 </ion-list>
+               </span>
+               </span>
+              <span class="col-xs-12">
+                
+                <span class="btn-lrg submit-btn" (click)="onCreate()">Guardar</span>
+                <span class="btn-lrg submit-btn"  onClick="window.location.reload();">Nuevo</span>
+              </span>
+          </span>
+     
           </div>
-        </div>
-        <div class="col-xs-12">
-          <div class="styled-input wide">
-            <input
-         name="name"
-         [(ngModel)]="observacion"
-        type="text" required />
-            <label>Observaciones</label> 
+          
+          <input type="radio" name="radio" id="radio2">
+          <div class="tab2">
+            <span class="container">
+              <ion-searchbar color ="light"
+              placeholder="buscar usuario"
+              (ionChange)="busqueda($event)"></ion-searchbar>
+              <table>
+              <thead>
+                <tr>
+                <th>ID</th>
+                <th>Actividades</th>
+                <th>Observaciones</th>
+                <th>carrera</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let software of Software|filtroActividades:textoBuscar">
+                <td>{{software.id}}</td>
+                <td>{{software.description}}</td>
+                <td>{{software.observation}}</td>
+                <td>{{software.carrera}}</td>
+                <td><button  class="botonUno" routerLink="/editarsoftware/{{software.id}}" >Editar</button></td>
+                <td><button   class="botonDos"(click)="borrarActividad(software.id)"><ion-icon name="trash-outline"></ion-icon>Eliminar</button></td></tr>
+              </tbody>
+              </table></span>
+
+            
+       
           </div>
-        </div>
-        <div class="col-xs-12">
-          <div class="styled-input wide">
-           <ion-list class="foreground">
-           <ion-item class="color">
-             <label>Carrera</label>
-             <ion-select  [(ngModel)]="career" name="activityId" type="number">
-             <ion-select-option *ngFor="let carreras of carreras" value={{carreras.id}}>{{carreras.coordinator}}</ion-select-option>
-             </ion-select>
-           </ion-item>
-           </ion-list>
-         </div>
-         </div>
-        <div class="col-xs-12">
-          <div class="btn-lrg submit-btn" (click)="onCreate()" onClick="window.location.reload();">Guardar</div>
-        </div>
+  
+  
+  </div>
     </div>
-    </ion-item>
-<div>
-  <table style="margin: 0 auto; ">
-    <thead>
-      <tr>
-      <th>ID</th>
-      <th>Actividades</th>
-      <th>Observaciones</th>
-      <th>carrera</th>
-      <th>Editar</th>
-			<th>Eliminar</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let software of Software">
-      <td>{{software.id}}</td>
-      <td>{{software.description}}</td>
-      <td>{{software.observation}}</td>
-      
-      <td>{{software.careerId}}</td>
-      <td><ion-button  color="danger"  routerLink="/editarsoftware/{{software.id}}">Editar</ion-button></td>
-      <td><ion-button (click)="borrarActividad(software.id)" color="danger"><ion-icon name="trash-outline"></ion-icon>eliminar</ion-button></td>
-      
-      </tr>
-    </tbody>
-    </table>
-</div>
+    
+
+
  
 
 

@@ -9,7 +9,7 @@
 	</ion-button>
   </ion-header>
 <ion-content>
-	<div class="container">
+	<div class="containers">
     <div class="lbl-menu">
         <label for="radio1">Lista Usuarios.</label>
     </div>
@@ -18,7 +18,8 @@
        
         <input type="radio" name="radio" id="radio1" checked>
         <div class="tab1">
-          <ion-searchbar color ="tertiary"
+          <span class="container">
+          <ion-searchbar color ="light"
   placeholder="buscar usuario"
   (ionChange)="busqueda($event)"></ion-searchbar>
   <table>
@@ -35,14 +36,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let estudiantes of estudiantes ">
+    <tr *ngFor="let estudiantes of estudiantes | filtro1:textoBuscar ">
         <td>{{estudiantes.id}}</td>
         <td>{{estudiantes.nui}}</td>
         <td>{{estudiantes.name}}</td>
         <td>{{estudiantes.lastname}}</td>
         <td>{{estudiantes.email}}</td>
         <td>{{estudiantes.phone}}</td>
-        <td><button style="text-align: center;" class="botonDos"  routerLink="/for9/{{estudiantes.id}}">Asignar Empresa</button></td>
+        <td><button style="text-align: center;" class="botonDos" routerLink="/for9/{{estudiantes.id}}">Asignar Empresa</button></td>
         <td><button style="text-align: center;" class="botonDos"  routerLink="/for9/{{estudiantes.id}}">Seguimiento Estudiante.</button></td>
 
 
@@ -51,17 +52,8 @@
     </tbody>
   </table>
 
-
+</span>
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
 </ion-content>

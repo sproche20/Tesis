@@ -36,6 +36,8 @@ export class DatosComponent implements OnInit {
   careerId:number=null;
   estudiantes:Estudiante[]=[];
   carreras:carrera[]=[];
+  textoBuscar='';
+
   
 
   constructor(private menu: MenuController,
@@ -58,7 +60,7 @@ export class DatosComponent implements OnInit {
   }
 
   /**crear estudiante FIREBASE */
-  async registrar(){
+ /* async registrar(){
     this.interaction.presentLoading('registrando...')
     console.log('datos -> ',this.datos)
      const res= await this.auth.registroUser(this.datos).catch(error=>{
@@ -78,14 +80,17 @@ export class DatosComponent implements OnInit {
       
       this.router.navigate(['/datos']);
     }
-  }
+  }*/
   /**crear estudiante Spring BOOT Y KOTLIN  */
 
   onCreate(): void{
     const estudiante=new Estudiante(this.nui,this.name,this.lastname,this.email,this.phone,this.careerId);
     this.studentService.save(estudiante).subscribe(
     );
-    this.router.navigate(['/datos']);
+    if(estudiante){
+      this.interaction.presentToast('registro exitoso');
+      this.router.navigate(['/datos']);
+    }
   }
   /**tabla ------------------------------- */
   cargarEstudiante():void{
@@ -126,6 +131,10 @@ export class DatosComponent implements OnInit {
         console.log(err);
       }
     )
+  }
+  busqueda(event){
+    const textos=event.target.value;
+    this.textoBuscar=textos;
   }
 
 }

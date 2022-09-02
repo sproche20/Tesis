@@ -13,13 +13,16 @@ export class DatosReporteDto {
     nombreMesTexto: String = ""
     anio: String = ""
 
+    actividades:actividadesDto[] = []
     detalleReporte: DetalleReporteDto[] = []
+    
     actividadesDto:actividadesDto[]=[]
 
     horaEntrada: String = ""
     horaSalida: String = ""
     totalHoras: String = ""
     observacion: String = ""
+
 
 
 }

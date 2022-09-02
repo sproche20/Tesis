@@ -30,6 +30,7 @@ export class TeacherComponent implements OnInit {
   email= '';
   phone= '';
   teacher:Teacher[]=[];
+  textoBuscar='';
 
   name:'';
   coordinator:'';
@@ -64,7 +65,7 @@ export class TeacherComponent implements OnInit {
   }
   /**crear Carrera------------------------------------------- */
     onCreateC():void{
-      const carreras=new carrera(this.coordinator,this.name,this.teacherId);
+      const carreras=new carrera(this.name,this.coordinator,this.teacherId);
       this.CarreraService.save(carreras).subscribe();
       if(carreras){
         this.interaction.presentToast('registro exitoso');
@@ -117,7 +118,7 @@ export class TeacherComponent implements OnInit {
     }
 
     /**crear Docente FIREBASE */
-    async registrar(){
+   /* async registrar(){
       this.interaction.presentLoading('registrando...')
       console.log('datos -> ',this.datos)
        const res= await this.auth.registroDocente(this.datos).catch(error=>{
@@ -137,13 +138,18 @@ export class TeacherComponent implements OnInit {
         
         this.router.navigate(['/profesor']);
       }
-    }
+    }**/
     logout(){
       this.auth.logout();
       this.interaction.presentToast("sesion finalizada");
       this.router.navigate(['/loginteacher'])
   
     }
+    /*-----busqueda-**/
+busqueda(event){
+  const texto=event.target.value;
+  this.textoBuscar=texto;
+}
     
 
   

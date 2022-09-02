@@ -3,141 +3,101 @@
     <a href="/#/actsoftware">  <li>Registro Actividades</li></a>
     <a href="/#/listaUser"><li>Asignacion de empresa..</li></a>
 	</ul>
-	<ion-button fill="clear" style="float: right; width:75px; height:50px">
-	  <label for="nested-button" >
-		<ion-icon slot="icon-only" name="person-circle-outline" id="nested-button"  style="float: right; width:75px; height:50px"></ion-icon>
-	  </label>
-	</ion-button>
-  <ion-popover trigger="nested-button" [dismissOnSelect]="true">
-	<ng-template>
-	  <ion-content>
-		<ion-list>
-		  <ion-item [button]="true" [detail]="false">
-			<ion-label style="text-align: center;"  >
-						<ion-icon name="log-out-outline" class="button" style="width:60px; height:20px"></ion-icon>
-					<font class="vAlign" face="Tahoma" slot="start" font size="4.5" style="font-weight: bold; "  font color="#000000">
-						Cerrar Sesion</font>
-			</ion-label>
-		  </ion-item>
-		  
-		  <ion-popover trigger="nested-trigger" [dismissOnSelect]="true" side="end">
-			<ng-template>
-			  <ion-content>
-				<ion-item [button]="true">
-				  <ion-label>Nested Option</ion-label>
-				</ion-item>
-			  </ion-content>
-			</ng-template>
-		  </ion-popover>
-		</ion-list>
-	  </ion-content>
-	</ng-template>
-  </ion-popover>
-  </ion-header>
-<ion-content >
-	<div class="container">
+<ion-button (click)="logout()" fill="clear" style="float: right; width:59px; height:54px">
+  <ul><li><ion-icon slot="icon-only" name="log-out-outline"  style="float: right; width:65px; height:30px"></ion-icon></li></ul>
+</ion-button>
+</ion-header>
+<ion-content>
+  <div class="containers">
     <div class="lbl-menu">
-        <label for="radio1" onClick="window.location.reload();">Asignacion de empresa</label>
-        <label for="radio2" >Seguimiento Estudiante.</label>
-    </div>
+      <label for="radio1" onClick="window.location.reload();">Asignacion de empresa</label>
+      <label for="radio2" >Seguimiento Estudiante.</label>
+  </div>
     
     <div class="content">
        
         <input type="radio" name="radio" id="radio1" checked>
         <div class="tab1" >
-          <span class="row input-container">
-            <span class="row">
-                <h4>Datos estudiante</h4>
-            </span>
-            
-            <span class="row input-container"> 
+          <span class="row input-container"> 
+            <span class="col-md-6 col-sm-12">
+              <span class="styled-input" >
+               <ion-list class="foreground">
+               <ion-item class="color">
+                 <label>Nombre del Docente</label>
+                 <ion-select  [(ngModel)]="teacherId"  name="activityId" type="number">
+                 <ion-select-option *ngFor="let teacher of teacher" value={{teacher.id}}>{{teacher.name}}</ion-select-option>
+                 </ion-select>
+               </ion-item>
+               </ion-list>
+             </span>
+             </span>
+             <span class="col-md-6 col-sm-12">
+              <span class="styled-input" style="float:right;">
+               <ion-list class="foreground">
+               <ion-item class="color">
+                 <label>Nombre del Tutor</label>
+                 <ion-select  [(ngModel)]="tutorId" name="activityId" type="number">
+                 <ion-select-option *ngFor="let tutorcompany of tutorcompany" value={{tutorcompany.id}}>{{tutorcompany.name}}</ion-select-option>
+                 </ion-select>
+               </ion-item>
+               </ion-list>
+             </span>
+             </span>
               <span class="col-md-6 col-sm-12">
+                
                 <span class="styled-input">
-                  <input name="estudianteId"
-                  [(ngModel)]="studentId"
-                 type="number" required  />
-                  <label>Nombre del estudiante</label> 
+                   
+                  <input name="startDate"
+                  [(ngModel)]="starDate"
+                 type="date" id="inicio" required  />
+                 <label>Fecha de inicio</label>
                 </span>
               </span>
               <span class="col-md-6 col-sm-12">
                 <span class="styled-input" style="float:right;">
-                 <ion-list class="foreground">
-                 <ion-item class="color">
-                   <label>Nombre del Docente</label>
-                   <ion-select  [(ngModel)]="teacherId"  name="activityId" type="number">
-                   <ion-select-option *ngFor="let teacher of teacher" value={{teacher.id}}>{{teacher.name}}</ion-select-option>
-                   </ion-select>
-                 </ion-item>
-                 </ion-list>
-               </span>
-               </span>
-               <span class="col-md-6 col-sm-12">
-                <span class="styled-input" style="float:right;">
-                 <ion-list class="foreground">
-                 <ion-item class="color">
-                   <label>Nombre del Tutor</label>
-                   <ion-select  [(ngModel)]="tutorId" name="activityId" type="number">
-                   <ion-select-option *ngFor="let tutorcompany of tutorcompany" value={{tutorcompany.id}}>{{tutorcompany.name}}</ion-select-option>
-                   </ion-select>
-                 </ion-item>
-                 </ion-list>
-               </span>
-               </span>
-                <span class="col-md-6 col-sm-12">
-                  
-                  <span class="styled-input">
-                     
-                    <input name="startDate"
-                    [(ngModel)]="starDate"
-                   type="date" required  />
-                   <label>Fecha de inicio</label>
-                  </span>
+                  <input name="hours"
+                  [(ngModel)]="hours" 
+                  type="number" value="11:45:00" max="22:30:00" min="10:00:00" step="1"  required/>
+                  <label>hora</label> 
                 </span>
-                <span class="col-md-6 col-sm-12">
-                  <span class="styled-input" style="float:right;">
-                    <input name="hours"
-                    [(ngModel)]="hours" 
-                    type="number" value="11:45:00" max="22:30:00" min="10:00:00" step="1"  required/>
-                    <label>hora</label> 
-                  </span>
+              </span>
+              <span class="col-xs-12">
+                <span class="styled-input wide">
+                  <input
+                   name="endDate"
+                   [(ngModel)]="endDate"
+                  type="date" id="fin" required />
+                  <label>fecha final</label> 
                 </span>
-                <span class="col-xs-12">
-                  <span class="styled-input wide">
-                    <input
-                     name="endDate"
-                     [(ngModel)]="endDate"
-                    type="date" required />
-                    <label>fecha final</label> 
-                  </span>
-                </span>
-                <span class="col-xs-12">
-                  <span class="btn-lrg submit-btn" (click)="onCreate()">Guardar</span>
-                  <span class="btn-lrg submit-btn"  onClick="window.location.reload();">Nuevo</span>
+              </span>
+              <span class="col-xs-12">
+                <span class="btn-lrg submit-btn" (click)="onCreate()"value="Comprobar">Guardar</span>
+                <span class="btn-lrg submit-btn"  onClick="window.location.reload();">Nuevo</span>
 
-                </span>
-        
-        
-        
-            </span>
+              </span>
+      
+      
+      
           </span>
- 
+   
         </div>
         
         <input type="radio" name="radio" id="radio2">
         <div class="tab2">
-          <table>
+          <span class="container">
+          <table style="margin: 0 auto;">
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Empresa</th>
                 <th>Estudiante</th>
-                <th>Docente Carrera</th>
+                <th>Docente</th>
                 <th>Tutor Academico</th>
                 <th>Fecha de inicio</th>
-                <th>Fecha Final</th>
-                <th>Horas Realizadas</th>
+                <th>Fecha de Final</th>
+                <th>Total Horas</th>
                 <th>Editar/Eliminar</th>
-                <th>Lista de actividades</th>
+                <th>actividades</th>
               </tr>
             </thead>
             <tbody>
@@ -147,23 +107,31 @@
                 <td> {{formulary.estudiante}}</td>
                 <td>{{formulary.profesor}}</td>
                 <td>{{formulary.tutor}}</td>
-                <td>{{formulary.startDate}}</td>
-                <td>{{formulary.endDate}}</td>
+                <td>{{formulary.startDate.toString().substr(0,10) }}</td>
+                <td>{{formulary.endDate.toString().substr(0,10) }}</td>
                 <td>{{formulary.hours}}</td>
-                <td><button  style="margin-top: 30px; margin-bottom: 10px;margin-left: 10px" style="text-align: center;" class="botonUno"  >Editar</button>
-                  <button  style="margin-top: 30px; margin-bottom: 10px;margin-left: 10px" style="text-align: center;" class="botonDos"  >Eliminar</button></td>
-                <td><button style="text-align: center;" class="botonUno" [routerLink]="['/actividadDia',formulary.id]"  >Lista actividades.</button></td>
+                <td><button  class="botonDos" routerLink="/editarActividad/{{formulary.id}}" >Editar</button>
+                  <button class="botonUno"><ion-icon name="trash-outline"></ion-icon>Eliminar</button></td>
+                <td><button style="text-align: center;" class="botonDos" [routerLink]="['/listas',formulary.id]">Lista actividades.</button></td>
               </tr>
             </tbody>
           </table>
+          </span>
+     
         </div>
 
 
 </div>
   </div>
-
-
-
   
- 
+
+
+
+
+
 </ion-content>
+
+
+
+
+

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar style="text-align: center;" class="new-background-color">
+  <ion-toolbar style="text-align: center;" class="colores">
     <font  face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold;" font color="#00C4B0"  >INSTITUTO SUDAMERICANO</font>
   </ion-toolbar>
 </ion-header>
@@ -10,13 +10,21 @@
         <div
          class="styled-input wide">
           <ion-list class="foreground">
-            <ion-item class="light">
-              <label>Actividades(Enumerar las actividades realizadas)</label>
-              <ion-select  [(ngModel)]="activitiesId"  name="activityId" type="number">
+            <ion-item class="color">
+              <label>Actividades(Enumerar las actividades)</label>
+              <ion-select  [(ngModel)]="activitiesId"  name="act" type="number" >
                 <ion-select-option *ngFor="let software of Software" value={{software.id}}>{{software.description}}</ion-select-option>
               </ion-select>
             </ion-item>
           </ion-list>
+          <div
+          class="col-xs-12">
+           <div
+            class="btn-lrg submit-btn" (click)="actividades()" >Guardar Actividad</div
+             >
+         </div
+         >
+
           <div
            id="log" class="ion-padding"></div
             >
@@ -27,19 +35,23 @@
       <div
        class="col-xs-12">
         <div
-         class="btn-lrg submit-btn" (click)="crearActividad()" onClick="window.location.reload();">Guardar Actividad</div
+         class="btn-lrg submit-btn" (click)="crearActividad()" >Guardar Actividad</div
+          >
+      </div
+      >
+      <div
+       class="col-xs-12">
+        <div
+         class="btn-lrg submit-btn" onClick="window.location.reload();">Nueva Actividad</div
           >
       </div
       >
       
   </div>
   <ion-item *ngFor="let actDetalle of actDetail" class="color">
-    <ion-label class="normal"> {{actDetalle.actividad}} </ion-label>
+    <ion-label class="color"> {{actDetalle.actividad}} </ion-label>
     <ion-buttons slot="end">
-      <ion-button  >
-        <ion-icon name="create"></ion-icon>
-       </ion-button>
-      <ion-button >
+      <ion-button  (click)="borrarActividad(actDetalle.id)">
         <ion-icon slot="icon-only" color="danger" name="trash"></ion-icon>
        </ion-button>
     </ion-buttons>
@@ -47,9 +59,9 @@
   </ion-item>
 
 </ion-content>
-<ion-item class="new-background-color">
-  <ion-tabs>
-    <ion-tab-bar slot="bottom" (click)="inicio()" class="new-background-color" >
+<ion-item class="new">
+  <ion-tabs class="colores">
+    <ion-tab-bar slot="bottom" (click)="inicio()" class="colores" >
       <ion-tab-button tab="schedule">
         <ion-icon name="home"></ion-icon>
         <ion-label>Inicio</ion-label>
@@ -68,5 +80,6 @@
     </ion-tab-bar>
   </ion-tabs>
 </ion-item>
+
 
 

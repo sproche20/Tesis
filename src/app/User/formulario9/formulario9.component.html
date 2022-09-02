@@ -1,7 +1,11 @@
 <ion-header>
   <ion-toolbar style="text-align: center;" class="new-background-color">
     <font  face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold;" font color="#00C4B0"  >INSTITUTO SUDAMERICANO</font>
+    <script src="./fecha.js"></script>
+
   </ion-toolbar>
+
+
 </ion-header>
 <ion-content>
     <ion-label class="normal">
@@ -16,10 +20,13 @@
          class="col-md-6 col-sm-12">
       <div
        class="styled-input">
+    
         <input name="startDate"
-        [(ngModel)]="actualDate"
-       type="date" required  />
+        [(ngModel)]="fechaaa"
+       type="date" step="1"required  />
+
         <label>Fecha</label> 
+        <button (click)="fechas()">fecha</button>
       </div
       >
     </div

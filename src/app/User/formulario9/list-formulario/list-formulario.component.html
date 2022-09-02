@@ -1,19 +1,21 @@
 <ion-header>
   <ion-toolbar style="text-align: center;" class="new-background-color">
-    <font  face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold;" font color="#737373" >INSTITUTO SUDAMERICANO</font>
+    <font  face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold;" font color="#00C4B0">INSTITUTO SUDAMERICANO</font>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-item class="color" *ngFor="let foro9 of foro9">
-    <ion-label class="normal" >Fecha:{{foro9.actualDate}} </ion-label>
-    <ion-buttons>
-      <ion-tab-button slot="end" [routerLink]="['/seleccionActividad',foro9.id]" routerLinkActive="router-link-active" >
+    <ion-label class="normal" >Fecha:{{fecha.toString().substr(0,10) }} </ion-label>
+    <ion-buttons class="color">
+      <ion-tab-button class="color" slot="end" [routerLink]="['/seleccionActividad',foro9.id]" routerLinkActive="router-link-active" >
         <ion-icon name="add-circle-sharp"></ion-icon>
         <ion-label>Añadir actividad</ion-label>
       </ion-tab-button> 
     </ion-buttons>
     </ion-item>
+
+   
 </ion-content>
 <ion-item class="new-background-color">
   <div>

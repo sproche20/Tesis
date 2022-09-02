@@ -57,7 +57,11 @@ export class TutorCompanyComponent implements OnInit {
   onCreates():void{
     const compania=new company(this.names,this.phones,this.contact);
     this.companyService.save(compania).subscribe();
-    this.router.navigate(['/tutorcompany'])
+    if(compania){
+      this.interaction.presentToast('registro exitoso');
+      this.router.navigate(['/tutorcompany'])
+    }
+    
   }
 /**tutor------------------------------ */
 

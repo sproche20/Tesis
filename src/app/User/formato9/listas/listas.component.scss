@@ -1,0 +1,265 @@
+
+  /* menu general-----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+  /* menu general-----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+  body {
+    font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    padding: 20px 50px 150px;
+    font-size: 13px;
+    text-align: center;
+    background: #E3CAA1;
+  }
+  a {
+    display: inline-block;
+    width: 100%; /* 100% dividido por el número de elementos del menú */
+    box-sizing: border-box;
+    padding: 0px 5px;
+    color: rgb(19, 17, 17);
+
+    text-align: left;
+    display: inline;
+    margin: 0;
+    padding: 15px 4px 17px 0;
+    list-style: none;
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    }
+  
+  ul {
+    text-align: left;
+    display: inline;
+    margin: 0;
+    padding: 15px 4px 17px 0;
+    list-style: none;
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  }
+  ul li {
+    font: bold 12px/18px sans-serif;
+    display: inline-block;
+    margin-right: -4px;
+    position: relative;
+    padding: 18px 20px;
+    background: #fff;
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+  ul li:hover {
+    background: #555;
+    color: #fff;
+  }
+  ul li ul {
+    padding: 0;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 150px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transiton: opacity 0.2s;
+    -moz-transition: opacity 0.2s;
+    -ms-transition: opacity 0.2s;
+    -o-transition: opacity 0.2s;
+    -transition: opacity 0.2s;
+  }
+  ul li ul li { 
+    background: #555; 
+    display: block; 
+    color: #fff;
+    text-shadow: 0 -1px 0 #000;
+  }
+  ul li ul li:hover { background: #666; }
+  ul li:hover ul {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /**Pestañas---------------------------------------------------------------------------------------------------------*/
+  /**Pestañas---------------------------------------------------------------------------------------------------------*/
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    background: #f0f0f0;
+}
+.containers{
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  margin-top: 70px;
+}
+.lbl-menu{
+    background: #234;
+}
+.lbl-menu label{
+    display: inline-block;
+    padding: 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 400ms ease;
+}
+.lbl-menu label:hover{
+    background: #28435d;
+}
+.content{
+    position: relative;
+}
+.content div{
+    position: absolute;
+    line-height: 1.8;
+    transition: all 600ms ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.90);
+    padding: 30px;
+    background-color: transparent;
+    padding-bottom: 40px;
+}
+#radio1,#radio2,#radio3,#radio4{
+    display: none;
+}
+#radio1:checked ~ .tab1,
+#radio2:checked ~ .tab2,
+#radio3:checked ~ .tab3,
+#radio4:checked ~ .tab4
+{
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+.content div:after{
+    position: absolute;
+    content: "";
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+    bottom: 100%;
+    left: 28px;
+}
+.content .tab2:after{
+    left: 152px;
+}
+.content .tab3:after{
+    left: 280px;
+}
+.content .tab4:after{
+    left: 463px;
+}
+/**tabla-------------------------------tabla--------------------------------------tabla-------------------------tabla*/
+/**tabla-------------------------------tabla--------------------------------------tabla-------------------------tabla*/
+/**tabla-------------------------------tabla--------------------------------------tabla-------------------------tabla*/
+
+/**tabla-------------------------------tabla--------------------------------------tabla-------------------------tabla*/
+/**tabla-------------------------------tabla--------------------------------------tabla-------------------------tabla*/
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(45deg, #49a09d, #5f2c82);
+    font-family: sans-serif;
+    font-weight: 100;
+}
+.container {
+  position: absolute;
+  top: 40%;
+    left: -200%;
+}
+table {
+    width: 800px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+th,
+td {
+    padding: 10px;
+    background-color: rgba(255,255,255,0.2);
+    color: rgb(73, 69, 69);
+}
+
+th {
+    text-align: left;
+}
+
+thead {
+    th {
+        background-color: #019aa4;
+    }
+}
+
+tbody {
+    tr {
+        &:hover {
+            background-color: rgba(125, 125, 125, 0.3);
+        }
+    }
+    td {
+        position: relative;
+        &:hover {
+            &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: -9999px;
+                bottom: -9999px;
+                background-color: rgba(68, 67, 67, 0.2);
+                z-index: -1;
+            }
+        }
+    }
+}
+/**-----------------------------------------------------------------------------------------------------------*/
+
+/*-----------cajon de busqueda--------------------------------*/
+
+// SEARCH BEGINS
+
+/*------botones---------------------------*/
+
+.botonUno{
+  font-size:10px;
+  font-family:Verdana,Helvetica;
+  font-weight:bold;
+  color:white;
+  background:#638cb5;
+  border-radius: 20px;
+  width:20px;
+  height:40px;
+ }
+ .botonDos{
+  font-size:15px;
+  font-family:Verdana,Helvetica;
+  font-weight:bold;
+  color:white;
+  background:#05a1a7;
+  border-radius: 10px;
+  width:115px;
+  height:40px;
+ }
+
+ ion-content{
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  background-size: cover;
+}

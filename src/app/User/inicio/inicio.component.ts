@@ -1,4 +1,11 @@
+
+
+
+import { PracticeReportDto } from './../models/Dtos/PracticeReportDto';
+
+
 import { actividadesDto } from './../models/Dtos/actividadesDto';
+
 import { jsPDF } from 'jspdf';
 
 import { Component, OnInit } from '@angular/core';
@@ -26,6 +33,9 @@ import { DatosReporteDto } from '../models/Dtos/DatosReportesDtos';
 import { Estudiante } from '../models/estudiante';
 import { DetalleReporteDto } from '../models/Dtos/DetalleReporteDto';
 
+import { AuthService } from '../service/auth.service';
+
+
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
@@ -35,6 +45,7 @@ export class InicioComponent implements OnInit {
   actDetail: Actdetail[] = [];
   foro9: for9[] = [];
   formulary: formato9[] = [];
+
   isModalOpen = false;
 
   formularioSeleccionado: formato9;
@@ -44,16 +55,22 @@ export class InicioComponent implements OnInit {
   activitiesId: number = null;
   detailId: number = null;
   Software: software[] = [];
-  formulario9: for9[] = [];
+
   estudiantes: Estudiante[] = [];
   activitieDetailId = 1;
   Id: any;
   Ids: any;
   tutor: any
   actualDate: Date;
+  endDate:Date;
   finalId: number;
   image: any;
+  image2:any
   carrera: any;
+  inicial:any
+  final:any
+  acti:any;
+
 
   //**---------------------------actividad seleccionar------------------------------- */
 
@@ -65,6 +82,7 @@ export class InicioComponent implements OnInit {
     private for9Service: for9Service,
     private formato9: formulario9Service,
     private router: Router,
+    private auth:AuthService,
 
     private studentService: EstudianteService,
 
@@ -82,8 +100,7 @@ export class InicioComponent implements OnInit {
   ngOnInit() {
     this.cargarRegistro();
     this.cargarDatos();
-    this.cargarActividad();
-    this.cargarAct();
+    
     this.Id = this.activatedRoute.snapshot.paramMap.get("id");
     this.finalId = this.Id - 1;
     console.log("id estudiante", this.Id);
@@ -139,72 +156,40 @@ export class InicioComponent implements OnInit {
       this.cargarDatos();
     });
   }
+  logout(){
+    this.auth.logout();
+    this.interaction.presentToast("sesion finalizada");
+    this.router.navigate(['/login'])
+
+  }
+/*-------------------------------fechas-------------------------------------------*/
+
 
   //**---------------------------Prueba actividad seleccionar---------------------------- */
   //**---------------------------Prueba actividad seleccionar------------------------------- */
-
-  crearActividad(): void {
-    const actdetail = new Actdetail(this.activitiesId, this.detailId);
-    this.actividaddetailService.save(actdetail).subscribe();
-    console.log(actdetail);
-    if (actdetail) {
-      this.interaction.presentToast('registro exitoso');
-    }
-  }
-
-  cargarActividad(): void {
-    this.softwareService.lista().subscribe(
-      (data) => {
-        this.Software = data;
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
-
-  cargarAct(): void {
-    this.actividaddetailService.lista().subscribe(
-      (data) => {
-        this.actDetail = data;
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+  fechas(){
+    let fechaCompleta=this.actualDate.toString().substr(0,4) +this.actualDate.toString().substr(5,2)+this.actualDate.toString().substr(8,2)
+    console.log(fechaCompleta)
+    this.inicial=fechaCompleta
+    let fechafinal=this.endDate.toString().substr(0,4) +this.endDate.toString().substr(5,2)+this.endDate.toString().substr(8,2)
+    this.final=fechafinal
+    console.log(fechaCompleta)
+    console.log(fechafinal)
   }
 
   generatePDF(index) {
     console.log(index)
     this.formularioSeleccionado = this.formulary[index];
-    this.studentService.cargarReporte(this.formularioSeleccionado.studentId, this.formularioSeleccionado.tutorId).subscribe(
+    this.for9Service.listPracticasFechas(this.formularioSeleccionado.id,this.inicial,this.final).subscribe(
       (resp) => {
       console.log("resultado", resp)
-      var datosReporte: DatosReporteDto = resp;
+      var datosReporte: PracticeReportDto = resp;
       this.cargarInformacionPdf(datosReporte);
     },
-    (res) => {
-      console.log("resultadoactividad", res)
-      let detailReport:DetalleReporteDto=res;
-      this.cargarActividadPdf(detailReport);
-    }
     );
   }
-  async cargarActividadPdf(detailReport:DetalleReporteDto){
-    if (detailReport.actividadesDto) {
-      const pdf = new jsPDF({ unit: 'px', format: 'a4' });
-        var columna4 = 180
-        var filaTexto = 330
-      var i = 0
-        detailReport.actividadesDto.forEach(detaili=>{
-          pdf.text(detaili.nombreActividad.toString(),columna4,(filaTexto+ (60 * i)))
-        })
-    }
 
-      
-  }
-
-  async cargarInformacionPdf(datosReporte: DatosReporteDto) {
+  async cargarInformacionPdf(datosReporte: PracticeReportDto) {
 
     console.log(datosReporte)
 
@@ -215,67 +200,172 @@ export class InicioComponent implements OnInit {
     const pdf = new jsPDF({ unit: 'px', format: 'a4' });
     pdf.addImage(this.image, 'PNG', 5, 5, 435, 620);
 
+
     pdf.setFontSize(8);
 
     //semana del
-    pdf.text(datosReporte.inicioSemana.toString(), 135, 122);
-    pdf.text(datosReporte.finSemana.toString(), 170, 122);
+
+    //pdf.text(datosReporte.startDate.toString(), 135, 102);
+    //pdf.text(datosReporte.endDate.toString(), 170, 102);
     //mes
-    pdf.text(datosReporte.nombreMesTexto.toString(), 235, 122);
+    //pdf.text(datosReporte.nombreMesTexto.toString(), 235, 602);
+
+
+
 
     //AÑO
-    pdf.text('22', 330, 122);
-
+    //pdf.text('22', 330, 602);
     //nombre
-    pdf.text(datosReporte.nombreCompleto.toString(), 55, 175);
-
+    pdf.text(datosReporte.studentName.toString(), 55, 175);
     //cedula
-    pdf.text(datosReporte.identificaciob.toString(), 245, 175);
-
+    pdf.text(datosReporte.studentNui.toString(), 245, 175);
     //carrera
-    pdf.text(datosReporte.nombreCarrera.toString(), 55, 208);
-
+    pdf.text(datosReporte.careerName.toString(), 55, 208);
     //institucion beneficiaria
-
-    pdf.text(datosReporte.nombreInstirucionBeneficiaria.toString(), 55, 247);
-
+    pdf.text(datosReporte.companyName.toString(), 55, 247);
     //horas reportadas
     pdf.setFontSize(24);
     pdf.text('50', 382, 242);
-
     //tabla de actividades
 
-    if (datosReporte.detalleReporte) {
+    if (datosReporte.practiceDetails) {
       var columna = 60
       var columna1 = 90
       var columna2 = 120
       var columna3 = 145
-        var columna4 = 180
       var columna5 = 285
       var fila = 365
       var filaHora = 355
       var filaTexto = 330
-
       var i = 0
-      datosReporte.detalleReporte.forEach(detail => {
-        pdf.setFontSize(10);
-        pdf.text(detail.fechaDeActividad.toString(), columna, (fila + (60 * i)), null, 90);
-        pdf.text(detail.horaEntrada.toString(), columna1, (fila + (60 * i)), null, 90);
-        pdf.text(detail.horaSalida.toString(), columna2, (fila + (60 * i)), null, 90);
-        pdf.text(detail.totalHoras.toString(), columna3, (filaHora + (60 * i)));
-        
-        pdf.setFontSize(8);
-        pdf.text(detail.observacion.toString(), columna5, (filaTexto + (60 * i)));
-        i++
-      })
+      var columnas = 165
+      var filaText = 330
+      var a=0
+      datosReporte.practiceDetails.forEach(detail => {
+        if(i<4){
+          pdf.setFontSize(10);
+          pdf.text(detail.currentDate.toString(), columna, (fila + (60 * i)), null, 90);
+          pdf.text(detail.startTime.toString(), columna1, (fila + (60 * i)), null, 90);
+          pdf.text(detail.endTime.toString(), columna2, (fila + (60 * i)), null, 90);
+          pdf.text(detail.totalHours.toString(), columna3, (filaHora + (60 * i)));
+          detail.activityDetails.forEach(detalles=>{
+            pdf.setFontSize(8);
+            pdf.text(detalles.id.toString(),columnas,(filaText+(25*a)))
+           /* if(a>0&&a<3){
+              pdf.text(detalles.actividad.toString(),columnas,(filaText+(32*a)))
+            }*/
+            a++
+         })
+          pdf.setFontSize(8);
+          detail.observations && 
+          pdf.text(detail.observations.toString(), columna5, (filaTexto + (60 * i)))
+        }
+          i++ 
+      })  
     }
+    /*if (datosReporte.practiceDetails) {
+      var columnas = 165
+      var filaText = 330
+      var a=0
+      datosReporte.practiceDetails.forEach(detal => {
+        detal.activityDetails.forEach(detalles=>{
+            pdf.setFontSize(8);
+            pdf.text(detalles.actividad.toString(),columnas,(filaText+(25*a)))
+           /* if(a>0&&a<3){
+              pdf.text(detalles.actividad.toString(),columnas,(filaText+(32*a)))
+            }
+            a++
+         })
+ 
+
+      })
+
+    }*/
+   /* if(datosReporte.actividades){
+      var columnas = 165
+      var filaText = 330
+      var a=0
+      datosReporte.actividades.forEach(detalle=>{
+        pdf.setFontSize(8);
+        pdf.text(detalle.nombreActividad.toString(),columnas,(filaText+(60*a)));
+        a++
+      })
+
+    }*/
+
+
+  
 
     pdf.addPage('a4');
-    this.image = imagen.pagina2
-    pdf.addImage(this.image, 'PNG', 5, 5, 435, 620);
+    this.image2 = imagen.pagina2
+    pdf.addImage(this.image2, 'PNG', 5, 5, 435, 620);
+    if (datosReporte.practiceDetails) {
+      var columna = 60
+      var columna1 = 90
+      var columna2 = 120
+      var columna3 = 145
+      
+      var columna5 = 285
+      var fila = -105
+      var filaHora = -115
+      var filaTexto =-130
+      
+      var b = 0
+
+      datosReporte.practiceDetails.forEach(detail => {
+        if(b>3&&b<9){
+          pdf.setFontSize(10);
+          pdf.text(detail.currentDate.toString(), columna, (fila + (80 * b)), null, 90);
+          pdf.text(detail.startTime.toString(), columna1, (fila + (80 * b)), null, 90);
+          pdf.text(detail.endTime.toString(), columna2, (fila + (80 * b)), null, 90);
+          pdf.text(detail.totalHours.toString(), columna3, (filaHora + (80 * b)));
+          pdf.setFontSize(8);
+          detail.observations && 
+          pdf.text(detail.observations.toString(), columna5, (filaTexto + (80 * b)))
+        }
+          b++ 
+ 
+      })
+      
+      
+    }
     pdf.addPage('a4');
     this.image = imagen.pagina3
     pdf.addImage(this.image, 'PNG', 5, 5, 435, 620);
+    if (datosReporte.practiceDetails) {
+      var columna = 60
+      var columna1 = 90
+      var columna2 = 120
+      var columna3 = 145
+      
+      var columna5 = 285
+      var fila = -500
+      var filaHora = -515
+      var filaTexto =-530
+      
+      var b = 0
+
+      datosReporte.practiceDetails.forEach(detail => {
+        if(b>8&&b<13){
+          pdf.setFontSize(10);
+          pdf.text(detail.currentDate.toString(), columna, (fila + (75 * b)), null, 90);
+          pdf.text(detail.startTime.toString(), columna1, (fila + (75 * b)), null, 90);
+          pdf.text(detail.endTime.toString(), columna2, (fila + (75 * b)), null, 90);
+          pdf.text(detail.totalHours.toString(), columna3, (filaHora + (75* b)));
+          pdf.setFontSize(8);
+          detail.observations && 
+          pdf.text(detail.observations.toString(), columna5, (filaTexto + (75 * b)))
+        }
+          b++ 
+ 
+      })
+      
+      
+    }
+
+
+
+
     pdf.save('example.pdf');
   }
 }

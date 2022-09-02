@@ -1,7 +1,7 @@
 import { SoftwareService } from './../../User/service/software.service';
 import { software } from './../../User/models/software';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PopoverController, MenuController } from '@ionic/angular';
 import { InteractionService } from 'src/app/User/service/interaction.service';
 import { AuthService } from 'src/app/User/service/auth.service';
@@ -21,6 +21,9 @@ export class ActividadesSoftwareComponent implements OnInit {
   Software:software[]=[];
   teacher:Teacher[]=[];
   carreras:carrera[]=[];
+  Id:any;   
+  textoBuscar='';
+   
 
 
 
@@ -31,6 +34,8 @@ export class ActividadesSoftwareComponent implements OnInit {
     private auth:AuthService,
     private teacherService:TeacherService,
     private CarreraService:CarreraService,
+    private route:ActivatedRoute,
+
 
 
     private router:Router) {
@@ -41,6 +46,8 @@ export class ActividadesSoftwareComponent implements OnInit {
     this.cargarActividad();
     this.cargarTeacher();
     this.cargarCarrera();
+    this.Id=this.route.snapshot.paramMap.get("id");
+
   }
 
   onCreate():void{
@@ -56,6 +63,7 @@ export class ActividadesSoftwareComponent implements OnInit {
     this.softwareService.lista().subscribe(
       data=>{
         this.Software=data;
+        this.cargarActividad();  
       },
       err=>{
         console.log(err);
@@ -99,6 +107,10 @@ export class ActividadesSoftwareComponent implements OnInit {
     this.interaction.presentToast("sesion finalizada");
     this.router.navigate(['/loginteacher'])
   
+  }
+  busqueda(event){
+    const textos=event.target.value;
+    this.textoBuscar=textos;
   }
   
   

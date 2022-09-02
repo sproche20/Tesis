@@ -5,12 +5,12 @@ import { Estudiante } from '../User/models/estudiante';
     name: 'filtro1'
   })
   export class Filtro1Pipe implements PipeTransform {
-    transform(student:Estudiante[], texto: string): Estudiante[] {
-      if(texto.length === 0){return student;}
-      texto=texto.toLocaleLowerCase();
+    transform(student:Estudiante[], textos: string): Estudiante[] {
+      if(textos.length === 0){return student;}
+      textos=textos.toLocaleLowerCase();
   
-     return student.filter(estudiante=>{
-        return estudiante.name.toLocaleLowerCase().includes(texto)
+     return student.filter(estudiant=>{
+        return estudiant.name.toLocaleLowerCase().includes(textos)
       });
     }
   

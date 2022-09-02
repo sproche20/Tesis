@@ -1,4 +1,4 @@
-import { Time } from "@angular/common";
+import { NumberSymbol, Time } from "@angular/common";
 
 export class for9{
     id?:Number;
@@ -9,7 +9,7 @@ export class for9{
     observations:string;
     practiceId:number;
     student:number;
-
+    numberId:Number;
     constructor(actualDate:Date,startTime:Time,endTime:Time,totalHours:number,observations:string,practiceId:number,student:number){
         this.actualDate=actualDate;
         this.startTime=startTime;
@@ -20,4 +20,5 @@ export class for9{
         this.student=student;
         
     }
+
 }

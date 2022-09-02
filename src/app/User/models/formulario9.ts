@@ -7,6 +7,7 @@ export class formato9{
     tutorId:Number;
     teacherId:Number;
     estudiante:string;
+    apellido:string;
     tutor:string;
     profesor:String;
     empresa:String

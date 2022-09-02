@@ -10,6 +10,7 @@ import { TeacherService } from '../service/teacher.service';
 import { Teacher } from '../models/teacher';
 import {  tutorService } from './../../User/service/tutor.service'
 import { tutorcompany } from '../models/tutcompany';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-formato9',
@@ -43,6 +44,7 @@ export class Formato9Component implements OnInit {
     private router:Router,
     private teacherService:TeacherService,
     private tutorService:tutorService,
+    private auth:AuthService
 
 
     ) { 
@@ -63,10 +65,21 @@ export class Formato9Component implements OnInit {
     const for9=new formato9 (this.starDate,
       this.endDate,this.hours,this.studentId,this.teacherId,this.tutorId);
     this.for9Service.save(for9).subscribe();
+     
     if(for9){
+
       this.interaction.presentToast('registro exitoso');
       this.router.navigate(['/for9'])
     }
+}
+borrarDatos(id:number) {
+  this.for9Service.delete(id).subscribe(
+    data => {
+      console.log(data);
+      console.log("borrado exitoso");
+      this.cargarDatos();    
+    },
+  );
 }
   /**tabla profesor------------------------------------------- */
   cargarTeacher():void{
@@ -104,6 +117,14 @@ cargarDatos():void{
   )
 
 }
+
+logout(){
+  this.auth.logout();
+  this.interaction.presentToast("sesion finalizada");
+  this.router.navigate(['/loginteacher'])
+
+}
+
 
 }
 

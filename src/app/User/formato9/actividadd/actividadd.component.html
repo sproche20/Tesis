@@ -1,0 +1,42 @@
+
+<ion-header>
+	<ul><li>inicio</li>
+    <a href="/#/actsoftware">  <li>Registro Actividades</li></a>
+    <a href="/#/listaUser"><li>Asignacion de empresa.</li></a>
+    <li (click)="listas()">Lista de actividades.</li>
+	</ul>
+<ion-button (click)="logout()" fill="clear" style="float: right; width:59px; height:54px">
+  <ul><li><ion-icon slot="icon-only" name="log-out-outline"  style="float: right; width:65px; height:30px"></ion-icon></li></ul>
+</ion-button>
+</ion-header>
+<ion-content>
+	<div class="containers">
+    <div class="lbl-menu">
+        <label for="radio1">Actividades.</label>
+    </div>
+    
+    <div class="content">
+       
+        <input type="radio" name="radio" id="radio1" checked>
+        <div class="tab1">
+          <span class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Actividad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let actDetalle of actDetail">
+        <td>{{actDetalle.id}}</td>
+        <td>{{actDetalle.actividad}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</span>
+        </div>
+    </div>
+</div>
+</ion-content>

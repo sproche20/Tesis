@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { formato9 } from '../models/formulario9';
+import { PracticeReportDto } from '../models/Dtos/PracticeReportDto';
 
 @Injectable({
     providedIn: 'root'
@@ -11,6 +12,7 @@ import { formato9 } from '../models/formulario9';
   export class for9Service{
     productoURL='http://localhost:8081/practices/';
     productoURLS='http://localhost:8081/practices/with/estudiante';
+
    
 
     constructor(private httpClient:HttpClient) { }
@@ -20,6 +22,10 @@ import { formato9 } from '../models/formulario9';
     public listPracticasEstudiante(id:number):Observable<formato9[]>{
       return this.httpClient.get<formato9[]>(this.productoURL+ `${id}`+'/student');
   }
+  public listPracticasFechas(id,startDate:string,endDate:string):Observable<PracticeReportDto>{
+    return this.httpClient.get<PracticeReportDto>(this.productoURL+id+'/week/'+`${startDate}`+'/'+`${endDate}`);
+    //http://localhost:8081/practices/1/week/20220731/20220801
+}
     public detail(id:number):Observable<formato9>{
       return this.httpClient.get<formato9>(this.productoURL+ `${id}`);
     }
@@ -31,5 +37,10 @@ import { formato9 } from '../models/formulario9';
     }
   public delete(id: number ): Observable<any> {
       return this.httpClient.delete<any>(this.productoURL+ `delete/${id}`);
+    }
+    public cargarDatos(practiceId):Observable<PracticeReportDto>{
+      return this.httpClient.get<PracticeReportDto>(
+        this.productoURL+practiceId+'/fulldata'
+      );
     }
   }

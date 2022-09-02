@@ -1,3 +1,4 @@
+import { DetalleReporteDto } from './../models/Dtos/DetalleReporteDto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -34,4 +35,5 @@ export class EstudianteService {
       this.productoURL + idStudent + '/' + idTutor
     );
   }
+  
 }

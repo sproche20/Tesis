@@ -10,7 +10,7 @@
 	</ion-button>
 </ion-header>
 <ion-content>
-  <div class="container">
+  <div class="containers">
     <div class="lbl-menu">
         <label for="radio1">Registro tutor</label>
         <label for="radio2">Lista Tutor</label>
@@ -67,7 +67,7 @@
                <ion-list class="foreground">
                  <ion-item class="color">
                    <label>Compañia</label>
-                   <ion-select  [(ngModel)]="companyId"  name="companyId" type="number">
+                   <ion-select  [(ngModel)]="companyId"  name="activityId" type="number">
                      <ion-select-option *ngFor="let company of company" value={{company.id}}>{{company.name}}</ion-select-option>
                    </ion-select>
                  </ion-item>
@@ -76,6 +76,7 @@
            </span>
             <span class="col-xs-12">
               <span class="btn-lrg submit-btn" (click)="onCreate()">Guardar</span>
+              <span class="btn-lrg submit-btn"  onClick="window.location.reload();">Nuevo</span>
             </span>
         </span>
     
@@ -83,38 +84,39 @@
         
         <input type="radio" name="radio" id="radio2">
         <div class="tab2">
-          <form class="search" action="">
-            <input type="search" placeholder="Search here..." required>
-            <button type="submit">Search</button>
-          </form>  
-          <table style="margin: 0 auto;">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Tutor empresa</th>
-                <th>E-mail</th>
-                <th>Celular</th>
-                <th>telefono alternativo</th>
-                <th>Compañia</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let tutorcompany of tutorcompany">
-                <td>{{tutorcompany.id}}</td>
-                <td>{{tutorcompany.name}}</td>
-                <td>{{tutorcompany.email}}</td>
-                <td>{{tutorcompany.phone}}</td>
-                <td>{{tutorcompany.alternative}}</td>
-                <td>{{tutorcompany.empresa}} </td>
-                <td><ion-button  color="danger"  routerLink="/editartutor/{{tutorcompany.id}}">Editar</ion-button></td>
-                <td ><ion-button (click)="borrarTutor(tutorcompany.id)" color="danger"><ion-icon name="trash-outline" ></ion-icon>eliminar</ion-button></td>
-
-              </tr>
-             
-            </tbody>
-          </table>
+          <span class="container">
+            <ion-searchbar color ="light"
+            placeholder="buscar usuario"
+            (ionChange)="busqueda($event)"></ion-searchbar>
+            <table style="margin: 0 auto;">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Tutor empresa</th>
+                  <th>E-mail</th>
+                  <th>Celular</th>
+                  <th>telefono alternativo</th>
+                  <th>Compañia</th>
+                  <th>Editar</th>
+                  <th>Eliminar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let tutorcompany of tutorcompany|filtroTutor:textoBuscar">
+                  <td>{{tutorcompany.id}}</td>
+                  <td>{{tutorcompany.name}}</td>
+                  <td>{{tutorcompany.email}}</td>
+                  <td>{{tutorcompany.phone}}</td>
+                  <td>{{tutorcompany.alternative}}</td>
+                  <td>{{tutorcompany.empresa}} </td>
+                  <td><button style="text-align: center;" class="botonDos" routerLink="/editartutor/{{tutorcompany.id}}">Editar</button></td>
+                  <td><button style="text-align: center;"  class="botonUno" (click)="borrarTutor(tutorcompany.id)"><ion-icon name="trash-outline"></ion-icon>Eliminar</button></td>
+                </tr>
+               
+              </tbody>
+            </table>
+          </span>
+        
     
         </div>
   <input type="radio" name="radio" id="radio3">
@@ -155,16 +157,16 @@
             </span>
           </span>
           <span class="col-xs-12">
-            <span class="btn-lrg submit-btn" (click)="onCreates()" >Guardar</span>
+            <span class="btn-lrg submit-btn" (click)="onCreates()">Guardar</span>
             <span class="btn-lrg submit-btn"  onClick="window.location.reload();">Nuevo</span>
-
           </span>
       </span>
 
   </div>
   <input type="radio" name="radio" id="radio4">
   <div class="tab4">
-    <ion-searchbar color ="tertiary"
+    <span class="container">
+      <ion-searchbar color ="light"
     placeholder="buscar usuario"
     (ionChange)="busqueda($event)"></ion-searchbar>
   
@@ -185,12 +187,15 @@
           <td>{{company.name}}</td>
           <td>{{company.phone}}</td>
           <td>{{company.contact}}</td>
-          <td><ion-button  color="danger"  routerLink="/editar/{{company.id}}">Editar</ion-button></td>
-          <td><ion-button (click)="borrar(company.id)" color="danger"><ion-icon name="trash-outline"></ion-icon>eliminar</ion-button></td>
+          <td><button style="text-align: center;" class="botonDos" routerLink="/editar/{{company.id}}">Editar</button></td>
+          <td><button style="text-align: center;"  class="botonUno" (click)="borrar(company.id)"><ion-icon name="trash-outline"></ion-icon>Eliminar</button></td>
         </tr>
        
       </tbody>
     </table>
+
+    </span>
+    
 
   </div>
     </div>

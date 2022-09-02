@@ -8,10 +8,11 @@ import { Injectable } from '@angular/core';
   })
   export class SoftwareService{
     productoURL='http://localhost:8081/activity/';
+    productoURLS='http://localhost:8081/activity/with/carrera';
 
     constructor(private httpClient:HttpClient) { }
     public lista():Observable<software[]>{
-        return this.httpClient.get<software[]>(this.productoURL)
+        return this.httpClient.get<software[]>(this.productoURLS)
     }
     public detail(id:number):Observable<software>{
       return this.httpClient.get<software>(this.productoURL + `${id}`);

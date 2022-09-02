@@ -47,7 +47,7 @@ input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid
   color: #999;
   padding: 1.3rem 30px 1rem 30px;
   position: absolute;
-  top: 10px;
+  top: 0px;
   left: 0;
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
@@ -65,8 +65,8 @@ textarea {
   border: 0;
   width: 100%;
   font-size: 1rem;
-  background-color: #2d2d2d;
-  color: white;
+  background-color: #d4d3d3b7;
+  color: rgb(2, 2, 2);
   border-radius: 4px;
 }
 
@@ -96,7 +96,7 @@ textarea {
   padding: 7px 35px;
   border-radius: 60px;
   display: inline-block;
-  background-color: #4b8cfb;
+  background-color: #05a1a7;
   color: white;
   font-size: 18px;
   cursor: pointer;
@@ -126,7 +126,7 @@ font-style: italic;
 } 
 
 input[type=checkbox]:checked + label {
-color: #f00;
+  color: #01a5a5;
 font-style: normal;
 }
 
@@ -172,11 +172,11 @@ font-style: normal;
 
 
     /*-----------------------------Fondo cabecera*/
-  .new-background-color{
-    --background: #d6d3d3;
-}
+    .new-background-color{
+      --background: #e9e9e9;
+  }
 .color{
-  --background: #918e8e;
+  --background: #d4d3d3b7;
 }
 .fondo{
   --background: url('../inicio/blue.jpg') 0 0/100% 100% no-repeat;
@@ -192,4 +192,11 @@ font-style: normal;
 
   .foreground {
     background-color: transparent;
+  }
+  .hacking-datetime {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
   }
