@@ -29,8 +29,6 @@ const res= await this.auth.login(this.credenciales.correo,this.credenciales.pass
 console.log("error");
 this.interaction.closeLoading();
 this.interaction.presentToast('usuario o contraseña invalido ')
-
-
 });
 if (res){
 console.log('res->',res);

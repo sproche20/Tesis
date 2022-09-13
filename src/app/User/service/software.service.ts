@@ -7,8 +7,8 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
   })
   export class SoftwareService{
-    productoURL='http://localhost:8081/activity/';
-    productoURLS='http://localhost:8081/activity/with/carrera';
+    productoURL='https://tesisss.herokuapp.com/activity/';
+    productoURLS='https://tesisss.herokuapp.com/activity/with/carrera';
 
     constructor(private httpClient:HttpClient) { }
     public lista():Observable<software[]>{

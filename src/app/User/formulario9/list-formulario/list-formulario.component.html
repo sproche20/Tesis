@@ -6,7 +6,7 @@
 
 <ion-content>
   <ion-item class="color" *ngFor="let foro9 of foro9">
-    <ion-label class="normal" >Fecha:{{fecha.toString().substr(0,10) }} </ion-label>
+    <ion-label class="normal" >Fecha:{{foro9.actualDate.toString().substr(0,10) }} </ion-label>
     <ion-buttons class="color">
       <ion-tab-button class="color" slot="end" [routerLink]="['/seleccionActividad',foro9.id]" routerLinkActive="router-link-active" >
         <ion-icon name="add-circle-sharp"></ion-icon>
@@ -17,27 +17,56 @@
 
    
 </ion-content>
+<ion-modal [isOpen]="isModalOpen5">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar  class="new-background-color">
+        <ion-title>Quienes Somos</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen5(false)">Cerrar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <hr width="100%" align="left" size="10" noshade="noshade" />
+      <p style="margin: -0.5% 0">
+        <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+          Creador de la aplicacion</font>
+      </p>
+      <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">Stiven Roche</font>
+      <hr width="100%" align="left" size="10" noshade="noshade" />
+      <p style="margin: -0.5% 0">
+        <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+          Objetivo de la creacion de la aplicacion</font>
+      </p>
+      <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">Desarrollar una aplicación web para la gestión 
+        documental de las practicas preprofesionales del Instituto Tecnológico Sudamericano y así ayudar a los estudiantes con la documentación 
+        del registro hojas de las prácticas preprofesionales en las empresas en la que realizan las practicas.
+      </font>
+    </ion-content>
+  </ng-template>
+</ion-modal>
 <ion-item class="new-background-color">
-  <div>
-    
-  </div>
-  <ion-tabs *ngFor="let foro9 of foro9">
-    <ion-tab-bar class="new-background-color"[routerLink]="['/inicioEstudiante',foro9.student]" routerLinkActive="router-link-active"  slot="bottom">
-      <ion-tab-button tab="schedule">
-        <ion-icon name="home"></ion-icon>
-        <ion-label>Inicio</ion-label>
-      </ion-tab-button>
-  
-      <ion-tab-button tab="speakers">
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" class="new-background-color">
+      <a>&nbsp;&nbsp;&nbsp;</a>
+
+      <a [routerLink]="['/perfil']"><ion-tab-button tab="schedule" >
+        <ion-icon name="home" font color="#F2F2F2"></ion-icon>
+        <ion-label color="jade dome">Inicio</ion-label>
+      </ion-tab-button></a>
+      <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+
+      <ion-tab-button tab="speakers"(click)="setOpen5(true)" >
         <ion-icon name="person-circle"></ion-icon>
         <ion-label>Quienes Somos</ion-label>
       </ion-tab-button>
-  
-      <ion-tab-button tab="map">
+
+      <ion-tab-button tab="map" (click)="logout()" >
         <ion-icon name="log-out"></ion-icon>
         <ion-label>Cerrar Sesion</ion-label>
       </ion-tab-button>
-  
     </ion-tab-bar>
   </ion-tabs>
+  
 </ion-item>

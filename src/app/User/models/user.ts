@@ -3,6 +3,7 @@ export interface user{
     apellido:string;
     correo:string;
     uid:string;
+    Ide:number;
     password:string;
     perfil:'visitante'|'admin'
     }

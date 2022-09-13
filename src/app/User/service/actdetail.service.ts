@@ -7,7 +7,7 @@ import { Actdetail } from '../models/actdetail';
   providedIn: 'root',
 })
 export class actdetailService {
-  productoURL = 'http://localhost:8081/activitydetail/';
+  productoURL = 'https://tesisss.herokuapp.com/activitydetail/';
 
   constructor(private httpClient: HttpClient) {}
 

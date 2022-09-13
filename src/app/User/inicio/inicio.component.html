@@ -90,18 +90,14 @@
           </span>
             <p style="margin: -0.5% 0" style="text-align: center">
               <button style="text-align: center" class="botonDos"
-                style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px" (click)="fechas()">
-                crear fechas
-              </button>
-              <button style="text-align: center" class="botonDos"
                 style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px"
                 [routerLink]="['/formulario9', formulary.id]">
-                Crear actividad
+                Generar fecha de actividad
               </button>
               <button style="text-align: center" class="botonDos"
                 style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px"
                 [routerLink]="['/listformulario', formulary.id]">
-                Lista actividad
+                Lista actividades
               </button>
               <button style="text-align: center" class="botonDos"
                 style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px" (click)="generatePDF(i)">
@@ -112,17 +108,48 @@
       </ion-item>
     </ion-accordion>
   </ion-accordion-group>
+  <ion-modal [isOpen]="isModalOpen5">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar  class="new-background-color">
+          <ion-title>Quienes Somos</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen5(false)">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <hr width="100%" align="left" size="10" noshade="noshade" />
+        <p style="margin: -0.5% 0">
+          <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+            Creador de la aplicacion</font>
+        </p>
+        <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">Stiven Roche</font>
+        <hr width="100%" align="left" size="10" noshade="noshade" />
+        <p style="margin: -0.5% 0">
+          <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+            Objetivo de la creacion de la aplicacion</font>
+        </p>
+        <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">Desarrollar una aplicación web para la gestión 
+          documental de las practicas preprofesionales del Instituto Tecnológico Sudamericano y así ayudar a los estudiantes con la documentación 
+          del registro hojas de las prácticas preprofesionales en las empresas en la que realizan las practicas.
+        </font>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>
-
 <ion-item class="new-background-color">
   <ion-tabs>
     <ion-tab-bar slot="bottom" class="new-background-color">
-      <ion-tab-button tab="schedule">
+      <a>&nbsp;&nbsp;&nbsp;</a>
+
+      <a [routerLink]="['/perfil']"><ion-tab-button tab="schedule" >
         <ion-icon name="home" font color="#F2F2F2"></ion-icon>
         <ion-label color="jade dome">Inicio</ion-label>
-      </ion-tab-button>
+      </ion-tab-button></a>
+      <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
-      <ion-tab-button tab="speakers">
+      <ion-tab-button tab="speakers"(click)="setOpen5(true)" >
         <ion-icon name="person-circle"></ion-icon>
         <ion-label>Quienes Somos</ion-label>
       </ion-tab-button>
@@ -133,4 +160,5 @@
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
+  
 </ion-item>

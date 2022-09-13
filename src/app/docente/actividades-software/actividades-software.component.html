@@ -1,6 +1,7 @@
 
 <ion-header>
-	<ul><li>inicio</li>
+	<ul><li [routerLink]="['/inicio']">inicio</li>
+    <a href="/#/datos"><li>Estudiantes</li></a>
     <li onClick="window.location.reload();">Registro Actividades</li>
   <a href="/#/listaUser"><li>Asignacion de empresa..</li></a>
 	</ul>
@@ -63,7 +64,7 @@
           <div class="tab2">
             <span class="container">
               <ion-searchbar color ="light"
-              placeholder="buscar usuario"
+              placeholder="buscar Atividades por carrera"
               (ionChange)="busqueda($event)"></ion-searchbar>
               <table>
               <thead>

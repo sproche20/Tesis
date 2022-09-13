@@ -9,8 +9,8 @@ import { Estudiante } from '../models/estudiante';
   providedIn: 'root',
 })
 export class EstudianteService {
-  productoURL = 'http://localhost:8081/students/';
-  productoURLS='http://localhost:8081/students/with/carrera'
+  productoURL = 'https://tesisss.herokuapp.com/students/';
+  productoURLS='https://tesisss.herokuapp.com/students/with/carrera'
 
 
   constructor(private httpClient: HttpClient) {}

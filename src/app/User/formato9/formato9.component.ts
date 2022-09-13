@@ -23,6 +23,10 @@ export class Formato9Component implements OnInit {
   ide:number;
   ids:any;
   finalId:number;
+  inicFech:Date;
+  inicioFech:String;
+  finFech:Date;
+  finalFech:String;
 
   starDate:Date;
   endDate:Date;
@@ -62,6 +66,40 @@ export class Formato9Component implements OnInit {
   }
 
   onCreate():void{
+    /*---------fecha Inicio-----------------------------*/
+    var d = new Date(this.inicFech),
+    month = '' + (d.getUTCMonth()+1),
+    day = '' + (d.getUTCDate()),
+    year = d.getUTCFullYear();
+    if (day.length < 2){
+      day = '0' + day;
+    }
+if (month.length < 2) {
+  month = '0' + month;
+}  this.inicioFech=[year, month, day].join('/');
+console.log(month); // 👉️ "07"
+console.log(day); // 👉️ "21"
+console.log(year); // 👉️ "2024"
+this.starDate= new Date(+year, +month - 1, +day);
+console.log("fecha Inicio:",this.starDate)
+
+    /*----------fecha final-----------------------------*/
+    var e = new Date(this.finFech),
+    month = '' + (e.getUTCMonth()+1),
+    day = '' + (e.getUTCDate()),
+    year = e.getUTCFullYear();
+    if (day.length < 2){
+      day = '0' + day;
+    }
+    if (month.length < 2) {
+      month = '0' + month;
+    }  this.finalFech=[year, month, day].join('/');
+    console.log(month); // 👉️ "07"
+console.log(day); // 👉️ "21"
+console.log(year); // 👉️ "2024"
+this.endDate= new Date(+year, +month - 1, +day);
+console.log("fecha final:",this.endDate)
+    /*----------fecha final-----------------------------*/
     const for9=new formato9 (this.starDate,
       this.endDate,this.hours,this.studentId,this.teacherId,this.tutorId);
     this.for9Service.save(for9).subscribe();
@@ -72,15 +110,7 @@ export class Formato9Component implements OnInit {
       this.router.navigate(['/for9'])
     }
 }
-borrarDatos(id:number) {
-  this.for9Service.delete(id).subscribe(
-    data => {
-      console.log(data);
-      console.log("borrado exitoso");
-      this.cargarDatos();    
-    },
-  );
-}
+
   /**tabla profesor------------------------------------------- */
   cargarTeacher():void{
     this.teacherService.lista().subscribe(
@@ -116,6 +146,15 @@ cargarDatos():void{
     }
   )
 
+}
+borrarDatos(id:number) {
+  this.for9Service.delete(id).subscribe(
+    data => {
+      console.log(data);
+      console.log("borrado exitoso");
+      this.cargarDatos();    
+    },
+  );
 }
 
 logout(){

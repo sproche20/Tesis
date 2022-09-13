@@ -7,8 +7,8 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
   })
   export class tutorService{
-    productoURLS='http://localhost:8081/tutors/with/empresa'
-    productoURL='http://localhost:8081/tutors/';
+    productoURLS='https://tesisss.herokuapp.com/tutors/with/empresa'
+    productoURL='https://tesisss.herokuapp.com/tutors/';
     constructor(private httpClient:HttpClient) { }
     public lista():Observable<tutorcompany[]>{
         return this.httpClient.get<tutorcompany[]>(this.productoURLS)

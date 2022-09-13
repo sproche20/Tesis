@@ -27,6 +27,7 @@ export class EditEstudianteComponent implements OnInit {
     this.estudianteService.detail(id).subscribe(
       data => {
         this.estudiante = data;
+        console.log('nombre:',this.estudiante.name)
       },
       err => {
         this.router.navigate(['/']);

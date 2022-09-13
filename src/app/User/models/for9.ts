@@ -1,7 +1,7 @@
 import { NumberSymbol, Time } from "@angular/common";
 
 export class for9{
-    id?:Number;
+    id?:number;
     actualDate:Date;
     startTime:Time;
     endTime:Time;

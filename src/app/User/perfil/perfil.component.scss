@@ -1,0 +1,53 @@
+
+
+  .botonUno{
+    font-size:20px;
+    font-family:Verdana,Helvetica;
+    font-weight:bold;
+    color:white;
+    background:#638cb5;
+    border-radius: 20px;
+    width:160px;
+    height:40px;
+   }
+   .botonDos{
+    font-size:20px;
+    font-family:Verdana,Helvetica;
+    font-weight:bold;
+    color:white;
+    background:#05a1a7;
+    border-radius: 20px;
+    width:260px;
+    height:80px;
+   }
+
+
+
+
+  
+/**----------------------------------------------------------------------------------------------*/
+
+
+  /*-----------------------------Fondo cabecera*/
+  .new-background-color{
+    --background: #e9e9e9;
+}
+.color{
+  --background: #cfc9c9;
+}
+.fondo{
+  --background: url('../inicio/blue.jpg') 0 0/100% 100% no-repeat;
+
+}
+
+ /*-----------fondo contenido-----------------*/
+ ion-content{
+  --background: url('../inicio/blue.jpg') 0 0/100% 100% no-repeat;
+}
+ion-accordion-group{
+  --background: url('../inicio/azil3.jpg') 0 0/100% 100% no-repeat;
+}
+
+  .foreground {
+    background-color: transparent;
+  }

@@ -1,0 +1,288 @@
+<ion-header>
+  <ion-toolbar style="text-align: center" class="new-background-color">
+    <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#00C4B0">INSTITUTO
+      SUDAMERICANO</font>
+    <script src="./apk.component.js"></script>
+    <script src="./jspdf.min.js"></script>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div *ngIf="info">
+      <hr width="100%" align="left" size="10" noshade="noshade" />
+      <p style="margin: -0.5% 0">
+        <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+          Estudiante:</font>
+      </p>
+      <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">{{info.nombre}}{{info.apellido}}</font>
+      <hr width="100%" align="left" size="10" noshade="noshade" />
+      <p style="margin: -0.5% 0">
+        <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+          Instructivo para usar la aplicacion</font>
+      </p>
+      <hr width="100%" align="left" size="10" noshade="noshade" />
+      <ion-accordion-group  class="fondo" id="form">
+        <ion-accordion >
+          <ion-item slot="header" class="color">
+            <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#282828">
+            Generar fecha, hora de entrada y salida para las actividades</font>
+          </ion-item>
+          <ion-item id="form" class="ion-padding" slot="content" class="fondo">
+            <div class="foreground">
+              <hr width="100%" align="left" size="10" noshade="noshade" />
+              <p style="margin: -0.5% 0">
+                <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+                  Paso1:</font>
+              </p>
+              <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">Para iniciar con las funciones de la aplicación nos dirigimos al botón que se encuentra en la parte inferior de esta ventana que se llama"Empresa asignada" el cual nos llevara a la siguiente ventana que cuenta con la información de la empresa que fue asignada </font>
+              <hr width="100%" align="left" size="10" noshade="noshade" />
+              <p style="margin: -0.5% 0">
+                <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+                  Paso2:</font>
+              </p>
+              <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">Una vez dentro de esta ventana nos dirigiremos al botón generar fecha de actividad" para crear la fecha y hora de entrada y salida del día que vamos a realizar o realizamos las prácticas. </font>
+              <ion-button expand="block" (click)="setOpen(true)">Abrir imagen</ion-button>
+              <hr width="100%" align="left" size="10" noshade="noshade" />
+              <p style="margin: -0.5% 0">
+                <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+                  Paso3:</font>
+              </p>
+              <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">Para crear la fecha y las horas de entrada y salida llenamos el siguiente formulario con los datos del día X de la práctica como se muestra a continuación en la siguiente imagen.</font>
+              <ion-button expand="block" (click)="setOpen1(true)">Abrir imagen</ion-button>
+
+              </div>
+          </ion-item>
+        </ion-accordion>
+        <ion-accordion >
+          <ion-item slot="header" class="color">
+            <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#282828">
+              Crear Actividades</font>
+          </ion-item>
+          <ion-item id="form" class="ion-padding" slot="content" class="fondo">
+            <div class="foreground">
+              <hr width="100%" align="left" size="10" noshade="noshade" />
+              <p style="margin: -0.5% 0">
+                <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+                  Paso1:</font>
+              </p>
+              <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454"> Dirigirse al botón que se encuentra en la parte inferior de esta ventana que se llama"Empresa asignada" el cual nos llevara a la siguiente ventana que cuenta con la información de la empresa que fue asignada."</font>
+              <hr width="100%" align="left" size="10" noshade="noshade" />
+              <p style="margin: -0.5% 0">
+                <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+                  Paso2:</font>
+              </p>
+              <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">Una vez dentro de la siguiente ventana al cual fuimos llevamos aplastamos el botón "Lista de actividades."que nos llevara a una ventana con las fechas de las actividades generadas</font>
+              <ion-button expand="block" (click)="setOpen(true)">Abrir imagen</ion-button>
+              <hr width="100%" align="left" size="10" noshade="noshade" />
+              <p style="margin: -0.5% 0">
+                <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+                  Paso3:</font>
+              </p>
+              <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">Para crear las actividades nos dirigimos al botón añadir actividad
+              </font>
+              <ion-button expand="block" (click)="setOpen2(true)">Abrir imagen</ion-button>
+              <hr width="100%" align="left" size="10" noshade="noshade" />
+              <p style="margin: -0.5% 0">
+                <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+                  Paso4:</font>
+              </p>
+              <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">Para la creación de la lista de actividades tenemos que elegir de la lista de referencia de las actividades y escoger las actividades semejantes a las que se haya realizado en el día.</font>
+              <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">Siempre que creemos una actividad aplastamos el botón generar nueva actividad para actualizar la lista de las actividades como se muestra a continuación</font>
+
+              <ion-button expand="block" (click)="setOpen3(true)">Abrir imagen</ion-button>
+
+
+
+              </div>
+          </ion-item>
+        </ion-accordion>
+        <ion-accordion >
+          <ion-item slot="header" class="color">
+            <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#282828">
+              Generar PDF</font>
+          </ion-item>
+          <ion-item id="form" class="ion-padding" slot="content" class="fondo">
+            <div class="foreground">
+              <hr width="100%" align="left" size="10" noshade="noshade" />
+              <p style="margin: -0.5% 0">
+                <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+                  Paso1:</font>
+              </p>
+              <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">Dirigirse al botón que se encuentra en la parte inferior de esta ventana que se llama"Empresa asignada" el cual nos llevara a la siguiente ventana que cuenta con la información de la empresa que fue asignada."</font>
+              <hr width="100%" align="left" size="10" noshade="noshade" />
+              <p style="margin: -0.5% 0">
+                <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+                  Paso2:</font>
+              </p>
+              <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">Una vez dentro de la siguiente ventana nos dirigiremos a la parte inferior de la aplicación donde tendremos que seleccionar la fecha de inicio y la fecha final de la semana que queremos generar el PDF para generar la información de las actividades en el PDF. Una vez elegida la fecha aplastamos en el botón "Generar PDF"</font>
+              <ion-button expand="block" (click)="setOpen(true)">Abrir imagen</ion-button>
+              <hr width="100%" align="left" size="10" noshade="noshade" />
+              <p style="margin: -0.5% 0">
+                <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+                  Recomendacion</font>
+              </p>
+              <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">Para las actividades se recomienda colocar 3 actividades para que encaje perfectamente en el cuadro del pdf.</font>
+              <ion-button expand="block" (click)="setOpen4(true)">Abrir imagen</ion-button>
+              <hr width="100%" align="left" size="10" noshade="noshade" />
+
+              </div>
+          </ion-item>
+        </ion-accordion>
+      </ion-accordion-group>
+      
+
+      <p style="margin: -0.5% 0" style="text-align: center">
+        <button style="text-align: center" class="botonDos"
+          style="margin-top: 30px; margin-bottom: 10px; margin-left: 10px"
+          [routerLink]="['/inicioEstudiante',info.Ide]">
+          empresa asignada
+        </button>
+      </p> 
+      </div>
+
+
+
+
+      <!---------------------------modales-------------------------->
+      <ion-modal [isOpen]="isModalOpen">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar  class="new-background-color">
+              <ion-title>asignacion de empresa</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="setOpen(false)">Cerrar</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <hr width="100%" align="left" size="10" noshade="noshade" />
+            <p style="margin: -0.5% 0" style="text-align: center">
+              <img src="assets/inici.jpg" alt="alternatetext" width="1000" height="650" style=" margin-top:-40px; margin-bottom:-20px"  >
+            </p> 
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+      <ion-modal [isOpen]="isModalOpen1">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar  class="new-background-color">
+              <ion-title>Formulario</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="setOpen1(false)">Cerrar</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <hr width="100%" align="left" size="10" noshade="noshade" />
+            <p style="margin: -0.5% 0" style="text-align: center">
+              <img src="assets/formulario.jpg" alt="alternatetext" width="1000" height="650" style=" margin-top:-40px; margin-bottom:-20px"  >
+            </p> 
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+      <ion-modal [isOpen]="isModalOpen2">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar  class="new-background-color">
+              <ion-title>Lista fecha actividades</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="setOpen2(false)">Cerrar</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <hr width="100%" align="left" size="10" noshade="noshade" />
+            <p style="margin: -0.5% 0" style="text-align: center">
+              <img src="assets/lista.jpg" alt="alternatetext" width="1000" height="650" style=" margin-top:-40px; margin-bottom:-20px"  >
+            </p> 
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+      <ion-modal [isOpen]="isModalOpen3">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar  class="new-background-color">
+              <ion-title>Creacion de actividades</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="setOpen3(false)">Cerrar</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <hr width="100%" align="left" size="10" noshade="noshade" />
+            <p style="margin: -0.5% 0" style="text-align: center">
+              <img src="assets/actividades.jpg" alt="alternatetext" width="1000" height="650" style=" margin-top:-40px; margin-bottom:-20px"  >
+            </p> 
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+      <ion-modal [isOpen]="isModalOpen4">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar  class="new-background-color">
+              <ion-title>PDF</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="setOpen4(false)">Cerrar</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <hr width="100%" align="left" size="10" noshade="noshade" />
+            <p style="margin: -0.5% 0" style="text-align: center">
+              <img src="assets/pdfs.jpg" alt="alternatetext" width="1000" height="650" style=" margin-top:-40px; margin-bottom:-20px"  >
+            </p> 
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+      <ion-modal [isOpen]="isModalOpen5">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar  class="new-background-color">
+              <ion-title>Quienes Somos</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="setOpen5(false)">Cerrar</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <hr width="100%" align="left" size="10" noshade="noshade" />
+            <p style="margin: -0.5% 0">
+              <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+                Creador de la aplicacion</font>
+            </p>
+            <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">Stiven Roche</font>
+            <hr width="100%" align="left" size="10" noshade="noshade" />
+            <p style="margin: -0.5% 0">
+              <font face="Comic Sans MS,arial,verdana" font size="4" style="font-weight: bold" font color="#000000">
+                Objetivo de la creacion de la aplicacion</font>
+            </p>
+            <font face="Comic Sans MS,arial,verdana" font size="4" font color="#545454">Desarrollar una aplicación web para la gestión 
+              documental de las practicas preprofesionales del Instituto Tecnológico Sudamericano y así ayudar a los estudiantes con la documentación 
+              del registro hojas de las prácticas preprofesionales en las empresas en la que realizan las practicas.
+            </font>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+
+
+
+</ion-content>
+<ion-item class="new-background-color">
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" class="new-background-color">
+      <ion-tab-button tab="schedule">
+        <ion-icon name="home" font color="#F2F2F2"></ion-icon>
+        <ion-label color="jade dome">Inicio</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="speakers"(click)="setOpen5(true)">
+        <ion-icon name="person-circle"></ion-icon>
+        <ion-label>Quienes Somos</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="map" (click)="logout()" >
+        <ion-icon name="log-out"></ion-icon>
+        <ion-label>Cerrar Sesion</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-item>

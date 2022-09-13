@@ -1,3 +1,4 @@
+import { FiltroFirestorePipe } from './filtro.firestore.pipes';
 import { FiltroActividadesPipe } from './filtroActividades.pipe';
 import { Filtro1Pipe } from './filtro1.pipe';
 import { NgModule } from '@angular/core';
@@ -10,8 +11,8 @@ import { FiltroTutorPipe } from './filtroTutor.pipe';
 
 @NgModule({
   declarations: [
-    Filtro1Pipe,FiltroPipe,FiltroDocentePipe,FiltroTutorPipe,FiltroActividadesPipe],
-    exports:[Filtro1Pipe,FiltroPipe,FiltroDocentePipe,FiltroTutorPipe,FiltroActividadesPipe]
+    Filtro1Pipe,FiltroPipe,FiltroDocentePipe,FiltroTutorPipe,FiltroActividadesPipe,FiltroFirestorePipe],
+    exports:[Filtro1Pipe,FiltroPipe,FiltroDocentePipe,FiltroTutorPipe,FiltroActividadesPipe,FiltroFirestorePipe]
 
 })
 export class PipesModule { }

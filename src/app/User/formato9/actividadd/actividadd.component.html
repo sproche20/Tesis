@@ -1,9 +1,9 @@
 
 <ion-header>
-	<ul><li>inicio</li>
-    <a href="/#/actsoftware">  <li>Registro Actividades</li></a>
+  <ul><li [routerLink]="['/inicio']">inicio</li>
+    <a href="/#/datos"><li>Estudiantes</li></a>
+    <a href="/#/actsoftware"><li>Registro Actividades</li></a>
     <a href="/#/listaUser"><li>Asignacion de empresa.</li></a>
-    <li (click)="listas()">Lista de actividades.</li>
 	</ul>
 <ion-button (click)="logout()" fill="clear" style="float: right; width:59px; height:54px">
   <ul><li><ion-icon slot="icon-only" name="log-out-outline"  style="float: right; width:65px; height:30px"></ion-icon></li></ul>

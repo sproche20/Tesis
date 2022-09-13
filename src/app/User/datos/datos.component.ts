@@ -18,14 +18,20 @@ import { carrera } from '../models/carrera';
   styleUrls: ['./datos.component.scss'],
 })
 export class DatosComponent implements OnInit {
+  isModalOpen = false;
+  private path='Usuarios'
+  enableNewUser=false;
+
   /**Datos Firebase */
   datos: user ={
     nombre:null,
     apellido:null,
     correo:null,
     uid:null,
+    Ide:null,
     password:null,
     perfil:'visitante'
+
   }
   /**Datos Spring BOOT Y KOTLIN  */
   nui='';
@@ -35,8 +41,12 @@ export class DatosComponent implements OnInit {
   phone= '';
   careerId:number=null;
   estudiantes:Estudiante[]=[];
+  estudi:Estudiante;
   carreras:carrera[]=[];
+  student:user[]=[];
+  newStudent:user;
   textoBuscar='';
+
 
   
 
@@ -55,12 +65,13 @@ export class DatosComponent implements OnInit {
   ngOnInit() {
     this.cargarEstudiante();
     this.cargarCarrera();
+    this.getStudent();
 
     
   }
 
   /**crear estudiante FIREBASE */
- /* async registrar(){
+  async registrar(){
     this.interaction.presentLoading('registrando...')
     console.log('datos -> ',this.datos)
      const res= await this.auth.registroUser(this.datos).catch(error=>{
@@ -80,7 +91,21 @@ export class DatosComponent implements OnInit {
       
       this.router.navigate(['/datos']);
     }
-  }*/
+  }
+//editar estudiante firebase----------------------------------
+  getStudent(){
+    const path='Usuarios';
+    this.firestore.getCollection<user>(this.path).subscribe( res=>{
+      this.student=res;
+    })
+
+  }
+  deleteStudent(usuario:user){
+    this.firestore.deleteDoc(this.path,usuario.uid)
+  }
+
+
+
   /**crear estudiante Spring BOOT Y KOTLIN  */
 
   onCreate(): void{
@@ -117,8 +142,7 @@ export class DatosComponent implements OnInit {
   logout(){
     this.auth.logout();
     this.interaction.presentToast("sesion finalizada");
-    this.router.navigate(['/loginteacher'])
-
+    this.router.navigate(['/loginteacher']);
   }
 
 
@@ -136,5 +160,12 @@ export class DatosComponent implements OnInit {
     const textos=event.target.value;
     this.textoBuscar=textos;
   }
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
+
+
+
 
 }

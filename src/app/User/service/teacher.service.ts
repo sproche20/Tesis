@@ -8,7 +8,7 @@ import { Teacher } from '../models/teacher';
     providedIn: 'root'
   })
   export class TeacherService{
-    productoURL='http://localhost:8081/teachers/';
+    productoURL='https://tesisss.herokuapp.com/teachers/';
 
     constructor(private httpClient:HttpClient) { }
     public lista():Observable<Teacher[]>{

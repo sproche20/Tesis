@@ -1,11 +1,10 @@
 <ion-header>
   <ul><li>inicio</li>
-    <a href="/#/actsoftware" *ngIf="login && rol=='visitante'"><li *ngIf="login && rol=='visitante'" >actividades</li></a>
-    <a href="/#/listaUser" *ngIf="login && rol=='visitante'"><li *ngIf="login && rol=='visitante'">Registro Estudiante.</li></a>
-    <a href="/#/datos" *ngIf="login && rol=='admin'"><li *ngIf="login && rol=='admin'" >Estudiantes</li></a>
+    <a href="/#/listaUser" *ngIf="login && rol=='visitante'"><li *ngIf="login && rol=='visitante'">Asignacion Empresa.</li></a>
+    <a href="/#/datos" *ngIf="login && rol=='visitante'"><li *ngIf="login && rol=='visitante'" >Estudiantes</li></a>
     <a href="/#/profesor" *ngIf="login && rol=='admin'"><li *ngIf="login && rol=='admin'">Docentes</li></a>
 	  <a href="/#/tutorcompany" *ngIf="login && rol=='admin'"><li *ngIf="login && rol=='admin'">Compañia</li></a>
-    <a href="/#/actsoftware" *ngIf="login && rol=='admin'"><li *ngIf="login && rol=='admin'">Registro Actividades</li></a>
+    <a href="/#/actsoftware" *ngIf="login && rol=='visitante'"><li *ngIf="login && rol=='visitante'">Registro Actividades</li></a>
     
   </ul>
 	<ion-button (click)="logout()" fill="clear" style="float: right; width:59px; height:48px">

@@ -10,12 +10,10 @@ import { PracticeReportDto } from '../models/Dtos/PracticeReportDto';
     providedIn: 'root'
   })
   export class for9Service{
-    productoURL='http://localhost:8081/practices/';
-    productoURLS='http://localhost:8081/practices/with/estudiante';
+    productoURL='https://tesisss.herokuapp.com/practices/';
+    productoURLS='https://tesisss.herokuapp.com/practices/with/estudiante';
 
-   
-
-    constructor(private httpClient:HttpClient) { }
+   constructor(private httpClient:HttpClient) { }
     public lista():Observable<formato9[]>{
         return this.httpClient.get<formato9[]>(this.productoURLS)
     }
@@ -35,7 +33,7 @@ import { PracticeReportDto } from '../models/Dtos/PracticeReportDto';
     public update( for9:formato9): Observable<any> {
       return this.httpClient.put<any>(this.productoURL , for9);
     }
-  public delete(id: number ): Observable<any> {
+  public delete(id: number): Observable<any> {
       return this.httpClient.delete<any>(this.productoURL+ `delete/${id}`);
     }
     public cargarDatos(practiceId):Observable<PracticeReportDto>{

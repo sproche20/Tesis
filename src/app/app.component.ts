@@ -22,7 +22,7 @@ export class AppComponent {
     private router:Router
   ) {
 
-    /*this.auth.stateUuser().subscribe(res=>{
+    this.auth.stateUuser().subscribe(res=>{
       if(res){
         console.log('bienvenido');
         this.login=true ;
@@ -32,21 +32,20 @@ export class AppComponent {
         this.login=false;
       }
     })
-  }*/
+  }
 
 
 
-  /*getDatosUser(uid:string){
+  getDatosUser(uid:string){
     const path='Usuarios';
     const id=uid;
     this.firestore.getDoc<user>(path,id).subscribe(res=>{
-      console.log('datos->',res);
       if (res){
         this.rol=res.perfil;
       }
     })
-  }*/
-  /*logout(){
+  }
+  logout(){
     this.auth.logout();
     this.interaction.presentToast("sesion finalizada");
     this.router.navigate(['/login'])
@@ -54,6 +53,6 @@ export class AppComponent {
   }
   loginApp() {
     this.login = true;
-}*/
 }
 }
+

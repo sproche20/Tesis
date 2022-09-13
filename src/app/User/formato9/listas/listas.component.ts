@@ -66,4 +66,13 @@ export class ListasComponent implements OnInit {
     this.router.navigate(['/loginteacher'])
   
   }
+  borrarDatos(id:number) {
+    this.formato9.delete(id).subscribe(
+      data => {
+        console.log(data);
+        console.log("borrado exitoso");
+       this.cargarRegistro();   
+      },
+    );
+  }
 }

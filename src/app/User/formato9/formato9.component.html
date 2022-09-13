@@ -1,5 +1,6 @@
 <ion-header>
-	<ul><li>inicio</li>
+  <ul><li [routerLink]="['/inicio']">inicio</li>
+    <a href="/#/datos"><li>Estudiantes</li></a>
     <a href="/#/actsoftware">  <li>Registro Actividades</li></a>
     <a href="/#/listaUser"><li>Asignacion de empresa..</li></a>
 	</ul>
@@ -48,7 +49,7 @@
                 <span class="styled-input">
                    
                   <input name="startDate"
-                  [(ngModel)]="starDate"
+                  [(ngModel)]="inicFech"
                  type="date" id="inicio" required  />
                  <label>Fecha de inicio</label>
                 </span>
@@ -65,7 +66,7 @@
                 <span class="styled-input wide">
                   <input
                    name="endDate"
-                   [(ngModel)]="endDate"
+                   [(ngModel)]="finFech"
                   type="date" id="fin" required />
                   <label>fecha final</label> 
                 </span>
@@ -96,7 +97,8 @@
                 <th>Fecha de inicio</th>
                 <th>Fecha de Final</th>
                 <th>Total Horas</th>
-                <th>Editar/Eliminar</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
                 <th>actividades</th>
               </tr>
             </thead>
@@ -104,14 +106,14 @@
               <tr *ngFor="let formulary of formulary" >
                 <td>{{formulary.id}}</td>
                 <td>{{formulary.empresa}}</td>
-                <td> {{formulary.estudiante}}</td>
+                <td> {{formulary.estudiante}}{{formulary.apellido}}</td>
                 <td>{{formulary.profesor}}</td>
                 <td>{{formulary.tutor}}</td>
                 <td>{{formulary.startDate.toString().substr(0,10) }}</td>
                 <td>{{formulary.endDate.toString().substr(0,10) }}</td>
                 <td>{{formulary.hours}}</td>
-                <td><button  class="botonDos" routerLink="/editarActividad/{{formulary.id}}" >Editar</button>
-                  <button class="botonUno"><ion-icon name="trash-outline"></ion-icon>Eliminar</button></td>
+                <td><button  class="botonDos" routerLink="/editarActividad/{{formulary.id}}" >Editar</button></td>
+                <td><button class="botonUno" (click)="borrarDatos(formulary.id)"><ion-icon name="trash-outline"></ion-icon>Eliminar</button></td>
                 <td><button style="text-align: center;" class="botonDos" [routerLink]="['/listas',formulary.id]">Lista actividades.</button></td>
               </tr>
             </tbody>

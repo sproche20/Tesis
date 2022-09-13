@@ -1,7 +1,6 @@
 <ion-header>
-  <ul><li>inicio</li>
-    <a href="/#/actsoftware" *ngIf="login && rol=='visitante'"><li>actividades</li></a>
-    <a href="/#/datos"><li>Estudiantes</li></a>
+  <ul >
+    <a href="/#/inicio"><li>inicio</li></a>
     <a href="/#/profesor"><li>Docentes</li></a>
 	  <li onClick="window.location.reload();">Compañia</li>
   </ul>
@@ -132,14 +131,8 @@
               <label>Nombre de la empresa</label> 
             </span>
           </span>
-          <span class="col-md-6 col-sm-12">
-            <span class="styled-input">
-              <input type="text" required />
-              <label>Email</label> 
-            </span>
-          </span>
-          <span class="col-md-6 col-sm-12">
-            <span class="styled-input" style="float:right;">
+          <span class="col-xs-12">
+            <span class="styled-input wide">
               <input
               name="phone"
               [(ngModel)]="phones" 
@@ -167,7 +160,7 @@
   <div class="tab4">
     <span class="container">
       <ion-searchbar color ="light"
-    placeholder="buscar usuario"
+    placeholder="buscar empresa"
     (ionChange)="busqueda($event)"></ion-searchbar>
   
     <table style="margin: 0 auto;" id="datos">

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MenuController, ModalController, PopoverController } from '@ionic/angular';
 import { for9 } from '../../models/for9';
 import { actdetailService } from '../../service/actdetail.service';
+import { AuthService } from '../../service/auth.service';
 import { for9Service } from '../../service/for9.service';
 import { formulario9Service } from '../../service/formulario9.service';
 import { InteractionService } from '../../service/interaction.service';
@@ -15,23 +16,20 @@ import { InteractionService } from '../../service/interaction.service';
 export class ListFormularioComponent implements OnInit {
   foro9:for9[]=[];
   practiceDetailId:any;
-  fecha:any
-
   Id:any;
   Ids:any;
-  actualDate:Date;
-  finalId:number;
   constructor(
     public popoverController: PopoverController,
-    private interaction: InteractionService ,
     private menu: MenuController,
-    private for9Service:for9Service,
     private formato9:formulario9Service,
     private router:Router,
-    private route:ActivatedRoute,
     private activatedRoute: ActivatedRoute,
-    public modalController:ModalController,
-    private actividaddetailService:actdetailService,    
+    public  modalController:ModalController,
+    private interaction:InteractionService,
+    private auth:AuthService,
+
+
+  
   ) { 
 
     
@@ -39,37 +37,16 @@ export class ListFormularioComponent implements OnInit {
 
   ngOnInit() {
 
-    this.cargarRegistro();
-    this.Id=this.route.snapshot.paramMap.get("id");
-    this.finalId=this.Id-1;
-    const id = this.activatedRoute.snapshot.params.id;
-    this.formato9.listPracticas(id).subscribe(
-      data=>{
-        this.foro9=data;
-        this.actualDate=this.foro9[this.finalId].actualDate;
-        this.fecha=this.actualDate
-        console.log("fechas:",this.fecha)
-      },
-      err=>{
-        console.log(err);
-      }
-    )
-    
+    this.cargarRegistro(); 
   }
   openMenu(){
     this.menu.open();
   }
   cargarRegistro():void{
-    this.Id=this.route.snapshot.paramMap.get("id");
-    this.finalId=this.Id-1;
     const id = this.activatedRoute.snapshot.params.id;
     this.formato9.listPracticas(id).subscribe(
       data=>{
         this.foro9=data;
-        this.actualDate=this.foro9[this.finalId].actualDate;
-        console.log("fechas2:",this.actualDate)
-
-
       },
       err=>{
         console.log(err);
@@ -78,15 +55,16 @@ export class ListFormularioComponent implements OnInit {
   }
   inicio(){
     this.router.navigate(['/inicioEstudiante',this.Ids])
-
-
+  }
+  logout(){
+    this.auth.logout();
+    this.interaction.presentToast("sesion finalizada");
+    this.router.navigate(['/login'])
 
   }
-
-  pdf(){
-
-    let fechaCompleta=this.actualDate.toString().substr(0,4) +this.actualDate.toString().substr(5,2)+this.actualDate.toString().substr(8,2)
-    console.log(fechaCompleta)
+  isModalOpen5 = false;
+  setOpen5(isOpen: boolean) {
+    this.isModalOpen5 = isOpen;
   }
 
 }

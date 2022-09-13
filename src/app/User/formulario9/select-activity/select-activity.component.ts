@@ -5,6 +5,7 @@ import { Actdetail } from '../../models/actdetail';
 import { for9 } from '../../models/for9';
 import { software } from '../../models/software';
 import { actdetailService } from '../../service/actdetail.service';
+import { AuthService } from '../../service/auth.service';
 import { ExampleService } from '../../service/example.service';
 import { formulario9Service } from '../../service/formulario9.service';
 import { InteractionService } from '../../service/interaction.service';
@@ -31,6 +32,7 @@ export class SelectActivityComponent implements OnInit {
   Ids:any;
   actualDate:Date;
   finalId:number;
+  student:any;
   constructor(
     private menu:MenuController,
     public popoverController: PopoverController,
@@ -40,41 +42,41 @@ export class SelectActivityComponent implements OnInit {
     private exampleService:ExampleService,
     private formato9:formulario9Service,
     private route:ActivatedRoute,
-
-    private router:Router
+    private activatedRoute: ActivatedRoute,
+    private router:Router,
+    private auth:AuthService,
   ) { }
 
   ngOnInit() {
+        this.cargarActividad();
+    this.cargarDatos();
     this.Id=this.route.snapshot.paramMap.get("id");
-    this.finalId=this.Id-1;
-    this.detailId=this.Id
-    this.formato9.lista().subscribe(data=>{
+    this.finalId=this.Id;
+    this.detailId=this.Id;
+    this.Ids=this.student;
+    const id = this.activatedRoute.snapshot.params.id;
+    this.formato9.listPracticas(id).subscribe(
+      data=>{
       console.log("Res",data)
       this.foro9=data;
-      this.actualDate=this.foro9[this.finalId].actualDate;
-      console.log("fecha del estudiante",this.actualDate);
-      this.Ids=this.foro9[this.finalId].student;
-      console.log("Id del estudiante",this.Ids);
-
+      this.student=this.foro9[this.finalId].id;
+      console.log("Id Actividades",this.student);
       
 
-
-    })
-    this.cargarActividad();
-    this.cargarDatos();
-    console.log(this.cargarDatos)
+      this.Ids=this.student;
+      },
+      err=>{
+        console.log(err);
+      }
+    )
   }
-  openMenu(){
-    this.menu.open();
-  }
-
   crearActividad():void{
     const actdetail=new Actdetail (this.act,this.detailId,this.activitiesId);
     this.actividaddetailService.save(actdetail).subscribe();
     console.log(actdetail);
     if(actdetail){
       this.interaction.presentToast('registro exitoso');
-      this.cargarActividad();
+      this.cargarDatos();
     }
   }
   cargarActividad():void{
@@ -88,15 +90,14 @@ export class SelectActivityComponent implements OnInit {
     )
   }
   inicio(){
-    this.router.navigate(['/inicioEstudiante',this.Ids])
+    this.router.navigate(['/listformulario',this.Ids])
 
   }
-   cargarDatos():void{
+  cargarDatos():void{
     const id = this.route.snapshot.params.id;
     this.actividaddetailService.listActividad(id).subscribe(
       data=>{
         this.actDetail=data;
-        console.log("numero de actividades:",this.actDetail)
       },
       err=>{
         console.log(err);
@@ -114,10 +115,15 @@ export class SelectActivityComponent implements OnInit {
       },
     );
   } 
-  actividades(){
-    this.acti=this.actDetail
-    console.log("lista unida",this.acti)
-    
+  logout(){
+    this.auth.logout();
+    this.interaction.presentToast("sesion finalizada");
+    this.router.navigate(['/login'])
+
+  }
+  isModalOpen5 = false;
+  setOpen5(isOpen: boolean) {
+    this.isModalOpen5 = isOpen;
   }
 
 

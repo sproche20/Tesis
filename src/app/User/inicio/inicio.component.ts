@@ -2,16 +2,11 @@
 
 
 import { PracticeReportDto } from './../models/Dtos/PracticeReportDto';
-
-
-import { actividadesDto } from './../models/Dtos/actividadesDto';
-
 import { jsPDF } from 'jspdf';
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
-  AlertController,
   MenuController,
   ModalController,
   NavController,
@@ -31,7 +26,6 @@ import { imagenBase64 } from './ImagenBase64';
 import { EstudianteService } from '../service/estudiante.service';
 import { DatosReporteDto } from '../models/Dtos/DatosReportesDtos';
 import { Estudiante } from '../models/estudiante';
-import { DetalleReporteDto } from '../models/Dtos/DetalleReporteDto';
 
 import { AuthService } from '../service/auth.service';
 
@@ -42,6 +36,7 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./inicio.component.scss'],
 })
 export class InicioComponent implements OnInit {
+  
   actDetail: Actdetail[] = [];
   foro9: for9[] = [];
   formulary: formato9[] = [];
@@ -88,11 +83,8 @@ export class InicioComponent implements OnInit {
 
     private activatedRoute: ActivatedRoute,
     public modalController: ModalController,
-    private actividaddetailService: actdetailService,
     //**---------------------------actividad seleccionar------------------------------- */
     //**---------------------------actividad seleccionar------------------------------- */
-    private softwareService: SoftwareService,
-    private exampleService: ExampleService
   ) {
     this.menu.enable(false);
   }
@@ -156,28 +148,42 @@ export class InicioComponent implements OnInit {
       this.cargarDatos();
     });
   }
+
   logout(){
     this.auth.logout();
     this.interaction.presentToast("sesion finalizada");
     this.router.navigate(['/login'])
 
   }
+  perfil(){
+    this.router.navigate(['/perfil'])
+  }
+  isModalOpen5 = false;
+  setOpen5(isOpen: boolean) {
+    this.isModalOpen5 = isOpen;
+  }
+
 /*-------------------------------fechas-------------------------------------------*/
 
 
   //**---------------------------Prueba actividad seleccionar---------------------------- */
   //**---------------------------Prueba actividad seleccionar------------------------------- */
   fechas(){
-    let fechaCompleta=this.actualDate.toString().substr(0,4) +this.actualDate.toString().substr(5,2)+this.actualDate.toString().substr(8,2)
+    
+  }
+
+  generatePDF(index) {
+/*-------------------------------fechas-------------------------------------------*/
+let fechaCompleta=this.actualDate.toString().substr(0,4) +this.actualDate.toString().substr(5,2)+this.actualDate.toString().substr(8,2)
     console.log(fechaCompleta)
     this.inicial=fechaCompleta
     let fechafinal=this.endDate.toString().substr(0,4) +this.endDate.toString().substr(5,2)+this.endDate.toString().substr(8,2)
     this.final=fechafinal
     console.log(fechaCompleta)
     console.log(fechafinal)
-  }
+/*-------------------------------fechas-------------------------------------------*/
 
-  generatePDF(index) {
+
     console.log(index)
     this.formularioSeleccionado = this.formulary[index];
     this.for9Service.listPracticasFechas(this.formularioSeleccionado.id,this.inicial,this.final).subscribe(
@@ -225,7 +231,7 @@ export class InicioComponent implements OnInit {
     pdf.text(datosReporte.companyName.toString(), 55, 247);
     //horas reportadas
     pdf.setFontSize(24);
-    pdf.text('50', 382, 242);
+   
     //tabla de actividades
 
     if (datosReporte.practiceDetails) {
@@ -250,7 +256,7 @@ export class InicioComponent implements OnInit {
           pdf.text(detail.totalHours.toString(), columna3, (filaHora + (60 * i)));
           detail.activityDetails.forEach(detalles=>{
             pdf.setFontSize(8);
-            pdf.text(detalles.id.toString(),columnas,(filaText+(25*a)))
+            pdf.text(detalles.actividad.toString(),columnas,(filaText+(25*a)))
            /* if(a>0&&a<3){
               pdf.text(detalles.actividad.toString(),columnas,(filaText+(32*a)))
             }*/

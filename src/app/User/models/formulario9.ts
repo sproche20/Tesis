@@ -1,5 +1,5 @@
 export class formato9{
-    id?:Number;
+    id?:number;
     startDate:Date;
     endDate:Date;
     hours:Number;

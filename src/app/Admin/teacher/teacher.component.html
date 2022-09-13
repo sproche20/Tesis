@@ -1,7 +1,6 @@
 
 <ion-header>
-	<ul><li>inicio</li>
-		<a href="/#/datos"><li>Estudiantes</li></a>
+	<ul><a href="/#/inicio"><li>inicio</li></a>
 		<li onClick="window.location.reload();">Docentes</li>
 		<a href="/#/tutorcompany"><li>Compañia</li></a>
 	</ul>
@@ -61,7 +60,7 @@
 					</span>
 					
 					<span class="col-xs-12">
-						<span class="btn-lrg submit-btn"  (click)="onCreate()">Guardar</span>
+						<span class="btn-lrg submit-btn"  (click)="onCreate()" (click)="registrar()">Guardar</span>
 						<span class="btn-lrg submit-btn"  onClick="window.location.reload();">Nuevo</span>
 					</span>
 			    </span>

@@ -13,6 +13,7 @@ import { SoftwareService } from '../service/software.service';
 import { for9Service } from '../service/for9.service';
 import { ExampleService } from '../service/example.service';
 import {fechas} from'../formulario9/fecha.Component.js'
+import { AuthService } from '../service/auth.service';
 @Component({
   selector: 'app-formulario9',
   templateUrl: './formulario9.component.html',
@@ -36,7 +37,7 @@ observations:'';
   practiceId:number=null;
   actualDates:any
   fechaaa:Date;
-  finalfech:string;
+  finalfech:String;
   
   
   Software:software[]=[];
@@ -44,8 +45,6 @@ observations:'';
   /**actividad detail-------------------------------------------------------------------------------------------- */
   activitiesId:number=null;
   detailId:number=null;
-
-
 
   constructor(private menu: MenuController,
     public popoverController: PopoverController,
@@ -57,6 +56,7 @@ observations:'';
     private formato:for9Service,
     private exampleService:ExampleService,
     public navCtrl:NavController,
+    private auth:AuthService,
     private router:Router) {
       this.menu.enable(false);
      }
@@ -66,7 +66,6 @@ observations:'';
 
     this.cargarActividad();
     this.Id=this.route.snapshot.paramMap.get("id");
-    
     this.finalId=this.Id-1;
     this.practiceId=this.Id;
     this.ids=this.studentId;
@@ -94,24 +93,32 @@ observations:'';
 
   }
   inicio(){
-    this.router.navigate(['/inicioEstudiante',this.student])
+    this.router.navigate(['/inicioEstudiante',this.ids])
   }
+
+
   onCreate():void{
-    this.actualDate=this.fechaaa;
-    var day=this.actualDate.getDate()+1;
-    var month=this.actualDate.getMonth();
-    var year=this.actualDate.getFullYear();
-    this.finalfech=day+"/"+month+"/"+year;
-    console.log("fecha modificada",this.finalfech)
 
-    
-
-    
+    var d = new Date(this.fechaaa),
+    month = '' + (d.getUTCMonth()+1),
+    day = '' + (d.getUTCDate()),
+    year = d.getUTCFullYear();
+    if (day.length < 2){
+      day = '0' + day;
+    }
+if (month.length < 2) {
+  month = '0' + month;
+}  this.finalfech=[year, month, day].join('/');
+console.log(month); // 👉️ "07"
+console.log(day); // 👉️ "21"
+console.log(year); // 👉️ "2024"
+this.actualDate= new Date(+year, +month - 1, +day);
+console.log("fecha final:",this.actualDate)
     const formulario9=new for9 (this.actualDate,this.startTime,this.endTime,this.totalHours,this.observations,this.practiceId,this.student);
     this.for9Service.save(formulario9).subscribe(data=>this.practiceDetailId=data.ide);
     if(formulario9){
       this.interaction.presentToast('registro exitoso');
-      this.router.navigate(['/inicioEstudiante',this.student])
+      this.router.navigate(['/perfil'])
     }
   }
   /**crear lista actividad------------------------------------------------------ */
@@ -124,6 +131,16 @@ observations:'';
         console.log(err);
       }
     )
+  }
+  logout(){
+    this.auth.logout();
+    this.interaction.presentToast("sesion finalizada");
+    this.router.navigate(['/login'])
+
+  }
+  isModalOpen5 = false;
+  setOpen5(isOpen: boolean) {
+    this.isModalOpen5 = isOpen;
   }
 
 }

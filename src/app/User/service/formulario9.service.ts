@@ -8,7 +8,7 @@ import { for9 } from '../models/for9';
     providedIn: 'root'
   })
   export class formulario9Service{
-    productoURL='http://localhost:8081/practicedetail/';
+    productoURL='https://tesisss.herokuapp.com/practicedetail/';
     constructor(private httpClient:HttpClient) { }
     public lista():Observable<for9[]>{
         return this.httpClient.get<for9[]>(this.productoURL)
@@ -17,9 +17,6 @@ import { for9 } from '../models/for9';
       public listPracticas(id:number):Observable<for9[]>{
         return this.httpClient.get<for9[]>(this.productoURL+ `${id}`+'/practice');
         } 
-    
-
-
     public detail(id:number):Observable<for9>{
       return this.httpClient.get<for9>(this.productoURL+ `${id}`);
     }

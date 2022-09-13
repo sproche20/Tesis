@@ -1,8 +1,9 @@
 
 <ion-header>
-	<ul><li>inicio</li>
-    <a href="/#/actsoftware">  <li>Registro Actividades</li></a>
-    <a href="/#/listaUser"><li>Asignacion de empresa..</li></a>
+  <ul><li [routerLink]="['/inicio']">inicio</li>
+    <a href="/#/datos"><li>Estudiantes</li></a>
+    <a href="/#/actsoftware"><li>Registro Actividades</li></a>
+  <li onClick="window.location.reload();">Asignacion de empresa.</li>
 	</ul>
 <ion-button (click)="logout()" fill="clear" style="float: right; width:59px; height:54px">
   <ul><li><ion-icon slot="icon-only" name="log-out-outline"  style="float: right; width:65px; height:30px"></ion-icon></li></ul>
@@ -13,6 +14,7 @@
     <div class="lbl-menu">
         <label for="radio1">Lista Actividades Creadas.</label>
     </div>
+    
     
     <div class="content">
        
@@ -29,6 +31,7 @@
         <th>horas totales</th>
         <th>Observaciones</th>
         <th>Lista Actividades</th>
+        <th>Eliminar actividad</th>
       </tr>
     </thead>
     <tbody>
@@ -40,6 +43,7 @@
         <td>{{foro9.totalHours}}</td>
         <td>{{foro9.observations}}</td>
         <td><button style="text-align: center;" class="botonDos" routerLink="/actividades/{{foro9.id}}">Actividades</button></td>
+        <td><button class="botonUno" (click)="borrarDatos(foro9.id)"><ion-icon name="trash-outline"></ion-icon>Eliminar</button></td>
 
       </tr>
      

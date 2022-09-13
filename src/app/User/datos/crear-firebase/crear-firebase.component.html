@@ -1,0 +1,34 @@
+<ion-header>
+
+</ion-header>
+<ion-content>
+  <div class="container"  >
+    <div class="row input-container">
+      <div class="col-xs-12">
+        <div class="styled-input wide">
+      <h3>Datos Estudiantes</h3>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="styled-input wide">
+          <input
+          [(ngModel)]="datos.password"
+          type="password" required />
+          <label>Contraseña</label> 
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="styled-input wide">
+          <input
+          [(ngModel)]="datos.Ide"
+          type="number" required />
+          <label>Id Backend</label> 
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="btn-lrg submit-btn"  (click)="registrar()" >Actualizar</div>
+      </div>
+              </div>
+  </div>
+
+</ion-content>

@@ -1,8 +1,8 @@
 <ion-header>
-  <ul><li>inicio</li>
+  <ul><li [routerLink]="['/inicio']">inicio</li>
     <li onClick="window.location.reload();">Estudiantes</li>
-    <a href="/#/profesor"><li>Docentes</li></a>
-		<a href="/#/tutorcompany"><li>Compañia</li></a>
+    <a href="/#/actsoftware"><li>Registro Actividades</li></a>
+    <a href="/#/listaUser"><li>Asignacion de empresa..</li></a>
   </ul>
 	<ion-button (click)="logout()" fill="clear" style="float: right; width:59px; height:54px">
 		<ul><li><ion-icon slot="icon-only" name="log-out-outline"  style="float: right; width:65px; height:30px"></ion-icon></li></ul>
@@ -35,7 +35,6 @@
       <input 
       name="name"
       [(ngModel)]="name"
-      [(ngModel)]="datos.nombre"
       type="text" required />
       <label>Nombres Completos</label> 
     </span>
@@ -45,7 +44,6 @@
       <input
       name="lastname"
       [(ngModel)]="lastname"
-      [(ngModel)]="datos.apellido"
       type="text" required />
       <label>Apellidos Completos</label> 
     </span>
@@ -55,22 +53,14 @@
       <input
       name="email"
       [(ngModel)]="email"
-      [(ngModel)]="datos.correo" 
       type="text" required />
       <label>Correo Elecrtronico</label>  
     </span>
   </span>
-  <span class="col-md-6 col-sm-12">
-    <span class="styled-input">
-      <input
-      [(ngModel)]="datos.password"
-      type="password" required />
-      <label>Contraseña</label> 
-    </span>
-  </span>
+
   
   <span class="col-md-6 col-sm-12">
-    <span class="styled-input" style="float:right;">
+    <span class="styled-input">
       <input
       name="phone"
       [(ngModel)]="phone" 
@@ -78,8 +68,8 @@
       <label>Numero de telefono</label> 
     </span>
   </span>
-  <span class="col-xs-12">
-    <span class="styled-input wide">
+  <span class="col-md-6 col-sm-12">
+    <span class="styled-input" style="float:right;">
      <ion-list class="foreground">
      <ion-item class="color">
        <label>Carrera</label>
@@ -91,7 +81,7 @@
     </span>
   </span>
   <span class="col-xs-12">
-    <span class="btn-lrg submit-btn" (click)="onCreate();">Guardar</span>
+    <span class="btn-lrg submit-btn" (click)="onCreate()">Guardar</span>
     <span class="btn-lrg submit-btn"  onClick="window.location.reload();">Nuevo</span>
 
   </span>
@@ -113,7 +103,8 @@
                   <th>Apellidos</th>
                   <th>Email</th>
                   <th>Celular</th>
-                  <th>Editar/Eliminar</th>
+                  <th>generar contraseña</th>
+                  <th>Editar</th>
                   <th>Eliminar</th>
                 </tr>
               </thead>
@@ -125,15 +116,18 @@
                   <td>{{estudiantes.lastname}}</td>
                   <td>{{estudiantes.email}}</td>
                   <td>{{estudiantes.phone}}</td>
+                  <td><button style="text-align: center;" [routerLink]="['/CrearFirebase', estudiantes.id]" class="botonDos">generar</button></td>
                   <td><button style="text-align: center;" class="botonDos"  routerLink="/editarEstudiante/{{estudiantes.id}}">Editar</button></td>
                   <td><button style="text-align: center;"  class="botonUno" (click)="borrarEstudiante(estudiantes.id)"><ion-icon name="trash-outline"></ion-icon>Eliminar</button></td>      
                 </tr>
-               
               </tbody>
             </table>
           </span>
         
         </div>
+ 
+
+
     </div>
 </div>
 

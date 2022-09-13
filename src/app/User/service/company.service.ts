@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
   })
   export class CompanyService{
-    productoURL='http://localhost:8081/companies/';
+    productoURL='https://tesisss.herokuapp.com/companies/';
     constructor(private httpClient:HttpClient) { }
     public lista():Observable<company[]>{
         return this.httpClient.get<company[]>(this.productoURL)

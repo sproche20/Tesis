@@ -8,8 +8,8 @@ import { carrera } from '../models/carrera';
     providedIn: 'root'
   })
   export class CarreraService{
-    productoURL='http://localhost:8081/carreras/';
-    productoURLS='http://localhost:8081/carreras/with/profesor';
+    productoURL='https://tesisss.herokuapp.com/carreras/';
+    productoURLS='https://tesisss.herokuapp.com/carreras/with/profesor';
 
     constructor(private httpClient:HttpClient) { }
     public lista():Observable<carrera[]>{

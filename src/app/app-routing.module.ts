@@ -1,5 +1,7 @@
+import { CrearFirebaseComponent } from './User/datos/crear-firebase/crear-firebase.component';
+import { PerfilComponent } from './User/perfil/perfil.component';
+
 import { ActividaddComponent } from './User/formato9/actividadd/actividadd.component';
-import { FechasComponent } from './User/fechas/fechas.component';
 import { ListasComponent } from './User/formato9/listas/listas.component';
 import { Editar9Component } from './User/formato9/editar9/editar9.component';
 import { PdfComponent } from './User/pdf/pdf.component';
@@ -9,8 +11,7 @@ import { InicialComponent } from './docente/inicial/inicial.component';
 import { ListFormularioComponent } from './User/formulario9/list-formulario/list-formulario.component';
 import { LoginTeacherComponent } from './login/login-teacher/login-teacher.component';
 import { SelectActivityComponent } from './User/formulario9/select-activity/select-activity.component';
-import { EditarActComponent } from './User/lista-actividad/editar-act/editar-act.component';
-import { ListaActividadComponent } from './User/lista-actividad/lista-actividad.component';
+
 import { InicioComponent } from './User/inicio/inicio.component';
 import { EditarsoftwareComponent } from './docente/actividades-software/editarsoftware/editarsoftware.component';
 import { ActividadesSoftwareComponent } from './docente/actividades-software/actividades-software.component';
@@ -29,8 +30,11 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { Formato9Component } from './User/formato9/formato9.component';
 import { map } from 'rxjs/operators';
+import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
+import { canActivate } from '@angular/fire/compat/auth-guard';
 
-const uidAdmin='7hDVeNKpwrYoUKfTyNBNl0yKjgS2'; 
+
+const uidAdmin='xQXDioaRN8OfOfD3aGBGlqmmSDA2'; 
 const onlyAdmin = () => map((user:any) => !!user && user.uid === uidAdmin);
 
 const routes: Routes = [
@@ -40,34 +44,35 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'for9/:id',component: Formato9Component
+    path: 'for9/:id',component: Formato9Component,canActivate: [AngularFireAuthGuard]
 
   },
   {
-    path: 'datos',component: DatosComponent
+    path: 'datos',component: DatosComponent,canActivate: [AngularFireAuthGuard]
+
   },
 
   {
-    path: 'profesor',component: TeacherComponent
+    path: 'profesor',component: TeacherComponent, ...canActivate(onlyAdmin)
   },
   {
-    path: 'editarTeacher/:id',component:EditTeacherComponent
+    path: 'editarTeacher/:id',component:EditTeacherComponent,...canActivate(onlyAdmin)
   },
   {
-    path: 'editarEstudiante/:id',component:EditEstudianteComponent
+    path: 'editarEstudiante/:id',component:EditEstudianteComponent,canActivate: [AngularFireAuthGuard]
   },
   
   {
-    path: 'editar/:id',component:ListaCompComponent
+    path: 'editar/:id',component:ListaCompComponent,...canActivate(onlyAdmin)
   },
   {
-    path: 'tutorcompany',component:TutorCompanyComponent
+    path: 'tutorcompany',component:TutorCompanyComponent,...canActivate(onlyAdmin)
   },
   {
-    path: 'editartutor/:id',component:EditarComponent
+    path: 'editartutor/:id',component:EditarComponent,...canActivate(onlyAdmin)
   },
   {
-    path: 'editarcarrera/:id',component:EditCarreraComponent
+    path: 'editarcarrera/:id',component:EditCarreraComponent,...canActivate(onlyAdmin)
   },
   {
     path: 'for3',component:Formato3Component
@@ -78,56 +83,59 @@ const routes: Routes = [
 
   },
   {
-    path: 'formulario9/:id',component:Formulario9Component
+    path: 'formulario9/:id',component:Formulario9Component,canActivate: [AngularFireAuthGuard]
 
   },
   {
-    path: 'actsoftware',component:ActividadesSoftwareComponent
+    path: 'actsoftware',component:ActividadesSoftwareComponent,canActivate: [AngularFireAuthGuard]
 
   },
   {
-    path: 'editarsoftware/:id',component:EditarsoftwareComponent
+    path: 'editarsoftware/:id',component:EditarsoftwareComponent,canActivate: [AngularFireAuthGuard]
   },
     {
-    path: 'inicioEstudiante/:id',component:InicioComponent
+    path: 'inicioEstudiante/:id',component:InicioComponent,canActivate: [AngularFireAuthGuard]
   },
   {
-    path: 'listaActividad',component:ListaActividadComponent
-  },
-  {
-    path: 'editarAct/:id',component:EditarActComponent
-  },  
-  {
-    path: 'seleccionActividad/:id',component:SelectActivityComponent
+    path: 'seleccionActividad/:id',component:SelectActivityComponent,canActivate: [AngularFireAuthGuard]
   },
   {
     path: 'loginteacher',component:LoginTeacherComponent
   },
   {
-    path: 'inicio',component:InicialComponent
+    path: 'inicio',component:InicialComponent,canActivate: [AngularFireAuthGuard]
   },
   {
     path: 'listformulario/:id',component:ListFormularioComponent
   },
   {
-    path: 'listas/:id',component:ListasComponent
+    path: 'listas/:id',component:ListasComponent,canActivate: [AngularFireAuthGuard]
   },
   {
-    path: 'listaUser',component:ListaUsersComponent
+    path: 'listaUser',component:ListaUsersComponent,canActivate: [AngularFireAuthGuard]
   },
 
   {
     path: 'pdf/:id',component:PdfComponent
   },
   {
-    path: 'editarActividad/:id',component:Editar9Component
+    path: 'editarActividad/:id',component:Editar9Component,canActivate: [AngularFireAuthGuard]
+  },
+
+  {
+    path: 'actividades/:id',component:ActividaddComponent,canActivate: [AngularFireAuthGuard],
   },
   {
-    path: 'fechas/:id',component:FechasComponent
+    path: 'perfil',component:PerfilComponent,canActivate: [AngularFireAuthGuard]
   },
   {
-    path: 'actividades/:id',component:ActividaddComponent
+    path: 'CrearFirebase/:id',component:CrearFirebaseComponent,canActivate: [AngularFireAuthGuard]
   },
+
+
+
+
+
   
   
   
